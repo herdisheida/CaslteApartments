@@ -1,21 +1,15 @@
 {% load static %}
 
-<div class="auth-container">
+<div class="auth-container" id="login-container">
     <form class="auth-form">
         <h2>Login</h2>
-        <label for="email"></label>
-        <input type="email" id="email" name="email" placeholder="email"> <br/>
-
-        <label for="password"></label>
-        <input type="password" id="password" name="password" placeholder="password">
-
-        <button type="button">login</button>
-
+        <label for="login-email"></label><input type="email" id="login-email" name="email" placeholder="Email">
+        <label for="login-password"></label><input type="password" id="login-password" name="password" placeholder="Password">
+        <button type="button" class="auth-btn">Login</button>
         <p>
             <strong>New user?</strong>
-            <a id="linked-text" href="signup.html">Create an account</a>
+            <a href="#" class="toggle-form" onclick="displaySignup()">Create an account</a>
         </p>
     </form>
-
-   <img class="background-pic" src="{% static 'images/startup_background.jpg' %}" alt="blurred houses" />
+    <img class="background-pic" src="{% static 'images/startup_background.jpg' %}" alt="blurred houses">
 </div>

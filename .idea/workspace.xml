@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="nav bar temp">
-      <change afterPath="$PROJECT_DIR$/static/css/authentication.css" afterDir="false" />
+    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="fix images, það eru linkar núna">
+      <change afterPath="$PROJECT_DIR$/static/js/authentication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/sh.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/authentication/authentications.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/authentications.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/authentication/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/authentication/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/signup.html" afterDir="false" />
@@ -18,200 +20,44 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
-        <option value="HTML File" />
-        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;herdisheida&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/herdisheida/castle_apartments.git&quot;,
-    &quot;accountId&quot;: &quot;a055dcba-49a2-43bd-92a5-00fa7bbde7ef&quot;
-  }
-}</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/user_profile/views.py" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2wfa8RFwUHdr0YJsizlcVtkMarj" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.castle_apartments.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
+    "Node.js.authentication.js.executor": "Run",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "authentication",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\julia\PycharmProjects\castle_apartments\static\images" />
-      <recent name="$PROJECT_DIR$/static/images" />
-      <recent name="$PROJECT_DIR$/templates" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="castle_apartments" type="Python.DjangoServer" factoryName="Django server">
-      <module name="castle_apartments" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="castle_apartments.settings" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
-        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
-      </set>
-    </attachedChunks>
-  </component>
+}]]></component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="" />
-      <created>1746434921714</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1746434921714</updated>
-      <workItem from="1746434922715" duration="12683000" />
-      <workItem from="1746455333226" duration="302000" />
-    </task>
-    <task id="LOCAL-00001" summary="SETUP urls, HTML skjöl og statc folder">
+    <task id="LOCAL-00001" summary="AUTH (startup) login and signup page CSS">
       <option name="closed" value="true" />
-      <created>1746438986144</created>
+      <created>1746459525186</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1746438986145</updated>
+      <updated>1746459525186</updated>
     </task>
-    <task id="LOCAL-00002" summary="SETUP urls, HTML skjöl og statc folder">
+    <task id="LOCAL-00002" summary="fix images, það eru linkar núna">
       <option name="closed" value="true" />
-      <created>1746439055849</created>
+      <created>1746485263296</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1746439055849</updated>
+      <updated>1746485263296</updated>
     </task>
-    <task id="LOCAL-00003" summary="laga views og url.py">
-      <option name="closed" value="true" />
-      <created>1746440669582</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1746440669582</updated>
-    </task>
-    <task id="LOCAL-00004" summary="laga views og url.py">
-      <option name="closed" value="true" />
-      <created>1746440681363</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1746440681363</updated>
-    </task>
-    <task id="LOCAL-00005" summary="laga views og url.py">
-      <option name="closed" value="true" />
-      <created>1746440690382</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1746440690382</updated>
-    </task>
-    <task id="LOCAL-00006" summary="laga views og url.py&#10;&#10;&#10;bæta við dummy object">
-      <option name="closed" value="true" />
-      <created>1746441198051</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1746441198051</updated>
-    </task>
-    <task id="LOCAL-00007" summary="add dummy data">
-      <option name="closed" value="true" />
-      <created>1746442790584</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1746442790584</updated>
-    </task>
-    <task id="LOCAL-00008" summary="nav bar temp">
-      <option name="closed" value="true" />
-      <created>1746444378349</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1746444378349</updated>
-    </task>
-    <task id="LOCAL-00009" summary="picture of profile">
-      <option name="closed" value="true" />
-      <created>1746454044518</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1746454044518</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SETUP urls, HTML skjöl og statc folder" />
-    <MESSAGE value="laga views og url.py" />
-    <MESSAGE value="laga views og url.py&#10;&#10;&#10;bæta við dummy object" />
-    <MESSAGE value="add dummy data" />
-    <MESSAGE value="nav bar temp" />
-    <MESSAGE value="NAV BAR FINISHED" />
-    <MESSAGE value="picture of profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="picture of profile" />
+    <MESSAGE value="AUTH (startup) login and signup page CSS" />
+    <MESSAGE value="fix images, það eru linkar núna" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix images, það eru linkar núna" />
   </component>
 </project>

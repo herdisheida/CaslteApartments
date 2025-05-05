@@ -2,20 +2,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Authentication</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Authentication</title>
 
-    {# bootstrap css #}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
-    {# style css #}
-    <link rel="stylesheet" href={% static 'css/authentication.css' %} />
-</head>
-<body>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
 
-    {% include 'authentication/login.html' %}
-{#    {% include 'authentication/signup.html' %}#}
-
-
-</body>
+    </head>
+    <body>
+        {% include 'authentication/login.html' %}
+        {% include 'authentication/signup.html' %}
+        <script src="{% static 'js/authentication.js' %}"></script>
+    </body>
 </html>
