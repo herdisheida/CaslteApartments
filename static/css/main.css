@@ -1,3 +1,15 @@
 .container-fluid {
     background-color: #4D4C77;
 }
+
+.status-badge {
+    background-color: red;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.image-wrapper {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}

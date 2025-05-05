@@ -16,6 +16,7 @@ properties = [
         'listing_date': '30.12.2025',
         'is_sold': False,
         'seller_id': 1,
+        'image': "images/sh.jpg"
     },
     {
         'id': 2,
@@ -29,6 +30,7 @@ properties = [
         'listing_date': '15.01.2026',
         'is_sold': True,
         'seller_id': 2,
+        'image': "images/sh.jpg"
     },
     {
         'id': 3,
@@ -42,6 +44,7 @@ properties = [
         'listing_date': '10.03.2025',
         'is_sold': False,
         'seller_id': 3,
+        'image': "images/sh.jpg"
     },
     {
         'id': 4,
@@ -55,6 +58,7 @@ properties = [
         'listing_date': '22.09.2024',
         'is_sold': True,
         'seller_id': 1,
+        'image': "images/sh.jpg"
     },
     {
         'id': 5,
@@ -68,6 +72,7 @@ properties = [
         'listing_date': '05.05.2025',
         'is_sold': False,
         'seller_id': 2,
+        'image': "images/sh.jpg"
     },
     {
         'id': 6,
@@ -81,6 +86,7 @@ properties = [
         'listing_date': '18.07.2024',
         'is_sold': True,
         'seller_id': 3,
+        'image': "images/sh.jpg"
     },
     {
         'id': 7,
@@ -94,6 +100,7 @@ properties = [
         'listing_date': '01.11.2025',
         'is_sold': False,
         'seller_id': 1,
+        'image': "images/sh.jpg"
     }
 ]
 
