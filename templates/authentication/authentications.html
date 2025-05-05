@@ -5,11 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Authentication</title>
+
+    {# bootstrap css #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" />
+    {# style css #}
+    <link rel="stylesheet" href={% static 'css/authentication.css' %} />
 </head>
 <body>
 
     {% include 'authentication/login.html' %}
-    {% include 'authentication/signup.html' %}
+{#    {% include 'authentication/signup.html' %}#}
 
 
 </body>
