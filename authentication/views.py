@@ -8,11 +8,8 @@ authentications = [
     }
 ]
 
-
 def index(request):
-    return render(request, 'authentication/authentications.html', {
-        'authentications': authentications
-    })
+    return render(request, 'authentication/authentications.html')
 
 def get_authentication_by_id(request, id):
     authentication = [x for x in authentications if x['id'] == id][0]
