@@ -4,26 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/property/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/_navigation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/authentication/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/authentication/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/offer/_single_offer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/offer/offer_details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/offer/offers.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/profile/_buyer_profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/profile/_seller_profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/profile/profile_details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/property/_single_property.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/property/properties.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/property/property_details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/castle_apartments.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castle_apartments.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/castle_apartments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/castle_apartments/settings.py" afterDir="false" />
+    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="SETUP urls, HTML skjöl og statc folder">
+      <change afterPath="$PROJECT_DIR$/templates/authentication/authentication.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/profile/profiles.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_profile/migrations/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/castle_apartments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/castle_apartments/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/property/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/property/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/property/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/property/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +48,9 @@
     "accountId": "a055dcba-49a2-43bd-92a5-00fa7bbde7ef"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/user_profile/views.py" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
 }]]></component>
@@ -121,11 +119,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746434921714</updated>
-      <workItem from="1746434922715" duration="4030000" />
+      <workItem from="1746434922715" duration="5722000" />
     </task>
+    <task id="LOCAL-00001" summary="SETUP urls, HTML skjöl og statc folder">
+      <option name="closed" value="true" />
+      <created>1746438986144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746438986145</updated>
+    </task>
+    <task id="LOCAL-00002" summary="SETUP urls, HTML skjöl og statc folder">
+      <option name="closed" value="true" />
+      <created>1746439055849</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746439055849</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="SETUP urls, HTML skjöl og statc folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="SETUP urls, HTML skjöl og statc folder" />
   </component>
 </project>
