@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+
+        {% for candy in candies %}
+            {% include "property/_single_property.html.html" with is_detail=False candy=candy %}
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
