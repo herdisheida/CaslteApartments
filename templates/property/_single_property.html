@@ -2,9 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Properties</title>
+    <style>
+        body {
+            background: #f5f5f5;
+            margin: 20px;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .property-image {
+            position: relative;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .property-status {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 128, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            text-transform: lowercase;
+        }
+
+        .property-status.for-sale {
+            background-color: rgba(255, 165, 0, 0.9); /* orange */
+        }
+
+        .property-status.sold {
+            background-color: rgba(34, 139, 34, 0.9); /* green */
+        }
+
+        .property-info {
+            padding: 12px 16px;
+        }
+
+        .property-address {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .property-city {
+            float: right;
+            color: #555;
+        }
+
+        .property-price {
+            font-size: 15px;
+            margin-top: 5px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
+
+<div class="property-grid">
+    {% for property in properties %}
+        <div class="property-card">
+            <div class="property-image">
+                <img src="{{ property.image_url }}" alt="Property image">
+                <div class="property-status {{ property.status|slugify }}">
+                    {{ property.status }}
+                </div>
+            </div>
+            <div class="property-info">
+                <div class="property-address">{{ property.address }}</div>
+                <div class="property-city">{{ property.city }}</div>
+                <div class="property-price">{{ property.price }}$</div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 </body>
 </html>
