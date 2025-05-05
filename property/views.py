@@ -16,7 +16,11 @@ properties = [
         'listing_date': '30.12.2025',
         'is_sold': False,
         'seller_id': 1,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 2,
@@ -30,7 +34,12 @@ properties = [
         'listing_date': '15.01.2026',
         'is_sold': True,
         'seller_id': 2,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
+
     },
     {
         'id': 3,
@@ -44,7 +53,11 @@ properties = [
         'listing_date': '10.03.2025',
         'is_sold': False,
         'seller_id': 3,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 4,
@@ -58,7 +71,11 @@ properties = [
         'listing_date': '22.09.2024',
         'is_sold': True,
         'seller_id': 1,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 5,
@@ -72,7 +89,11 @@ properties = [
         'listing_date': '05.05.2025',
         'is_sold': False,
         'seller_id': 2,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 6,
@@ -86,7 +107,11 @@ properties = [
         'listing_date': '18.07.2024',
         'is_sold': True,
         'seller_id': 3,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 7,
@@ -100,7 +125,11 @@ properties = [
         'listing_date': '01.11.2025',
         'is_sold': False,
         'seller_id': 1,
-        'image': "images/sh.jpg"
+        'image': "images/sh.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     }
 ]
 
@@ -109,8 +138,10 @@ def index(request):
         'properties': properties
     })
 
-def get_property_by_id(request):
-    property = [x for x in properties if x['id'] == id][0]
+def get_property_by_id(request, id):
+    property = [x for x in properties if x['id'] == int(id)][0]
     return render(request, 'property/property_details.html', {
         'property': property
     })
+
+

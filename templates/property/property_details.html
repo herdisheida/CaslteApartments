@@ -1,7 +1,43 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<div class="container my-4 p-4 border rounded shadow-sm bg-white">
 
-    {% include "property/_single_property.html" with is_detail=True candy=candy %}
+    <!-- image -->
+    <div class="mb-3">
+        <img src="{% static property.image %}" alt="Property image" class="img-fluid w-100" style="max-height: 400px; object-fit: cover;">
+    </div>
 
+    <!-- the status of the property-->
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="text-muted text-capitalize">{{ property.type }}</span>
+        <span class="text-uppercase small">{{ property.is_sold|yesno:"SOLD,THIS PROPERTY HAS NOT BEEN SOLD" }}</span>
+    </div>
+
+    <!-- address and price of property -->
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }}</h2>
+        <h4 class="text-primary fw-bold">${{ property.listing_price|floatformat:"0" }}</h4>
+    </div>
+
+    <!-- description of property -->
+    <div class="mt-3">
+        <p class="mb-3">{{ property.description }}</p>
+        <div class="d-flex gap-3">
+            <a href="#" class="btn btn-outline-dark">Seller Profile</a>
+            <a href="#" class="btn btn-outline-dark">Submit an Offer</a>
+        </div>
+    </div>
+
+    <!-- the details of the property WILL CHANGE LATER -->
+    <div class="mt-4 row text-center">
+        <div class="col">Built {{ property.when }}</div>
+        <div class="col">{{ property.size }}</div>
+        <div class="col">{{ property.bed }} Bedrooms</div>
+        <div class="col">{{ property.bath }} Bathrooms</div>
+    </div>
+
+
+</div>
 {% endblock %}
