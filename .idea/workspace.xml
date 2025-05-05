@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="nav bar temp">
+      <change afterPath="$PROJECT_DIR$/static/css/authentication.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/authentication/authentications.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/authentications.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/authentication/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/authentication/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/signup.html" afterDir="false" />
@@ -19,13 +20,14 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="navigation-bar" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,6 +65,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "authentication",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,9 +73,10 @@
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\julia\PycharmProjects\castle_apartments\static\images" />
       <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$/templates" />
     </key>
@@ -120,6 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1746434921714</updated>
       <workItem from="1746434922715" duration="12683000" />
+      <workItem from="1746455333226" duration="302000" />
     </task>
     <task id="LOCAL-00001" summary="SETUP urls, HTML skjöl og statc folder">
       <option name="closed" value="true" />
