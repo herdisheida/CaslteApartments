@@ -1,15 +1,7 @@
-from django.shortcuts import render
+from django.urls import path
+from . import views
 
-
-# Create your views here.
-
-def index(request):
-    return render(request, 'offer/offers.html', {
-        'offers': offers
-    })
-
-def get_offer_by_id(request):
-    offer = [x for x in offers if x['id'] == id][0]
-    return render(request, 'offer/offer_details.html', {
-        'offer': offer
-    })
+urlpatterns = [
+    path('', views.index, name='property-index'),
+    path('<int:id>', views.get_property_by_id, name='property-by-id'),
+]

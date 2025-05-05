@@ -2,6 +2,11 @@ from django.shortcuts import render
 
 
 # Create your views here.
+properties = [
+    {
+        'id': 1,
+    }
+]
 
 def index(request):
     return render(request, 'property/properties.html', {
