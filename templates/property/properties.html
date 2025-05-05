@@ -3,8 +3,8 @@
 {% block content %}
     <div class="container">
 
-        {% for candy in candies %}
-            {% include "property/_single_property.html.html" with is_detail=False candy=candy %}
+        {% for property in properties %}
+            {% include "property/_single_property.html" with is_detail=False candy=candy %}
         {% endfor %}
 
     </div>

@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="laga views og url.py&#10;&#10;&#10;bæta við dummy object">
-      <change afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/_footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/offer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/property/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/property/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_profile/views.py" afterDir="false" />
+    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="nav bar temp">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/authentication/authentications.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/authentications.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/offer/offers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/offers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/profiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profiles.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/property/_single_property.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/_single_property.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/property/properties.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/properties.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/property/property_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/property_details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
@@ -59,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "navigation-bar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -68,6 +78,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="castle_apartments" type="Python.DjangoServer" factoryName="Django server">
       <module name="castle_apartments" />
@@ -110,7 +126,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746434921714</updated>
-      <workItem from="1746434922715" duration="7834000" />
+      <workItem from="1746434922715" duration="12683000" />
     </task>
     <task id="LOCAL-00001" summary="SETUP urls, HTML skjöl og statc folder">
       <option name="closed" value="true" />
@@ -160,7 +176,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746441198051</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add dummy data">
+      <option name="closed" value="true" />
+      <created>1746442790584</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746442790584</updated>
+    </task>
+    <task id="LOCAL-00008" summary="nav bar temp">
+      <option name="closed" value="true" />
+      <created>1746444378349</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746444378349</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +202,8 @@
     <MESSAGE value="SETUP urls, HTML skjöl og statc folder" />
     <MESSAGE value="laga views og url.py" />
     <MESSAGE value="laga views og url.py&#10;&#10;&#10;bæta við dummy object" />
-    <option name="LAST_COMMIT_MESSAGE" value="laga views og url.py&#10;&#10;&#10;bæta við dummy object" />
+    <MESSAGE value="add dummy data" />
+    <MESSAGE value="nav bar temp" />
+    <option name="LAST_COMMIT_MESSAGE" value="nav bar temp" />
   </component>
 </project>

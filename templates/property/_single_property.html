@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<div class="card" style="width: 18rem;">
+    <div class="image" style="background-image: url({{property.image}})"></div>
+
+    <div class="card-body">
+        <h5 class="card-title">{{ property.name }}</h5>
+
+        <h4><span class="badge text-bg-secondary">{{ property.category }}</span></h4>
+
+        <p class="lead">${{ property.price }}</p>
+        <div>
+            {% if property.on_sale == True %}
+                <div class="badge red">ON SALE!</div>
+            {% endif %}
+        </div>
+
+        {% if is_detail == True %}
+            <p class="card-text">{{ property.description }}</p>
+            <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+
+        {% else %}
+            <a href="{% url 'property-by-id' id=property.id %}" class="btn btn-primary">See More</a>
+
+        {% endif %}
+
+    </div>
+</div>
