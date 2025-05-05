@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="fix images, það eru linkar núna">
-      <change afterPath="$PROJECT_DIR$/static/js/authentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/sh.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/authentication/authentications.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/authentications.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/authentication/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/authentication/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/authentication/signup.html" afterDir="false" />
+    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/static/css/offer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/offer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/offer/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/offer/_single_offer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/_single_offer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/offer/offer_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/offer_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/offer/offers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/offers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,17 +22,25 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Node.js.authentication.js.executor": "Run",
+    "Python.urls.executor": "Run",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "authentication",
+    "git-widget-placeholder": "offers",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
