@@ -1,11 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Authentication</title>
 </head>
 <body>
-    <div>auth</div>
+
+    {% include 'authentication/login.html' %}
+    {% include 'authentication/signup.html' %}
+
 
 </body>
 </html>
