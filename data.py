@@ -58,6 +58,11 @@ properties = [
         'listing_date': '30.12.2025',
         'is_sold': False,
         'seller_id': 1,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Katsura_Imperial_Villa_in_Spring.jpg/1920px-Katsura_Imperial_Villa_in_Spring.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002',
     },
     {
         'id': 2,
@@ -71,6 +76,12 @@ properties = [
         'listing_date': '15.01.2026',
         'is_sold': True,
         'seller_id': 2,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/16%2C_Calea_Doroban%C8%9Bilor%2C_Bucharest_%28Romania%29_1.jpg/1920px-16%2C_Calea_Doroban%C8%9Bilor%2C_Bucharest_%28Romania%29_1.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
+
     },
     {
         'id': 3,
@@ -84,6 +95,11 @@ properties = [
         'listing_date': '10.03.2025',
         'is_sold': False,
         'seller_id': 3,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/8A%2C_Bulevardul_Aviatorilor_%2C_Bucharest_%28Romania%29.jpg/1920px-8A%2C_Bulevardul_Aviatorilor_%2C_Bucharest_%28Romania%29.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 4,
@@ -97,6 +113,11 @@ properties = [
         'listing_date': '22.09.2024',
         'is_sold': True,
         'seller_id': 1,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/6/6a/248_Ashley_Ave_-_2017.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 5,
@@ -110,6 +131,11 @@ properties = [
         'listing_date': '05.05.2025',
         'is_sold': False,
         'seller_id': 2,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/f/f7/Casa_Assan_1.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 6,
@@ -123,6 +149,11 @@ properties = [
         'listing_date': '18.07.2024',
         'is_sold': True,
         'seller_id': 3,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Cam0492_Habitation_de_Pouss.jpg/2560px-Cam0492_Habitation_de_Pouss.jpg",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     },
     {
         'id': 7,
@@ -136,12 +167,17 @@ properties = [
         'listing_date': '01.11.2025',
         'is_sold': False,
         'seller_id': 1,
+        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bamboo_House_in_Sambava_Madagascar.JPG/1920px-Bamboo_House_in_Sambava_Madagascar.JPG",
+        'bed': '5',
+        'bath': '3',
+        'size': '230m²',
+        'when': '2002'
     }
 ]
 
 
 
-users = [
+profiles = [
     {
         'user_ID': 1,
         'name': 'John Doe',
