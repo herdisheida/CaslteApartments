@@ -2,6 +2,13 @@ from django.shortcuts import render
 
 
 # Create your views here.
+offers = [
+    {
+        'id': 1,
+        'price': 100000,
+        'expiration_date':
+    }
+]
 
 def index(request):
     return render(request, 'offer/offers.html', {
