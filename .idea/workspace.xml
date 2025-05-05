@@ -70,9 +70,10 @@
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\julia\PycharmProjects\castle_apartments\static\images" />
       <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$/templates" />
     </key>
@@ -120,6 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1746434921714</updated>
       <workItem from="1746434922715" duration="12683000" />
+      <workItem from="1746455333226" duration="302000" />
     </task>
     <task id="LOCAL-00001" summary="SETUP urls, HTML skjöl og statc folder">
       <option name="closed" value="true" />
