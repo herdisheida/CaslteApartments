@@ -9,11 +9,29 @@
             <label for="avatar"><b>Choose a profile picture</b></label><br>
             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
         </div>
+        <hr><br>
 
-        <div class="form-field">
-            <label for="id_address">Address</label>
-            {{ form.address }}
+        <div id="form-address-container-input">
+            <h4>Address</h4>
+            <div class="form-field">
+                <label for="id_street_name">Street Name</label>
+                {{ form.street_name }}
+            </div>
+           <div class="form-field">
+                <label for="id_house_nr">House Number</label>
+                {{ form.house_nr }}
+            </div>
+           <div class="form-field">
+                <label for="id_city">City</label>
+                {{ form.city }}
+            </div>
+           <div class="form-field">
+                <label for="id_postal_code">Postal Code</label>
+                {{ form.postal_code }}
+            </div>
         </div>
+        <br><hr><br>
+
         <div class="form-field">
             <label for="id_building_type">Type of Building</label>
             <select name="building_type" id="id_building_type" class="form-control">

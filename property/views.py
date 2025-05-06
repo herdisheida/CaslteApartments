@@ -147,7 +147,11 @@ def get_property_by_id(request, id):
 
 
 class PropertyForm(forms.Form):
-    address = forms.CharField(label='Address')
+    street_name = forms.CharField(label='street_name')
+    house_nr = forms.CharField(label='house_nr')
+    city = forms.CharField(label='city')
+    postal_code = forms.CharField(label='postal_code')
+
     building_type = forms.CharField(label='Type of building')
     price = forms.CharField(label='Price')
     description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Write your description here...'}))
