@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="fix images, það eru linkar núna">
+    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="nav bar temp">
+      <change beforePath="$PROJECT_DIR$/.idea/castle_apartments.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castle_apartments.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/property/create_property.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/create_property.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navigation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/property/_single_property.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/_single_property.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,26 +22,40 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="property_page" />
+        <entry key="$PROJECT_DIR$" value="navigation-bar" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Django Server.castle_apartments.executor": "Run",
-    "Node.js.authentication.js.executor": "Run",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "herdisheida"
   }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/herdisheida/castle_apartments.git",
+    "accountId": "43313803-7e5e-4a7e-9d6b-e1809aeeecce"
+  }
+}]]></component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.authentication.js.executor&quot;: &quot;Run&quot;,
+    &quot;Python.urls.executor&quot;: &quot;Run&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="AUTH (startup) login and signup page CSS">
       <option name="closed" value="true" />
@@ -54,32 +73,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746485263296</updated>
     </task>
-    <task id="LOCAL-00003" summary="added a seperate CSS file for create property">
-      <option name="closed" value="true" />
-      <created>1746525927874</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1746525927874</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="AUTH (startup) login and signup page CSS" />
     <MESSAGE value="fix images, það eru linkar núna" />
-    <MESSAGE value="added a seperate CSS file for create property" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a seperate CSS file for create property" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix images, það eru linkar núna" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/castle_apartments$urls.coverage" NAME="urls Coverage Results" MODIFIED="1746487176176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/offer" />
   </component>
 </project>

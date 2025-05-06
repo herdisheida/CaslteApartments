@@ -16,7 +16,6 @@
 
         {% if is_detail %}
             <p>{{ property.description }}</p>
-            <a href="javascript:history.back()" class="btn btn-outline-primary btn-sm">Go Back</a>
         {% else %}
             <a href="{% url 'property-by-id' id=property.id %}" class="btn btn-outline-primary btn-sm">See More</a>
         {% endif %}

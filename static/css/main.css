@@ -1,7 +1,6 @@
-
 /* Navigation Bar styling*/
 .navbar {
-  background-color: #4D4C77 !important;
+    background-color: #4D4C77 !important;
 }
 
 .navbar-brand,
@@ -9,7 +8,6 @@
     margin: 0 15px;
     color: white !important;
     font-family: "Lucida Console", monospace;
-
 }
 
 /* Profile picture styling */
@@ -20,7 +18,7 @@
     overflow: hidden;
 }
 
-.profile-pic {
+#profile-pic-small {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -28,6 +26,17 @@
 
 
 /* Footer styling */
-div#footer-container {
-    background-color: #4D4C77 !important;
+#footer-container {
+    background-color: #4D4C77;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: center;
+}
+a {
+    color: white;
+}
+
+#app-logo {
+    height: 6rem;
 }
