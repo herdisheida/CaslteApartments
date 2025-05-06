@@ -31,12 +31,18 @@
     padding: 1rem;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 a {
     color: white;
 }
 
 #app-logo {
-    height: 6rem;
+    height: 3rem;
+}
+
+.footer-contact-info {
+    display: flex;
+    align-items: flex-end;
+    font-size: 0.9rem;
 }
