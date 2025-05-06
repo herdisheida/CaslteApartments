@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="offer-card">
+    <div class="offer-left">
+        <h3>address {{ offer.id }}</h3>
+        <a href="https://www.estatebestate.com/details/{{ offer.id }}">
+            www.estatebestate.com/details/{{ offer.id }}
+        </a>
 
-</body>
-</html>
+        <div class="status">
+            <span class="status-dot {{ offer.state.0 }}"></span>
+            {{ offer.state.0 }}
+        </div>
+
+        <div class="card-img-top" style="background: url('{% static offer.image %}') center / cover no-repeat;">
+            <span class="badge bg-dark text-white m-2">
+                {% if not offer.is_sold %}For Sale{% else %}Sold{% endif %}
+            </span>
+        </div>
+        <p>seller: {{ offer.seller }}</p>
+    </div>
+
+    <div class="offer-right">
+        <p><strong>offer amount:</strong> {{ offer.price }}$</p>
+        <p>{{ offer.expiration_start }} - {{ offer.expiration_date }}</p>
+        <button class="finalize-button">finalize offer</button>
+    </div>
+</div>

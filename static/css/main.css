@@ -1,3 +1,5 @@
+
+/* Navigation Bar styling*/
 .navbar {
   background-color: #4D4C77 !important;
 }
@@ -24,3 +26,8 @@
     object-fit: cover;
 }
 
+
+/* Footer styling */
+div#footer-container {
+    background-color: #4D4C77 !important;
+}
