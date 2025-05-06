@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="profile-header">
+  <button class="profile-right">Edit Profile</button>
+</div>
 
-</body>
-</html>
+<div class="profile-section">
+  <a href="{% url 'user_profile-index' %}">
+    <img id="profile-pic-big" src="{% static 'images/profile_pic.png' %}" alt="Profile Picture" />
+  </a>
+  <h2>{{ profiles.name }} Sindri</h2>
+  <h3>{{ profiles.email }} hetja36@gmail.com</h3>
+</div>
+
+{% endblock %}
