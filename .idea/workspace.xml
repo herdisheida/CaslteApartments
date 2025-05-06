@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/static/css/offer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/offer/views.py" afterDir="false" />
+    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="nav bar temp">
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_footer.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/offer/_single_offer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/_single_offer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/offer/offer_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/offer_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/offer/offers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offer/offers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/_buyer_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/_buyer_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/_seller_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/_seller_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/profile_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profile_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/profiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profiles.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="navigation-bar" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,7 +39,7 @@
     "Node.js.authentication.js.executor": "Run",
     "Python.urls.executor": "Run",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "offers",
+    "git-widget-placeholder": "main",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.selected.package.tslint": "(autodetect)"
   }
@@ -68,5 +68,8 @@
     <MESSAGE value="AUTH (startup) login and signup page CSS" />
     <MESSAGE value="fix images, það eru linkar núna" />
     <option name="LAST_COMMIT_MESSAGE" value="fix images, það eru linkar núna" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/castle_apartments$urls.coverage" NAME="urls Coverage Results" MODIFIED="1746487176176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/offer" />
   </component>
 </project>
