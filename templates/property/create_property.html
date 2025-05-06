@@ -5,7 +5,7 @@
 <form method="post" class="p-4">
     {% csrf_token %}
     <div style="margin-bottom: 20px;">
-        <label for="avatar"><b>Choose a profile picture:</b></label><br>
+        <label for="avatar"><b>Choose a profile picture</b></label><br>
     </div>
     <div style="margin-bottom: 20px;">
         <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
@@ -16,7 +16,14 @@
     </div>
     <div class="form-field">
         <label for="id_building_type">Type of Building</label>
-        {{ form.building_type }}
+        <select name="building_type" id="id_building_type" class="form-control">
+            <option value="">Select a type</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Villa">Villa</option>
+            <option value="TownHouse">Townhouse</option>
+            <option value="Area">Area</option>
+        </select>
     </div>
     <div class="form-field">
         <label for="id_price">Price</label>
