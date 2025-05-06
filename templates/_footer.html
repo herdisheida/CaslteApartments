@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
 
-</body>
-</html>
+<section>
+    <footer class="text-center" id="footer-container">
+        <div id="app-logo-container">
+            <img id="app-logo" src="{% static 'images/app_logo.png' %}" alt="logo picture"/>
+        </div>
+        <div id="footer-contact-info">
+            <h5 id="footer-email"><a href="mailto:CastleApartments@email.com">CastleApartments@email.com</a></h5>
+            <h6 id="footer-phone-num"><a href="tel:354-522-3200">+354-522-3200</a></h6>
+        </div>
+    </footer>
+</section>

@@ -1,22 +1,16 @@
 {% load static %}
 
-<form>
-
-    <p>Sign up</p>
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email"> <br/>
-
-    <label for="name">Full name</label>
-    <input type="text" id="name" name="name"> <br/>
-
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
-
-   <button type="button">Sign up</button>
-
-    <p>
-       <strong>Have an account?</strong>
-       <a href="login.html">login</a>
-   </p>
-</form>
+<div class="auth-container" id="signup-container" style="display: none;">
+    <form class="auth-form">
+        <h2>Sign up</h2>
+        <label for="signup-email"></label><input type="email" id="signup-email" name="email" placeholder="Email">
+        <label for="full-name"></label><input type="text" id="full-name" name="name" placeholder="Full name">
+        <label for="signup-password"></label><input type="password" id="signup-password" name="password" placeholder="Password">
+        <button type="button" class="auth-btn">Sign up</button>
+        <p>
+            <strong>Have an account?</strong>
+            <a href="#" class="toggle-form" onclick="displayLogin()">Login</a>
+        </p>
+    </form>
+    <img class="background-pic" src="{% static 'images/startup_background.jpg' %}" alt="blurred houses">
+</div>

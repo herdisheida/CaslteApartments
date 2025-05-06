@@ -10,6 +10,10 @@
 
     {# style css #}
     <link rel="stylesheet" href={% static 'css/main.css' %} />
+    <link rel="stylesheet" href={%  static 'css/property.css' %} />
+    <link rel="stylesheet" href={%  static 'css/offer.css' %} />
+
+
 
     {# Profile css #}
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
@@ -19,6 +23,7 @@
     {% include '_navigation.html' %}
     {% block content %}
     {% endblock %}
+    {% include '_footer.html' %}
 
 </body>
 </html>

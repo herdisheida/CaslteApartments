@@ -1,0 +1,369 @@
+Index: static/css/main.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n/* Navigation Bar styling*/\n.navbar {\n  background-color: #4D4C77 !important;\n}\n\n.navbar-brand,\n.nav-link {\n    margin: 0 15px;\n    color: white !important;\n    font-family: \"Lucida Console\", monospace;\n\n}\n\n/* Profile picture styling */\n.profile-pic-container {\n    border-radius: 50%;\n    width: 4rem;\n    height: 4rem;\n    overflow: hidden;\n}\n\n.profile-pic {\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n}\n\n\n/* Footer styling */\ndiv#footer-container {\n    background-color: #4D4C77 !important;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/static/css/main.css b/static/css/main.css
+--- a/static/css/main.css	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/static/css/main.css	(date 1746528845277)
+@@ -1,7 +1,6 @@
+-
+ /* Navigation Bar styling*/
+ .navbar {
+-  background-color: #4D4C77 !important;
++    background-color: #4D4C77 !important;
+ }
+ 
+ .navbar-brand,
+@@ -9,7 +8,6 @@
+     margin: 0 15px;
+     color: white !important;
+     font-family: "Lucida Console", monospace;
+-
+ }
+ 
+ /* Profile picture styling */
+@@ -20,7 +18,7 @@
+     overflow: hidden;
+ }
+ 
+-.profile-pic {
++#profile-pic-small {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+@@ -28,6 +26,17 @@
+ 
+ 
+ /* Footer styling */
+-div#footer-container {
+-    background-color: #4D4C77 !important;
++#footer-container {
++    background-color: #4D4C77;
++    padding: 1rem;
++
++    display: flex;
++    justify-content: center;
++}
++a {
++    color: white;
++}
++
++#app-logo {
++    height: 6rem;
+ }
+\ No newline at end of file
+Index: templates/_navigation.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static %}\n\n<nav class=\"navbar navbar-expand-lg bg-body-tertiary\">\n    <div class=\"container-fluid\">\n        <!-- Left-aligned brand -->\n        <a class=\"navbar-brand me-auto\" href=\"/property/\">CastleApartments</a>\n\n        <!-- Right-aligned items -->\n        <div class=\"d-flex align-items-center gap-4\">\n\n            <!-- Navigation links -->\n            <div class=\"d-flex gap-3\">\n                <ul class=\"navbar-nav\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"{% url 'property-create-index' %}\">create property</a>\n                    </li>\n                </ul>\n                <ul class=\"navbar-nav\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"{% url 'offer-index' %}\">purchase offer</a>\n                    </li>\n                </ul>\n                <ul class=\"navbar-nav\">\n                    <li class=\"nav-item\">\n                        <a class=\"nav-link\" href=\"{% url 'authentication-index' %}\">log-out</a>\n                    </li>\n                </ul>\n            </div>\n\n            <!-- Profile picture -->\n            <div class=\"profile-pic-container\">\n\n\n\n                <a href=\"{% url 'user_profile-index' %}\">\n                   <img class=\"profile-pic\" src=\"{% static 'images/profile_pic.png' %}\" alt=\"profile picture\" />\n                </a>\n\n            </div>\n        </div>\n    </div>\n</nav>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/_navigation.html b/templates/_navigation.html
+--- a/templates/_navigation.html	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/templates/_navigation.html	(date 1746528685044)
+@@ -33,7 +33,7 @@
+ 
+ 
+                 <a href="{% url 'user_profile-index' %}">
+-                   <img class="profile-pic" src="{% static 'images/profile_pic.png' %}" alt="profile picture" />
++                   <img id="profile-pic-small" src="{% static 'images/profile_pic.png' %}" alt="profile picture" />
+                 </a>
+ 
+             </div>
+Index: templates/_footer.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><section>\n    <!-- Footer -->\n    <footer class=\"text-center text-white\">\n\n        <!-- Text -->\n        <div class=\"text-center p-3\" id=\"footer-container\">\n            <p class=\"contact-info\"><a href=\"mailto:CastleApartments@email.com\">CastleApartments@email.com</a></p>\n            <p class=\"contact-info\"><a href=\"tel:354-522-3200\">+354-522-3200</a></p>\n        </div>\n        <!-- Text -->\n\n    </footer>\n    <!-- Footer -->\n</section>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/_footer.html b/templates/_footer.html
+--- a/templates/_footer.html	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/templates/_footer.html	(date 1746527564456)
+@@ -1,14 +1,13 @@
++{% load static %}
++
+ <section>
+-    <!-- Footer -->
+-    <footer class="text-center text-white">
+-
+-        <!-- Text -->
+-        <div class="text-center p-3" id="footer-container">
+-            <p class="contact-info"><a href="mailto:CastleApartments@email.com">CastleApartments@email.com</a></p>
+-            <p class="contact-info"><a href="tel:354-522-3200">+354-522-3200</a></p>
++    <footer class="text-center" id="footer-container">
++        <div id="app-logo-container">
++            <img id="app-logo" src="{% static 'images/app_logo.png' %}" alt="logo picture"/>
+         </div>
+-        <!-- Text -->
+-
++        <div id="footer-contact-info">
++            <h5 id="footer-email"><a href="mailto:CastleApartments@email.com">CastleApartments@email.com</a></h5>
++            <h6 id="footer-phone-num"><a href="tel:354-522-3200">+354-522-3200</a></h6>
++        </div>
+     </footer>
+-    <!-- Footer -->
+-</section>
++</section>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Black\">\n    <option name=\"sdkName\" value=\"Python 3.13 (castle_apartments)\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/.idea/misc.xml	(date 1746527372725)
+@@ -3,4 +3,5 @@
+   <component name="Black">
+     <option name="sdkName" value="Python 3.13 (castle_apartments)" />
+   </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"5077c366-62d1-40cc-835a-e11f6e855840\" name=\"Changes\" comment=\"nav bar temp\">\n      <change beforePath=\"$PROJECT_DIR$/static/css/main.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/static/css/main.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/_footer.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/_footer.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/base.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/base.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/profile/_buyer_profile.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/profile/_buyer_profile.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/profile/_seller_profile.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/profile/_seller_profile.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/profile/profile_details.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/profile/profile_details.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/templates/profile/profiles.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/templates/profile/profiles.html\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n        <option value=\"CSS File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"navigation-bar\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Node.js.authentication.js.executor\": \"Run\",\n    \"Python.urls.executor\": \"Run\",\n    \"django.template.preview.state\": \"SHOW_EDITOR_AND_PREVIEW\",\n    \"git-widget-placeholder\": \"main\",\n    \"list.type.of.created.stylesheet\": \"CSS\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\"\n  }\n}]]></component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"AUTH (startup) login and signup page CSS\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1746459525186</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1746459525186</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"fix images, það eru linkar núna\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1746485263296</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1746485263296</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"AUTH (startup) login and signup page CSS\" />\n    <MESSAGE value=\"fix images, það eru linkar núna\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"fix images, það eru linkar núna\" />\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/castle_apartments$urls.coverage\" NAME=\"urls Coverage Results\" MODIFIED=\"1746487176176\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/offer\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/.idea/workspace.xml	(date 1746528719325)
+@@ -4,72 +4,146 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5077c366-62d1-40cc-835a-e11f6e855840" name="Changes" comment="nav bar temp">
++    <list default="true" id="7c8cb199-a15b-4f16-95f1-199a797da20d" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/castle_apartments.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/castle_apartments.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/templates/_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_footer.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/profile/_buyer_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/_buyer_profile.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/profile/_seller_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/_seller_profile.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/profile/profile_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profile_details.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/templates/profile/profiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/profiles.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/_navigation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navigation.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/templates/property/_single_property.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/_single_property.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="JavaScript File" />
+-        <option value="CSS File" />
+-      </list>
+-    </option>
++  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
++    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+   </component>
+   <component name="Git.Settings">
+-    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-      <map>
+-        <entry key="$PROJECT_DIR$" value="navigation-bar" />
+-      </map>
+-    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="ProjectColorInfo"><![CDATA[{
++  "associatedIndex": 8
++}]]></component>
++  <component name="ProjectId" id="2wiW2yoFMBS9n1ysQKNaDnrwtuP" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+-    "Node.js.authentication.js.executor": "Run",
+-    "Python.urls.executor": "Run",
++    "Django Server.RUN.executor": "Run",
++    "Django Server.Run.executor": "Run",
++    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
+     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+     "git-widget-placeholder": "main",
+-    "list.type.of.created.stylesheet": "CSS",
+-    "node.js.selected.package.tslint": "(autodetect)"
++    "last_opened_file_path": "/Users/herdisheida/PycharmProjects/castle_apartments",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
++    "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
++  <component name="RunManager">
++    <configuration default="true" type="DjangoTestsConfigurationType">
++      <module name="castle_apartments" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
++      <option name="TARGET" value="" />
++      <option name="SETTINGS_FILE" value="" />
++      <option name="CUSTOM_SETTINGS" value="false" />
++      <option name="USE_OPTIONS" value="false" />
++      <option name="OPTIONS" value="" />
++      <method v="2" />
++    </configuration>
++    <configuration name="RUN" type="Python.DjangoServer" factoryName="Django server">
++      <module name="castle_apartments" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++        <env name="DJANGO_SETTINGS_MODULE" value="castle_apartments.settings" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="SDK_NAME" value="Python 3.13 (candy_queen)" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="false" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="launchJavascriptDebuger" value="false" />
++      <option name="port" value="8000" />
++      <option name="host" value="" />
++      <option name="additionalOptions" value="" />
++      <option name="browserUrl" value="http://127.0.0.1:8000" />
++      <option name="runTestServer" value="false" />
++      <option name="runNoReload" value="false" />
++      <option name="useCustomRunCommand" value="false" />
++      <option name="customRunCommand" value="" />
++      <method v="2" />
++    </configuration>
++    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
++      <module name="castle_apartments" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="launchJavascriptDebuger" value="false" />
++      <option name="port" value="8000" />
++      <option name="host" value="" />
++      <option name="additionalOptions" value="" />
++      <option name="browserUrl" value="" />
++      <option name="runTestServer" value="false" />
++      <option name="runNoReload" value="false" />
++      <option name="useCustomRunCommand" value="false" />
++      <option name="customRunCommand" value="" />
++      <method v="2" />
++    </configuration>
++  </component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-PY-251.23774.444" />
++        <option value="bundled-python-sdk-890ed5b35930-d9c5bdb153f4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.23774.444" />
++      </set>
++    </attachedChunks>
++  </component>
+   <component name="TaskManager">
+-    <task id="LOCAL-00001" summary="AUTH (startup) login and signup page CSS">
+-      <option name="closed" value="true" />
+-      <created>1746459525186</created>
+-      <option name="number" value="00001" />
+-      <option name="presentableId" value="LOCAL-00001" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1746459525186</updated>
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="7c8cb199-a15b-4f16-95f1-199a797da20d" name="Changes" comment="" />
++      <created>1746524671524</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1746524671524</updated>
++      <workItem from="1746524672551" duration="3815000" />
+     </task>
+-    <task id="LOCAL-00002" summary="fix images, það eru linkar núna">
+-      <option name="closed" value="true" />
+-      <created>1746485263296</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1746485263296</updated>
+-    </task>
+-    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+-  <component name="VcsManagerConfiguration">
+-    <MESSAGE value="AUTH (startup) login and signup page CSS" />
+-    <MESSAGE value="fix images, það eru linkar núna" />
+-    <option name="LAST_COMMIT_MESSAGE" value="fix images, það eru linkar núna" />
+-  </component>
+-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+-    <SUITE FILE_PATH="coverage/castle_apartments$urls.coverage" NAME="urls Coverage Results" MODIFIED="1746487176176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/offer" />
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/castle_apartments.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"FacetManager\">\n    <facet type=\"django\" name=\"Django\">\n      <configuration>\n        <option name=\"rootFolder\" value=\"$MODULE_DIR$\" />\n        <option name=\"settingsModule\" value=\"castle_apartments/settings.py\" />\n        <option name=\"manageScript\" value=\"$MODULE_DIR$/manage.py\" />\n        <option name=\"environment\" value=\"&lt;map/&gt;\" />\n        <option name=\"doNotUseTestRunner\" value=\"false\" />\n        <option name=\"trackFilePattern\" value=\"migrations\" />\n      </configuration>\n    </facet>\n  </component>\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/.venv\" />\n    </content>\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.13 (castle_apartments)\" jdkType=\"Python SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n  <component name=\"TemplatesService\">\n    <option name=\"TEMPLATE_CONFIGURATION\" value=\"Django\" />\n    <option name=\"TEMPLATE_FOLDERS\">\n      <list>\n        <option value=\"$MODULE_DIR$/templates\" />\n      </list>\n    </option>\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/castle_apartments.iml b/.idea/castle_apartments.iml
+--- a/.idea/castle_apartments.iml	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/.idea/castle_apartments.iml	(date 1746527372722)
+@@ -16,7 +16,7 @@
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+     </content>
+-    <orderEntry type="jdk" jdkName="Python 3.13 (castle_apartments)" jdkType="Python SDK" />
++    <orderEntry type="jdk" jdkName="Python 3.13" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+   <component name="TemplatesService">
+Index: templates/property/_single_property.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{% load static %}\n\n<div class=\"card\">\n    <div class=\"card-img-top\" style=\"height: 200px; background: url({{ property.image }}) center / cover no-repeat;\">\n        <span class=\"badge bg-dark text-white m-2\">\n            {% if not property.is_sold %}For Sale{% else %}Sold{% endif %}\n        </span>\n    </div>\n\n    <div class=\"card-body\">\n        <div class=\"d-flex justify-content-between align-items-center mb-1\">\n            <h5 class=\"mb-0\">{{ property.street_name }} {{ property.house_nr }}</h5>\n            <span class=\"text-primary fw-bold\">${{ property.listing_price }}</span>\n        </div>\n        <small class=\"text-muted d-block mb-2\">{{ property.city }}</small>\n\n        {% if is_detail %}\n            <p>{{ property.description }}</p>\n            <a href=\"javascript:history.back()\" class=\"btn btn-outline-primary btn-sm\">Go Back</a>\n        {% else %}\n            <a href=\"{% url 'property-by-id' id=property.id %}\" class=\"btn btn-outline-primary btn-sm\">See More</a>\n        {% endif %}\n    </div>\n</div>\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/templates/property/_single_property.html b/templates/property/_single_property.html
+--- a/templates/property/_single_property.html	(revision 93d1aaf04d2a15ece6ac8c90550b193dc8fbe324)
++++ b/templates/property/_single_property.html	(date 1746526254015)
+@@ -16,7 +16,6 @@
+ 
+         {% if is_detail %}
+             <p>{{ property.description }}</p>
+-            <a href="javascript:history.back()" class="btn btn-outline-primary btn-sm">Go Back</a>
+         {% else %}
+             <a href="{% url 'property-by-id' id=property.id %}" class="btn btn-outline-primary btn-sm">See More</a>
+         {% endif %}
