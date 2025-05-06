@@ -14,3 +14,4 @@ offer/__pycache__/views.cpython-312.pyc
 /.idea/shelf/Uncommitted_changes_before_Merge_at_5_5_2025,_23_25_[Changes]/shelved.patch
 /.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2025,_09_28_[Changes]/shelved.patch
 /.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2025,_10_54_[Changes]/shelved.patch
+*.pyc
