@@ -1,58 +1,58 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Create Property</h2>
-<form method="post" class="p-4">
-    {% csrf_token %}
-    <div style="margin-bottom: 20px;">
-        <label for="avatar"><b>Choose a profile picture</b></label><br>
-    </div>
-    <div style="margin-bottom: 20px;">
-        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
-    </div>
-    <div class="form-field">
-        <label for="id_address">Address</label>
-        {{ form.address }}
-    </div>
-    <div class="form-field">
-        <label for="id_building_type">Type of Building</label>
-        <select name="building_type" id="id_building_type" class="form-control">
-            <option value="">Select a type</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Villa">Villa</option>
-            <option value="TownHouse">Townhouse</option>
-            <option value="Area">Area</option>
-        </select>
-    </div>
-    <div class="form-field">
-        <label for="id_price">Price</label>
-        {{ form.price }}
-    </div>
-    <div class="form-field">
-        <label for="id_description">Description</label>
-        {{ form.description }}
-    </div>
-    <div class="form-field">
-        <label for="id_year_built">Built Year</label>
-        {{ form.year_built }}
-    </div>
-    <div class="form-field">
-        <label for="id_size">Size</label>
-        {{ form.size }}
-    </div>
-    <div class="form-field">
-        <label for="id_bedrooms">Bedrooms</label>
-        {{ form.bedrooms }}
-    </div>
-    <div class="form-field">
-        <label for="id_bathrooms">Bathrooms</label>
-        {{ form.bathrooms }}
-    </div>
-    <div class="form-field">
-        <label for="id_toilets">Toilets</label>
-        {{ form.toilets }}
-    </div>
-    <button type="submit" class="btn-confirm">Confirm</button>
-</form>
+    <form method="post" class="p-4" id="create-property-form">
+        <h2 id="create-property-title">Create Property</h2>
+        {% csrf_token %}
+
+        <div class="add-image-container">
+            <label for="avatar"><b>Choose a profile picture</b></label><br>
+            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+        </div>
+
+        <div class="form-field">
+            <label for="id_address">Address</label>
+            {{ form.address }}
+        </div>
+        <div class="form-field">
+            <label for="id_building_type">Type of Building</label>
+            <select name="building_type" id="id_building_type" class="form-control">
+                <option value="">Select a type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="TownHouse">Townhouse</option>
+                <option value="Area">Area</option>
+            </select>
+        </div>
+        <div class="form-field">
+            <label for="id_price">Price</label>
+            {{ form.price }}
+        </div>
+        <div class="form-field">
+            <label for="id_description">Description</label>
+            {{ form.description }}
+        </div>
+        <div class="form-field">
+            <label for="id_year_built">Built Year</label>
+            {{ form.year_built }}
+        </div>
+        <div class="form-field">
+            <label for="id_size">Size</label>
+            {{ form.size }}
+        </div>
+        <div class="form-field">
+            <label for="id_bedrooms">Bedrooms</label>
+            {{ form.bedrooms }}
+        </div>
+        <div class="form-field">
+            <label for="id_bathrooms">Bathrooms</label>
+            {{ form.bathrooms }}
+        </div>
+        <div class="form-field">
+            <label for="id_toilets">Toilets</label>
+            {{ form.toilets }}
+        </div>
+        <button type="submit" class="btn-confirm">Confirm</button>
+    </form>
 {% endblock %}

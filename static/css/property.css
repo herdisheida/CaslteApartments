@@ -41,6 +41,18 @@
     background-color: #5e3b8a;
 }
 
+/* create property styling */
+#create-property-title {
+    margin: 2rem 0 4rem; /* top right-left bottom */
+}
+#create-property-form {
+    margin: 0 11rem 0; /* top right-left bottom */
+}
+.add-image-container input {
+    margin: 0.6rem 0 1.5rem; /* top right-left bottom */
+}
+
+
 
 
 /* Property search | filter | sort styling */
@@ -71,7 +83,6 @@
     display: flex;
     justify-content: center;
 }
-
 
 
 /* Filter pop-up Styling */
