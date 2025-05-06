@@ -1,0 +1,75 @@
+.payment-header {
+    font-size: 24px;
+    font-family: "Lucida Console", monospace;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .payment-text {
+    font-family: "Lucida Console", monospace;
+    text-align: left;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
+  .form-grid {
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 0 20px 40px 20px;
+  }
+
+  .form-field select,
+  .form-field input {
+    text-align: left;
+    width: 100%;
+    padding: 12px;
+    background-color: #d4d4d4;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #555;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .form-field select::placeholder,
+  .form-field input::placeholder {
+    color: #777;
+  }
+
+  .container-fluid-payment {
+      height: 100vh;
+  }
+
+    .hidden {
+    display: none;
+  }
+
+  .visible {
+    display: block;
+  }
+
+  .expiration-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-continue {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3b2e58;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: "Lucida Console", monospace;
+    font-size: 16px;
+    float: right;
+    cursor: pointer;
+  }
