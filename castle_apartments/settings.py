@@ -73,6 +73,7 @@ WSGI_APPLICATION = 'castle_apartments.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# TODO: stilla sqlite3 í annað fyrir verkefnið
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

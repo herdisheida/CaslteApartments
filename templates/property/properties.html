@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        {% for property in properties %}
-            <div class="col-md-6 mb-4">
-                {% include "property/_single_property.html" with is_detail=False property=property %}
-            </div>
-        {% endfor %}
+    {% include 'property/search/search.html' %}
+
+    <div class="container mt-4">
+        <div class="row property-container">
+            {% for property in properties %}
+                <div class="col-md-6 mb-4">
+                    {% include "property/_single_property.html" with is_detail=False property=property %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}
