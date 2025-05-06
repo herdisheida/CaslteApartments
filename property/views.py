@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.shortcuts import render
+from django import forms
 
 # Create your views here.
 
@@ -143,5 +144,21 @@ def get_property_by_id(request, id):
     return render(request, 'property/property_details.html', {
         'property': property
     })
+
+
+class PropertyForm(forms.Form):
+    address = forms.CharField(label='Address')
+    building_type = forms.CharField(label='Type of building')
+    price = forms.CharField(label='Price')
+    description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Write your description here...'}))
+    year_built = forms.CharField(label='Built year')
+    size = forms.CharField(label='Size')
+    bedrooms = forms.CharField(label='Bedrooms')
+    bathrooms = forms.CharField(label='Bathrooms')
+    toilets = forms.CharField(label='Toilets')
+
+def create_property(request):
+    form = PropertyForm()
+    return render(request, 'property/create_property.html', {'form': form})
 
 

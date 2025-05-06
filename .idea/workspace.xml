@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="working property listings">
+    <list default="true" id="9b2ef1ae-659f-4655-bd1b-b336d7a6e2af" name="Changes" comment="laga views og url.py&#10;&#10;&#10;bæta við dummy object">
+      <change afterPath="$PROJECT_DIR$/templates/property/create_property.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/property/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/property/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/property/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/property/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/property/property_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/property/property_details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/herdisheida/castle_apartments.git&quot;,
-    &quot;accountId&quot;: &quot;19a0a623-6a5a-417f-bd24-cd997ec0bd52&quot;
+    &quot;accountId&quot;: &quot;a055dcba-49a2-43bd-92a5-00fa7bbde7ef&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -54,31 +54,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.castle_apartments.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;property__page&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.castle_apartments.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "property__page",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\julia\PycharmProjects\castle_apartments\static\images" />
-      <recent name="$PROJECT_DIR$/static/images" />
-      <recent name="$PROJECT_DIR$/templates" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="castle_apartments" type="Python.DjangoServer" factoryName="Django server">
       <module name="castle_apartments" />
@@ -121,8 +114,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1746434921714</updated>
-      <workItem from="1746434922715" duration="12683000" />
-      <workItem from="1746455333226" duration="302000" />
+      <workItem from="1746434922715" duration="7834000" />
     </task>
     <task id="LOCAL-00001" summary="SETUP urls, HTML skjöl og statc folder">
       <option name="closed" value="true" />
@@ -172,31 +164,7 @@
       <option name="project" value="LOCAL" />
       <updated>1746441198051</updated>
     </task>
-    <task id="LOCAL-00007" summary="add dummy data">
-      <option name="closed" value="true" />
-      <created>1746442790584</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1746442790584</updated>
-    </task>
-    <task id="LOCAL-00008" summary="nav bar temp">
-      <option name="closed" value="true" />
-      <created>1746444378349</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1746444378349</updated>
-    </task>
-    <task id="LOCAL-00009" summary="working property listings">
-      <option name="closed" value="true" />
-      <created>1746453128605</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1746453128605</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,9 +174,6 @@
     <MESSAGE value="SETUP urls, HTML skjöl og statc folder" />
     <MESSAGE value="laga views og url.py" />
     <MESSAGE value="laga views og url.py&#10;&#10;&#10;bæta við dummy object" />
-    <MESSAGE value="add dummy data" />
-    <MESSAGE value="nav bar temp" />
-    <MESSAGE value="working property listings" />
-    <option name="LAST_COMMIT_MESSAGE" value="working property listings" />
+    <option name="LAST_COMMIT_MESSAGE" value="laga views og url.py&#10;&#10;&#10;bæta við dummy object" />
   </component>
 </project>
