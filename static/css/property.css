@@ -110,16 +110,21 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
+.pop-up-content div{
+    margin: 1rem;
+}
 
-.sort-actions {
+
+ /* confirm and cancel button on filter-popup */
+.filter-action {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
 }
 
 .btn {
-  padding: 0.75rem 2rem;     / was 0.625rem 1.75rem /
-  font-size: 1.125rem;       / was 1rem */
+  padding: 0.75rem 2rem;     /* was 0.625rem 1.75rem */
+  font-size: 1.125rem;       /* was 1rem */
   border: none;
   border-radius: 0.625rem;
   font-family: "Lucida Console", monospace;
@@ -127,10 +132,6 @@
   cursor: pointer;
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
 }
-
-
-
-
 
 .cancel {
   background-color: #7d6b89;
@@ -152,3 +153,4 @@
 .confirm:hover {
   background-color: #2e2246;
 }
+
