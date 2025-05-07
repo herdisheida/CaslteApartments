@@ -285,6 +285,7 @@ class PropertyForm(forms.Form):
 
 
 
+
 def create_property(request):
     form = PropertyForm()
     return render(request, 'property/create_property.html', {'form': form})

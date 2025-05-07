@@ -1,3 +1,4 @@
+/* POP UP WINDOWS */
 const displayFilters = () => {
     document.getElementById('filter-popup').style.display = 'flex';
 }
@@ -10,6 +11,19 @@ const hidePopupWindows = () => {
     document.getElementById('filter-popup').style.display = 'none';
 }
 
+const showError = (message) => {
+    const errorContainer = document.getElementById('error-container');
+    errorContainer.innerHTML = `
+        <div class="alert alert-danger">
+            ${message}
+        </div>
+    `;
+    errorContainer.classList.remove('d-none');
+}
+
+
+
+// TODO: tengja í data base
 properties = [
     {
         'id': 1,
@@ -140,7 +154,7 @@ properties = [
     }
 ]
 
-    // TODO: tengja í data base
+/* FILTERING */
 const filter = () => {
     hidePopupWindows(); // close filter popup window
 
@@ -262,23 +276,75 @@ const displayFilteredProperties = (filteredProperties) => {
 
 
 
+/* SORT | ORDER BY */
+// Initialize sorting state
+let currentSortField = null;
+let currentSortDirection = 'asc';
 
+// Add event listeners to sort buttons
+document.querySelectorAll('.sort-btn-order').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const target = e.currentTarget;
+        const parentGroup = target.closest('.sort-group-order');
+        const isPriceGroup = parentGroup.querySelector('.sort-label-order').textContent === 'Price Range';
 
+        // Toggle active class
+        document.querySelectorAll('.sort-btn-order').forEach(btn => btn.classList.remove('active-order'));
+        target.classList.add('active-order');
+
+        // Set sort field
+        currentSortField = isPriceGroup ? 'price' : 'name';
+
+        // Toggle direction if clicking direction button
+        if (target.textContent === '↓' || target.textContent === '↑') {
+            currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+            target.textContent = currentSortDirection === 'asc' ? '↑' : '↓';
+        }
+    });
+});
+
+// Sort function
 const sort = () => {
+    const propertyElements = [...document.querySelectorAll('[data-price][data-name]')]; // Use correct selector
+    const container = document.querySelector('.property-container'); // Changed to actual container
 
-    hidePopupWindows()
-}
+    if (!propertyElements.length || !container) {
+        console.error('No properties or container found');
+        return;
+    }
 
+    propertyElements.sort((a, b) => {
+        const isPriceSort = currentSortField === 'price';
+        const modifier = currentSortDirection === 'asc' ? 1 : -1;
 
+        try {
+            const valueA = isPriceSort ?
+                parseInt(a.dataset.price) :
+                a.dataset.name.toLowerCase();
 
+            const valueB = isPriceSort ?
+                parseInt(b.dataset.price) :
+                b.dataset.name.toLowerCase();
 
+            if (isPriceSort) {
+                return (valueA - valueB) * modifier;
+            }
+            return valueA.localeCompare(valueB) * modifier;
 
-const showError = (message) => {
-    const errorContainer = document.getElementById('error-container');
-    errorContainer.innerHTML = `
-        <div class="alert alert-danger">
-            ${message}
-        </div>
-    `;
-    errorContainer.classList.remove('d-none');
-}
+        } catch (error) {
+            console.error('Sorting error:', error);
+            return 0;
+        }
+    });
+
+    // Clear and re-insert sorted elements
+    container.innerHTML = '';
+    propertyElements.forEach(element => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'col-md-6 mb-4';
+        wrapper.appendChild(element.cloneNode(true));
+        container.appendChild(wrapper);
+    });
+
+    hidePopupWindows();
+};
