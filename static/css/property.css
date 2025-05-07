@@ -1,11 +1,11 @@
 /* Property HomePage Styling */
-.form-field {
+.form-field-create {
     margin-bottom: 1rem;
     position: relative;
 }
 
-.form-field input,
-.form-field textarea {
+.form-field-create input,
+.form-field-create textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
@@ -14,13 +14,13 @@
     font-size: 1rem;
 }
 
-.form-field input:focus,
-.form-field textarea:focus {
+.form-field-create input:focus,
+.form-field-create textarea:focus {
     border-color: #6a1b9a; /* purple focus */
     outline: none;
 }
 
-.form-field label {
+.form-field-create label {
     display: block;
     margin-bottom: 0.25rem;
     font-weight: bold;
