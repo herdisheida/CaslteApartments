@@ -33,7 +33,7 @@ properties = [
         'postal_code': 3000,
         'description': 'Historic apartment with classic British charm',
         'type': 'Apartment',
-        'listing_price': 5000000,
+        'listing_price': 10,
         'listing_date': '30.12.2025',
         'is_sold': false,
         'seller_id': 1,
@@ -51,7 +51,7 @@ properties = [
         'postal_code': 10001,
         'description': 'Luxury penthouse with Central Park views',
         'type': 'Penthouse',
-        'listing_price': 15000000,
+        'listing_price': 9999999999999,
         'listing_date': '15.01.2026',
         'is_sold': true,
         'seller_id': 2,
@@ -70,7 +70,7 @@ properties = [
         'postal_code': 75008,
         'description': 'Elegant Haussmannian-style villa',
         'type': 'Villa',
-        'listing_price': 9000000,
+        'listing_price': 2222,
         'listing_date': '10.03.2025',
         'is_sold': false,
         'seller_id': 3,
@@ -88,7 +88,7 @@ properties = [
         'postal_code': 1500041,
         'description': 'Modern high-rise condo with smart home tech',
         'type': 'Condo',
-        'listing_price': 3500000,
+        'listing_price': 33333,
         'listing_date': '22.09.2024',
         'is_sold': true,
         'seller_id': 1,
@@ -106,7 +106,7 @@ properties = [
         'postal_code': 00000,
         'description': 'Private beachfront mansion with infinity pool',
         'type': 'Mansion',
-        'listing_price': 25000000,
+        'listing_price': 10301000304299922444242,
         'listing_date': '05.05.2025',
         'is_sold': false,
         'seller_id': 2,
@@ -124,7 +124,7 @@ properties = [
         'postal_code': 2026,
         'description': 'Beachside cottage with ocean views',
         'type': 'House',
-        'listing_price': 4200000,
+        'listing_price': 0,
         'listing_date': '18.07.2024',
         'is_sold': true,
         'seller_id': 3,
@@ -142,7 +142,7 @@ properties = [
         'postal_code': 10117,
         'description': 'Industrial-chic loft in city center',
         'type': 'Loft',
-        'listing_price': 2800000,
+        'listing_price': 2,
         'listing_date': '01.11.2025',
         'is_sold': false,
         'seller_id': 1,
@@ -281,25 +281,44 @@ const displayFilteredProperties = (filteredProperties) => {
 let currentSortField = null;
 let currentSortDirection = 'asc';
 
-// Add event listeners to sort buttons
-document.querySelectorAll('.sort-btn-order').forEach(button => {
+document.querySelectorAll('.sort-arrow-btn').forEach(button => {
     button.addEventListener('click', (e) => {
         const target = e.currentTarget;
         const parentGroup = target.closest('.sort-group-order');
         const isPriceGroup = parentGroup.querySelector('.sort-label-order').textContent === 'Price Range';
 
-        // Toggle active class
-        document.querySelectorAll('.sort-btn-order').forEach(btn => btn.classList.remove('active-order'));
+        // Remove active class and reset other direction buttons
+        document.querySelectorAll('.sort-arrow-btn').forEach(btn => {
+            btn.classList.remove('active-order');
+            const btnParent = btn.closest('.sort-group-order');
+            if (btnParent !== parentGroup && (btn.textContent === '↑' || btn.textContent === '↓')) {
+                btn.textContent = '↑↓'; // Reset inactive groups
+            }
+        });
+
         target.classList.add('active-order');
 
-        // Set sort field
+        // Update sort field
         currentSortField = isPriceGroup ? 'price' : 'name';
 
-        // Toggle direction if clicking direction button
-        if (target.textContent === '↓' || target.textContent === '↑') {
+        // Check if the clicked button is a direction button
+        const isDirectionButton = ['↑', '↓', '↑↓'].includes(target.textContent);
+
+        if (isDirectionButton) {
+            // Toggle direction
             currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-            target.textContent = currentSortDirection === 'asc' ? '↑' : '↓';
+        } else {
+            // Reset to ascending when switching fields
+            currentSortDirection = 'asc';
         }
+
+        // Update active group's direction button
+        const directionBtn = parentGroup.querySelector('.sort-arrow-btn:not(.sort-label-order)'); // Adjust selector as needed
+        if (directionBtn) {
+            directionBtn.textContent = currentSortDirection === 'asc' ? '↑' : '↓';
+        }
+
+        sort(); // Call your sort function
     });
 });
 
@@ -339,12 +358,14 @@ const sort = () => {
 
     // Clear and re-insert sorted elements
     container.innerHTML = '';
-    propertyElements.forEach(element => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'col-md-6 mb-4';
-        wrapper.appendChild(element.cloneNode(true));
-        container.appendChild(wrapper);
-    });
+    const row = document.createElement('div');
+    row.className = 'row row-cols-1 row-cols-md-2 g-4'; // Create single row
 
-    hidePopupWindows();
+    propertyElements.forEach((element, index) => {
+        const col = document.createElement('div');
+        col.className = 'col mb-4'; // Create column with bottom margin
+        col.appendChild(element.cloneNode(true));
+        row.appendChild(col);
+    });
+    container.appendChild(row); // add the complete row to container
 };
