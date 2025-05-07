@@ -1,1 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="profile-header">
+  <button class="profile-right">Edit Profile</button>
+</div>
+
+<div class="profile-section">
+  <a href="{% url 'user_profile-index' %}">
+    <img id="profile-pic-big" src="{% static 'images/profile_pic.png' %}" alt="Profile Picture" />
+  </a>
+</div>
+    <label>Name:</label>
+    <div contenteditable="true" class="editable-field">John Doe</div>
+
+    <label>Email:</label>
+    <div contenteditable="true" class="editable-field">mammain@gmail.com</div>
+
+    <h1>Properties</h1>
+
+    {% load static %}
+
+    <div class="card">
+        <div class="card-img-top" style="height: 200px; background: url({{ property.image }}) center / cover no-repeat;">
+            <span class="badge bg-dark text-white m-2">
+                {% if not property.is_sold %}For Sale{% else %}Sold{% endif %}
+            </span>
+        </div>
+
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+                <h5 class="mb-0">{{ property.street_name }} {{ property.house_nr }}</h5>
+                <span class="text-primary fw-bold">${{ property.listing_price }}</span>
+            </div>
+            <small class="text-muted d-block mb-2">{{ property.city }}</small>
+
+            {% if is_detail %}
+                <p>{{ property.description }}</p>
+            {% else %}
+                <a href="{% url 'property-by-id' id=property.id %}" class="btn btn-outline-primary btn-sm">See More</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
