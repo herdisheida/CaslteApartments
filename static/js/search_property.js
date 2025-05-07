@@ -142,36 +142,56 @@ properties = [
 
 
 const filter = () => {
+    hidePopupWindows(); // close filter popup window
+
     // get filter values
-    const postalCode = document.getElementById('postal-code').value.split('-').pop();
-    const propertyType = document.getElementById('type').value.split('-').pop();
-    const minPrice = parseInt(document.getElementById('minimum').value) || 0;
-    const maxPrice = parseInt(document.getElementById('maximum').value) || Infinity;
+    const postalCode = document.getElementById('postal-code').value.replace('postal-code-', '');
+    const propertyType = document.getElementById('type').value.replace('type-', '');
+    const minPrice = cleanPriceInput(document.getElementById('minimum').value) || 0;
+    const maxPrice = cleanPriceInput(document.getElementById('maximum').value) || Infinity;
     const availability = document.getElementById('availability').value;
+
+    // validate price range
+    if (!(minPrice < maxPrice)) {
+        const errorContainer = document.getElementById('error-container');
+        errorContainer.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show">
+                ❌ Maximum price cannot be less than minimum price
+            </div>
+        `;
+        errorContainer.classList.remove('d-none');
+        return;  // Stop further execution
+    }
+
+    // Clear previous errors
+    document.getElementById('error-container').classList.add('d-none');
 
     // filter properties
     // TODO: tengja í data base
     const filteredProperties = properties.filter(property => {
-        const postalMatch = postalCode ? property.postal_code === postalCode : true;
-        const typeMatch = propertyType ? property.type === propertyType : true;
+        const postalMatch = postalCode === 'all' ? true : property.postal_code === postalCode;
+        const typeMatch = propertyType === 'all' ? true : property.type === propertyType;
         const priceMatch = property.listing_price >= minPrice &&
                          property.listing_price <= maxPrice;
         const availabilityMatch = availability === 'is-sold' ?
                                 property.is_sold :
                                 !property.is_sold;
 
+        // inclusive filter
         return postalMatch && typeMatch && priceMatch && availabilityMatch;
     });
 
-    // TODO: Update the displayed properties
-    renderFilteredProperties(filteredProperties);
-
-    hidePopupWindows();
+    displayFilteredProperties(filteredProperties);
 }
-const renderFilteredProperties = (filteredProperties) => {
+
+const displayFilteredProperties = (filteredProperties) => {
     const container = document.querySelector('.properties-container');
-    // container.innerHTML = '';
-    console.log(container)
+    container.innerHTML = '';
+
+    if (filteredProperties.length === 0) {
+        container.innerHTML = `<div class="alert alert-info">No properties found</div>`;
+        return;
+    }
 
     filteredProperties.forEach(property => {
         const card = document.createElement('div');
@@ -235,6 +255,11 @@ const renderFilteredProperties = (filteredProperties) => {
 
         container.appendChild(card);
     });
+};
+
+const cleanPriceInput = (value) => {
+    const cleaned = parseInt(value.replace(/[^0-9]/g, ''));
+    return isNaN(cleaned) ? 0 : cleaned;
 };
 
 

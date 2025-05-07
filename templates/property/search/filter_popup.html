@@ -5,6 +5,7 @@
         <div class="filter-postal-code-container">
             <label for="postal-code">Postal Code</label>
             <select name="postal-code" id="postal-code">
+            <option value="postal-code-all">All Postal Codes</option>
                 {% for property in properties %}
                     <option value="postal-code-{{ property.postal_code }}">{{ property.postal_code }}</option>
                 {% endfor %}
@@ -14,6 +15,7 @@
         <div class="filter-type-container">
             <label for="type">Type</label>
             <select name="type" id="type">
+            <option value="type-all">All Types</option>
                 {% for property in properties %}
                     <option value="type-{{ property.type }}">{{ property.type }}</option>
                 {% endfor %}
@@ -23,9 +25,9 @@
         <div class="filter-price-range-container">
             <label>Price Range</label>
             <br><label for="minimum">Minimum</label>
-            <input type="text" id="minimum" name="minimum">
+            <input type="number" id="minimum" name="minimum" min="0" max="100000000">
             <br><label for="maximum">Maximum</label>
-            <input type="text" id="maximum" name="maximum">
+            <input type="number" id="maximum" name="maximum" min="0" max="100000000">
         </div>
 
         <div class="filter-availability-container">
