@@ -223,7 +223,8 @@ class PropertyForm(forms.Form):
         decimal_places=2,
         widget=forms.NumberInput(attrs={
             'min': 0,
-            'step': 1000,
+            'max': 100000000000000,
+            'step': 100000,
             'placeholder': '0.00'
         }),
         validators=[MinValueValidator(0)]
