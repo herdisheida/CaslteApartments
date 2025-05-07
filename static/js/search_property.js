@@ -140,45 +140,37 @@ properties = [
     }
 ]
 
-
+    // TODO: tengja í data base
 const filter = () => {
     hidePopupWindows(); // close filter popup window
 
     // get filter values
     const postalCode = document.getElementById('postal-code').value.replace('postal-code-', '');
     const propertyType = document.getElementById('type').value.replace('type-', '');
-    const minPrice = cleanPriceInput(document.getElementById('minimum').value) || 0;
-    const maxPrice = cleanPriceInput(document.getElementById('maximum').value) || Infinity;
-    const availability = document.getElementById('availability').value;
+    const minPrice = document.getElementById('minimum').value || 0;
+    const maxPrice = document.getElementById('maximum').value || Infinity;
+    const availabilityCheckboxes = document.querySelectorAll('[name="availability"]:checked');
+    const availability = Array.from(availabilityCheckboxes).map(cb => cb.value);
 
-    // validate price range
+
     if (!(minPrice < maxPrice)) {
-        const errorContainer = document.getElementById('error-container');
-        errorContainer.innerHTML = `
-            <div class="alert alert-danger alert-dismissible fade show">
-                ❌ Maximum price cannot be less than minimum price
-            </div>
-        `;
-        errorContainer.classList.remove('d-none');
+        showError("❌ Maximum price cannot be less than minimum price")
         return;  // Stop further execution
     }
+
 
     // Clear previous errors
     document.getElementById('error-container').classList.add('d-none');
 
     // filter properties
-    // TODO: tengja í data base
     const filteredProperties = properties.filter(property => {
         const postalMatch = postalCode === 'all' ? true : property.postal_code === postalCode;
         const typeMatch = propertyType === 'all' ? true : property.type === propertyType;
-        const priceMatch = property.listing_price >= minPrice &&
-                         property.listing_price <= maxPrice;
-        const availabilityMatch = availability === 'is-sold' ?
-                                property.is_sold :
-                                !property.is_sold;
+        const priceMatch = property.listing_price >= minPrice && property.listing_price <= maxPrice;
+        const availabilityMatch = availability.length === 0 ? true :
+            availability.includes(property.is_sold ? 'is-sold' : 'for-sale');
 
-        // inclusive filter
-        return postalMatch && typeMatch && priceMatch && availabilityMatch;
+        return postalMatch && typeMatch && priceMatch && availabilityMatch; // inclusive filter
     });
 
     displayFilteredProperties(filteredProperties);
@@ -189,7 +181,7 @@ const displayFilteredProperties = (filteredProperties) => {
     container.innerHTML = '';
 
     if (filteredProperties.length === 0) {
-        container.innerHTML = `<div class="alert alert-info">No properties found</div>`;
+        showError("No properties found!")
         return;
     }
 
@@ -257,14 +249,26 @@ const displayFilteredProperties = (filteredProperties) => {
     });
 };
 
-const cleanPriceInput = (value) => {
-    const cleaned = parseInt(value.replace(/[^0-9]/g, ''));
-    return isNaN(cleaned) ? 0 : cleaned;
-};
+
+
 
 
 
 const sort = () => {
 
     hidePopupWindows()
+}
+
+
+
+
+
+const showError = (message) => {
+    const errorContainer = document.getElementById('error-container');
+    errorContainer.innerHTML = `
+        <div class="alert alert-danger">
+            ${message}
+        </div>
+    `;
+    errorContainer.classList.remove('d-none');
 }
