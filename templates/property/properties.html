@@ -7,7 +7,7 @@
         <div class="row property-container">
             {% for property in properties %}
                 <div class="col-md-6 mb-4">
-                    {% include "property/_single_property.html" with is_detail=False property=property %}
+                    {% include "property/_single_property.html" with property=property is_detail=False %}
                 </div>
             {% endfor %}
         </div>
