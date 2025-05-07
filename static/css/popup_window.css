@@ -41,21 +41,16 @@
   cursor: pointer;
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
 }
+.action-btn:hover {
+    opacity: 0.5;
+}
 .cancel {
   background-color: #7d6b89;
 }
-
 .confirm {
   background-color: #3b2e58;
 }
 
-.cancel:hover {
-  background-color: #66577a;
-}
-
-.confirm:hover {
-  background-color: #2e2246;
-}
 
 
 /* SORT and ORDER BY by styling */
