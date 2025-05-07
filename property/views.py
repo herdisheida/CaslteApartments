@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django import forms
+from django.http import Http404
+
 
 # Create your views here.
 properties = [
@@ -132,17 +134,74 @@ properties = [
     }
 ]
 
+sellers = [
+    {
+        'id': 1,
+        'type': 'Real Estate Agency',
+        'bio': 'Premier luxury property specialists with 20+ years experience in global markets',
+        'street_name': 'Park Avenue',
+        'city': 'New York',
+        'postal_code': 10022,
+        'seller_logo': 'https://picsum.photos/200/200?random=1',
+        'cover_image': 'https://picsum.photos/1200/400?random=1',
+        'properties': [p for p in properties if p['seller_id'] == 1]
+    },
+    {
+        'id': 2,
+        'type': 'Luxury Property Consultant',
+        'bio': 'Curator of exceptional high-end residences in emerging markets',
+        'street_name': 'Palm Jumeirah Road',
+        'city': 'Dubai',
+        'postal_code': 00000,
+        'seller_logo': 'https://picsum.photos/200/200?random=2',
+        'cover_image': 'https://picsum.photos/1200/400?random=2',
+        'properties': [p for p in properties if p['seller_id'] == 2]
+    },
+    {
+        'id': 3,
+        'type': 'Boutique Real Estate',
+        'bio': 'Specialists in unique architectural properties across Europe',
+        'street_name': 'Rue de Rivoli',
+        'city': 'Paris',
+        'postal_code': 75001,
+        'seller_logo': 'https://picsum.photos/200/200?random=3',
+        'cover_image': 'https://picsum.photos/1200/400?random=3',
+        'properties': [p for p in properties if p['seller_id'] == 3]
+    }
+]
+
+
+
+
 def index(request):
     return render(request, 'property/properties.html', {
         'properties': properties
     })
 
 def get_property_by_id(request, id):
-    property = [x for x in properties if x['id'] == int(id)][0]
+    property_objs = [x for x in properties if x['id'] == int(id)][0]
     return render(request, 'property/property_details.html', {
-        'property': property
+        'property': property_objs
     })
 
+
+def get_seller_by_property_id(request, property_id):
+    try:
+        # get the property object
+        property_obj = get_property_by_id(request, property_id)
+
+        # get seller_id from the property
+        seller_id = property_obj['seller_id']
+
+        # find matching seller
+        seller = next(s for s in sellers if s['id'] == seller_id)
+
+    except (KeyError, StopIteration) as e:
+        raise Http404("Seller not found for this property") from e
+
+    return render(request, 'profile/_seller_profile.html', {
+        'seller': seller
+    })
 
 
 

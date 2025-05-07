@@ -9,4 +9,6 @@ urlpatterns = [
     path('<int:id>', views.get_property_by_id, name='property-by-id'),
 
     path('create/', views.create_property, name='property-create-index'),
+
+    path('<int:id>/seller', views.get_seller_by_property_id, name='seller-profile-index'),
 ]
