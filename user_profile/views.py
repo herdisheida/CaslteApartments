@@ -61,7 +61,7 @@ def index(request):
     })
 
 def get_profile_by_id(request):
-    offer = [x for x in profile if x['id'] == id][0]
+    offer = [x for x in profiles if x['id'] == id][0]
     return render(request, 'profile/profile_details.html', {
-        'profile': profile
+        'profile': profiles
     })

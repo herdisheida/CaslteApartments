@@ -7,4 +7,8 @@ urlpatterns = [
 
     # http://localhost:8000/id
     path('<int:id>', views.get_authentication_by_id, name='authentication-by-id'),
+
+    path('seller_signup/', views.seller_index, name='seller-signup'),
+
+
 ]
