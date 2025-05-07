@@ -159,9 +159,8 @@ const filter = () => {
     }
 
 
-    // Clear previous errors
+    // clear previous errors
     document.getElementById('error-container').classList.add('d-none');
-
     // filter properties
     const filteredProperties = properties.filter(property => {
         const postalMatch = postalCode === 'all' ? true : property.postal_code === parseInt(postalCode);
@@ -181,13 +180,22 @@ const displayFilteredProperties = (filteredProperties) => {
     container.innerHTML = '';
 
     if (filteredProperties.length === 0) {
-        showError("No properties found!")
+        showError("No properties found!");
         return;
     }
 
+    // Create Bootstrap grid container
+    const row = document.createElement('div');
+    row.className = 'row row-cols-1 row-cols-md-2 g-4'; // Bootstrap grid classes
+
     filteredProperties.forEach(property => {
+        // Create column
+        const col = document.createElement('div');
+        col.className = 'col';
+
+        // Create card
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className = 'card h-100'; // h-100 for equal height
 
         // Create image section
         const imgDiv = document.createElement('div');
@@ -245,8 +253,10 @@ const displayFilteredProperties = (filteredProperties) => {
         card.appendChild(imgDiv);
         card.appendChild(cardBody);
 
-        container.appendChild(card);
+        col.appendChild(card);
+        row.appendChild(col);
     });
+    container.appendChild(row);
 };
 
 
