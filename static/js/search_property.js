@@ -164,7 +164,7 @@ const filter = () => {
 
     // filter properties
     const filteredProperties = properties.filter(property => {
-        const postalMatch = postalCode === 'all' ? true : property.postal_code === postalCode;
+        const postalMatch = postalCode === 'all' ? true : property.postal_code === parseInt(postalCode);
         const typeMatch = propertyType === 'all' ? true : property.type === propertyType;
         const priceMatch = property.listing_price >= minPrice && property.listing_price <= maxPrice;
         const availabilityMatch = availability.length === 0 ? true :
