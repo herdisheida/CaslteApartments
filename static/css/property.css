@@ -1,11 +1,11 @@
 /* Property HomePage Styling */
-.form-field-create {
+.form-field {
     margin-bottom: 1rem;
     position: relative;
 }
 
-.form-field-create input,
-.form-field-create textarea {
+.form-field input,
+.form-field textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
@@ -14,16 +14,20 @@
     font-size: 1rem;
 }
 
-.form-field-create input:focus,
-.form-field-create textarea:focus {
+.form-field input:focus,
+.form-field textarea:focus {
     border-color: #6a1b9a; /* purple focus */
     outline: none;
 }
 
-.form-field-create label {
+.form-field label {
     display: block;
     margin-bottom: 0.25rem;
     font-weight: bold;
+}
+
+.form-field select, .form-field input {
+    background-color: white;
 }
 
 .btn-confirm {
@@ -85,6 +89,68 @@
 }
 
 
+/* Filter pop-up Styling */
+.popup-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.pop-up-content {
+    background: white;
+    color: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pop-up-content div{
+    margin: 1rem;
+}
 
 
+ /* confirm and cancel button on filter-popup */
+.filter-action {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.btn {
+  padding: 0.75rem 2rem;     /* was 0.625rem 1.75rem */
+  font-size: 1.125rem;       /* was 1rem */
+  border: none;
+  border-radius: 0.625rem;
+  font-family: "Lucida Console", monospace;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.cancel {
+  background-color: #7d6b89;
+}
+
+.confirm {
+  background-color: #3b2e58;
+}
+
+.sort-btn:hover {
+  background-color: #a0a0a0;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #66577a;
+}
+
+.confirm:hover {
+  background-color: #2e2246;
+}
 

@@ -1,14 +1,44 @@
-<div class="popup-box y" id="filter-popup">
+<div class="popup-box" id="filter-popup">
 
     <div class="pop-up-content">
-        <label>Postal Code</label>
 
+        <div class="filter-postal-code-container">
+            <label for="postal-code">Postal Code</label>
+            <select name="postal-code" id="postal-code">
+                {% for property in properties %}
+                    <option value="postal-code-{{ property.postal_code }}">{{ property.postal_code }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-        <label>Type</label>
+        <div class="filter-type-container">
+            <label for="type">Type</label>
+            <select name="type" id="type">
+                {% for property in properties %}
+                    <option value="type-{{ property.type }}">{{ property.type }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-        <label>Price Range</label>
+        <div class="filter-price-range-container">
+            <label>Price Range</label>
+            <br><label for="minimum">Minimum</label>
+            <input type="text" id="minimum" name="minimum">
+            <br><label for="maximum">Maximum</label>
+            <input type="text" id="maximum" name="maximum">
+        </div>
 
-        <label>Sold</label>
+        <div class="filter-availability-container">
+            <label for="availability">Available</label>
+            <select name="availability" id="availability">
+                    <option value="is-sold">Sold</option>
+                    <option value="for-sale">For Sale</option>
+            </select>
+        </div>
 
+    <div class="sort-actions">
+        <button class="btn cancel">Cancel</button>
+        <button class="btn confirm">Confirm</button>
+    </div>
     </div>
 </div>
