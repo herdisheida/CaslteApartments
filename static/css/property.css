@@ -46,16 +46,21 @@
 }
 
 
-#see-more-btn {
-    background-color: #4D4C77;
+#see-more-btn, #link-to-seller-btn, #submit-offer-btn {
+    background-color: #372549;
     width: 130px;
 }
-#see-more-btn:hover {
+#see-more-btn:hover, #link-to-seller-btn:hover, #submit-offer-btn:hover {
     opacity: 0.5;
 }
 .card-body a {
     font-size: 13px;
 }
+
+#link-to-seller-btn, #submit-offer-btn {
+    width: 16rem;
+}
+
 
 
 /* create property styling */
