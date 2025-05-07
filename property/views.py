@@ -242,7 +242,6 @@ class PropertyForm(forms.Form):
         widget=forms.NumberInput(attrs={
             'min': 1000,
             'max': datetime.datetime.now().year,
-            'step': 1
         }),
         validators=[
             MinValueValidator(1800),
