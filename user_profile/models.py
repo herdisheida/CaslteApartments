@@ -5,7 +5,7 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    image = models.ImageField()
+    image = models.ImageField(default='images/profile_pic.png', upload_to='images/')
 
 
 class SellerType(models.TextChoices):
@@ -23,4 +23,4 @@ class SellerProfile(models.Model):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
     bio = models.TextField(max_length=500)
-    logo = models.ImageField()
+    logo = models.ImageField(default='images/profile_pic.png', upload_to='images/')

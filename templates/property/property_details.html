@@ -5,9 +5,17 @@
 <div class="container my-4 p-4 border rounded shadow-sm bg-white">
 
     <!-- image -->
-    <div class="mb-3">
-        <img src="{{ property.image }}" alt="Property image" class="img-fluid w-100" style="max-height: 400px; object-fit: cover;">
+    <div class="mb-3 card-img-top position-relative"
+         style="min-height: 400px;
+                {% if property.image %} background: url('{{ property.image.url }}') center;{% endif %}">
+        <img src="{% if property.image %}{{ property.image.url }}{% else %}{% static 'images/no_image.jpg' %}{% endif %}"
+             alt="Property image"
+             class="img-fluid w-100 h-100"
+             style="object-fit: cover;"
+             onerror="this.style.display='none';"
+             loading="lazy">
     </div>
+
 
     <!-- the status of the property-->
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -18,7 +26,7 @@
     <!-- address and price of property -->
     <div class="d-flex justify-content-between align-items-center">
         <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }}</h2>
-        <h4 class="text-primary fw-bold">${{ property.listing_price|floatformat:"0" }}</h4>
+        <h4 class="text-primary fw-bold">${{ property.price|floatformat:"0" }}</h4>
     </div>
 
     <!-- description of property -->

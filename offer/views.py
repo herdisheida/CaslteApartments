@@ -8,7 +8,7 @@ def index(request):
     })
 
 def get_offer_by_id(request):
-    offer = [x for x in offers if x['id'] == id][0]
+    offer = [x for x in Offer.objects.all() if x['id'] == id][0]
     return render(request, 'offer/offer_details.html', {
         'offer': offer
     })

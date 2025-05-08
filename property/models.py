@@ -1,7 +1,20 @@
+from math import trunc
+
+from django.core.exceptions import ValidationError
 from django.db import models
 from django import forms
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, FileExtensionValidator, validate_image_file_extension
 import datetime
+
+
+class BuildingTypes(models.TextChoices):
+   APARTMENT = 'APARTMENT', 'Apartment'
+   HOUSE = 'HOUSE', 'House'
+   VILLA = 'VILLA', 'Villa'
+   TOWNHOUSE = 'TOWNHOUSE', 'Townhouse'
+   AREA = 'AREA', 'Area'
+
+
 
 # Create your models here.
 class Property(models.Model):
@@ -9,7 +22,12 @@ class Property(models.Model):
    house_nr = models.CharField(max_length=100)
    city = models.CharField(max_length=100)
    postal_code = models.CharField(max_length=100)
-   building_type = models.CharField(max_length=100)
+   building_type = models.CharField(
+       max_length=9,
+       choices=BuildingTypes.choices,
+       default=BuildingTypes.AREA
+   )
+
    price = models.DecimalField(
        max_digits=12,
        decimal_places=2,
@@ -26,7 +44,11 @@ class Property(models.Model):
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
+   image = models.ImageField(default='static/images/no_image.jpg', upload_to='static/images/')
 
+
+   def __str__(self):
+       return f"{self.street_name} {self.house_nr} ({self.pk})"
 
 
 
@@ -111,9 +133,6 @@ class PropertyForm(forms.Form):
 
 
 
-
    image = models.ImageField(
-       upload_to='properties/',  # Uploads to MEDIA_ROOT/properties/
-       blank=True,               # Optional field
-       null=True                # Optional in database
+       upload_to='static/images/',  # Uploads to MEDIA_ROOT/properties/
    )

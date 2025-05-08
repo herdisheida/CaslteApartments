@@ -23,5 +23,5 @@ class Offer(models.Model):
 
 
    def __str__(self):
-       return f"{self.property_id} {self.price} ({self.id})"
+       return f"{self.state} {self.price} ({self.id})"
 
