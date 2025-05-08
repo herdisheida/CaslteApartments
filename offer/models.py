@@ -4,17 +4,18 @@ from user_profile.models import UserProfile, SellerProfile
 
 
 class States(models.TextChoices):
-   PENDING = 'PEND', 'Pending'
-   ACCEPTED = 'ACCE', 'Accepted'
-   REJECTED = 'REJ', 'Rejected'
-   CONTINGENT = 'CONT', 'Contingent'
+   PENDING = 'pending', 'Pending'
+   ACCEPTED = 'accepted', 'Accepted'
+   REJECTED = 'rejected', 'Rejected'
+   CONTINGENT = 'contingent', 'Contingent'
 
 
 class Offer(models.Model):
    price = models.DecimalField(decimal_places=2, max_digits=20)
+   creation_date = models.DateTimeField(auto_now_add=True)
    expiration_date = models.DateField()
    state = models.CharField(
-       max_length=4,
+       max_length=10,
        choices=States.choices,
        default=States.PENDING
    )

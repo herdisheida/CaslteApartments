@@ -16,7 +16,7 @@ class SellerType(models.TextChoices):
    AGENCY = 'AGENCY', 'Agency'
 
 class SellerProfile(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     type = models.CharField(
         max_length=10,
         choices=SellerType.choices,
