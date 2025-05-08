@@ -1,0 +1,174 @@
+/* Popup container */
+.popup-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+/* Popup content */
+.pop-up-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* CONFIRM and CANCEL buttons */
+.btn-action-container {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.action-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 0.625rem;
+  font-family: "Lucida Console", monospace;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+.action-btn:hover {
+    opacity: 0.5;
+}
+.cancel {
+  background-color: #7d6b89;
+}
+.confirm {
+  background-color: #3b2e58;
+}
+
+
+
+/* SORT and ORDER BY by styling */
+.sort-section-order {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 1.875rem;
+}
+
+.sort-group-order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sort-label-order {
+  margin-bottom: 0.625rem;
+  font-size: 1rem;
+  color: #111;
+}
+
+.sort-buttons-order {
+  display: flex;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+}
+
+.sort-btn-order {
+  padding: 0.75rem 1.125rem;
+  font-size: 1.375rem;
+  border: none;
+  background: #cfcfcf;
+  color: black;
+  cursor: pointer;
+}
+
+.sort-btn.active-order {
+  background: #3b2e58;
+  color: white;
+}
+
+
+
+
+
+/* FILTER styling */
+
+/* Filter sections */
+.filter-postal-code-container,
+.filter-type-container,
+.filter-price-range-container,
+.filter-availability-container {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Select dropdowns */
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+select:hover {
+    border-color: #999;
+}
+
+select:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Price range inputs */
+.filter-price-range-container .form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* Checkbox container */
+.filter-availability-container {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.form-check {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.form-check-input {
+    margin: 0;
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.form-check-label {
+    font-weight: normal;
+    color: #444;
+}
+
+

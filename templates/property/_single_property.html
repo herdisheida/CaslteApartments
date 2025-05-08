@@ -17,7 +17,7 @@
         {% if is_detail %}
             <p>{{ property.description }}</p>
         {% else %}
-            <a href="{% url 'property-by-id' id=property.id %}" class="btn btn-outline-primary btn-sm">See More</a>
+            <a href="{% url 'property-by-id' id=property.id %}" id="see-more-btn" class="btn btn-outline-primary btn-sm">See More</a>
         {% endif %}
     </div>
 </div>

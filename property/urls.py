@@ -10,5 +10,6 @@ urlpatterns = [
 
     path('create/', views.create_property, name='property-create-index'),
 
-    path('<int:id>/seller', views.get_seller_by_property_id, name='seller-profile-index'),
+    # TODO: seller_profile link index
+    # path('<int:id>/seller', views.get_seller_by_property_id, name='seller-profile-index'),
 ]

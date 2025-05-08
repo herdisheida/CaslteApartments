@@ -45,6 +45,20 @@
     background-color: #5e3b8a;
 }
 
+
+#see-more-btn, .btn-sm {
+    background-color: #372549;
+    width: 130px;
+}
+#see-more-btn:hover, .btn-sm:hover {
+    opacity: 0.5;
+}
+.card-body a {
+    font-size: 13px;
+}
+
+
+
 /* create property styling */
 #create-property-title {
     margin: 2rem 0 4rem; /* top right-left bottom */

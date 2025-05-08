@@ -6,8 +6,16 @@
 .navbar-brand,
 .nav-link {
     margin: 0 15px;
-    color: white !important;
+    color: white;
     font-family: "Lucida Console", monospace;
+}
+.nav-menu-link:hover {
+    color: black;
+    font-weight: 1000;
+}
+
+.profile-pic-container:hover {
+    opacity: 0.5;
 }
 
 /* Profile picture styling */

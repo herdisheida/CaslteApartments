@@ -5,6 +5,7 @@
         <div class="filter-postal-code-container">
             <label for="postal-code">Postal Code</label>
             <select name="postal-code" id="postal-code">
+            <option value="postal-code-all">All Postal Codes</option>
                 {% for property in properties %}
                     <option value="postal-code-{{ property.postal_code }}">{{ property.postal_code }}</option>
                 {% endfor %}
@@ -14,6 +15,7 @@
         <div class="filter-type-container">
             <label for="type">Type</label>
             <select name="type" id="type">
+            <option value="type-all">All Types</option>
                 {% for property in properties %}
                     <option value="type-{{ property.type }}">{{ property.type }}</option>
                 {% endfor %}
@@ -21,24 +23,54 @@
         </div>
 
         <div class="filter-price-range-container">
-            <label>Price Range</label>
-            <br><label for="minimum">Minimum</label>
-            <input type="text" id="minimum" name="minimum">
-            <br><label for="maximum">Maximum</label>
-            <input type="text" id="maximum" name="maximum">
+            <label class="form-label">Price Range ($)</label>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="minimum" class="form-label">Minimum</label>
+                    <input
+                        type="number"
+                        id="minimum"
+                        name="minimum"
+                        class="form-control"
+                        min="0"
+                        max="100000000000000"
+                        step="1000"
+                        placeholder="0"
+                    >
+                </div>
+
+                <div class="col-md-6">
+                    <label for="maximum" class="form-label">Maximum</label>
+                    <input
+                        type="number"
+                        id="maximum"
+                        name="maximum"
+                        class="form-control"
+                        min="0"
+                        max="100000000000000"
+                        step="1000"
+                        placeholder="100000000000000"
+                    >
+                </div>
+            </div>
         </div>
 
-        <div class="filter-availability-container">
-            <label for="availability">Available</label>
-            <select name="availability" id="availability">
-                    <option value="is-sold">Sold</option>
-                    <option value="for-sale">For Sale</option>
-            </select>
+    <div class="filter-availability-container">
+        <label>Availability</label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="for-sale" name="availability" value="for-sale">
+            <label class="form-check-label" for="for-sale">For Sale</label>
         </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="is-sold" name="availability" value="is-sold">
+            <label class="form-check-label" for="is-sold">Sold</label>
+        </div>
+    </div>
 
     <div class="btn-action-container">
-        <button class="action-btn cancel">Cancel</button>
-        <button class="action-btn confirm">Confirm</button>
+        <button class="action-btn cancel" onclick="hidePopupWindows()">Cancel</button>
+        <button class="action-btn confirm" onclick="filter()">Confirm</button>
     </div>
     </div>
 </div>

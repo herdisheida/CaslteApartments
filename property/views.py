@@ -3,6 +3,10 @@ from django import forms
 from django.http import Http404
 
 
+from django.core.validators import MinValueValidator, MaxValueValidator
+import datetime
+
+
 # Create your views here.
 properties = [
     {
@@ -13,7 +17,7 @@ properties = [
         'postal_code': 3000,
         'description': 'Historic apartment with classic British charm',
         'type': 'Apartment',
-        'listing_price': 5000000,
+        'listing_price': 10,
         'listing_date': '30.12.2025',
         'is_sold': False,
         'seller_id': 1,
@@ -31,7 +35,7 @@ properties = [
         'postal_code': 10001,
         'description': 'Luxury penthouse with Central Park views',
         'type': 'Penthouse',
-        'listing_price': 15000000,
+        'listing_price': 9999999999999,
         'listing_date': '15.01.2026',
         'is_sold': True,
         'seller_id': 2,
@@ -50,7 +54,7 @@ properties = [
         'postal_code': 75008,
         'description': 'Elegant Haussmannian-style villa',
         'type': 'Villa',
-        'listing_price': 9000000,
+        'listing_price': 2222,
         'listing_date': '10.03.2025',
         'is_sold': False,
         'seller_id': 3,
@@ -68,7 +72,7 @@ properties = [
         'postal_code': 1500041,
         'description': 'Modern high-rise condo with smart home tech',
         'type': 'Condo',
-        'listing_price': 3500000,
+        'listing_price': 33333,
         'listing_date': '22.09.2024',
         'is_sold': True,
         'seller_id': 1,
@@ -86,7 +90,7 @@ properties = [
         'postal_code': 00000,
         'description': 'Private beachfront mansion with infinity pool',
         'type': 'Mansion',
-        'listing_price': 25000000,
+        'listing_price': 10301000304299922444242,
         'listing_date': '05.05.2025',
         'is_sold': False,
         'seller_id': 2,
@@ -104,7 +108,7 @@ properties = [
         'postal_code': 2026,
         'description': 'Beachside cottage with ocean views',
         'type': 'House',
-        'listing_price': 4200000,
+        'listing_price': 0,
         'listing_date': '18.07.2024',
         'is_sold': True,
         'seller_id': 3,
@@ -122,7 +126,7 @@ properties = [
         'postal_code': 10117,
         'description': 'Industrial-chic loft in city center',
         'type': 'Loft',
-        'listing_price': 2800000,
+        'listing_price': 2,
         'listing_date': '01.11.2025',
         'is_sold': False,
         'seller_id': 1,
@@ -212,13 +216,75 @@ class PropertyForm(forms.Form):
     postal_code = forms.CharField(label='postal_code')
 
     building_type = forms.CharField(label='Type of building')
-    price = forms.CharField(label='Price')
-    description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Write your description here...'}))
-    year_built = forms.CharField(label='Built year')
-    size = forms.CharField(label='Size')
-    bedrooms = forms.CharField(label='Bedrooms')
-    bathrooms = forms.CharField(label='Bathrooms')
-    toilets = forms.CharField(label='Toilets')
+
+    price = forms.DecimalField(
+        label='Price',
+        max_digits=12,
+        decimal_places=2,
+        widget=forms.NumberInput(attrs={
+            'min': 0,
+            'max': 100000000000000,
+            'step': 100000,
+            'placeholder': '0.00'
+        }),
+        validators=[MinValueValidator(0)]
+    )
+
+    description = forms.CharField(
+        label='Description',
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Write your description here...',
+            'rows': 4
+        })
+    )
+
+    year_built = forms.IntegerField(
+        label='Built Year',
+        widget=forms.NumberInput(attrs={
+            'min': 1000,
+            'max': datetime.datetime.now().year,
+        }),
+        validators=[
+            MinValueValidator(1800),
+            MaxValueValidator(datetime.datetime.now().year)
+        ]
+    )
+
+    size = forms.DecimalField(
+        label='Size (m²)',
+        max_digits=7,
+        decimal_places=2,
+        widget=forms.NumberInput(attrs={
+            'min': 0,
+            'step': 0.1,
+            'placeholder': '0.00'
+        }),
+        validators=[MinValueValidator(0)]
+    )
+
+    bedrooms = forms.IntegerField(
+        label='Bedrooms',
+        widget=forms.NumberInput(attrs={'min': 0}),
+        validators=[MinValueValidator(0)],
+        required=False
+    )
+
+    bathrooms = forms.IntegerField(
+        label='Bathrooms',
+        widget=forms.NumberInput(attrs={'min': 0}),
+        validators=[MinValueValidator(0)],
+        required=False
+    )
+
+    toilets = forms.IntegerField(
+        label='Toilets',
+        widget=forms.NumberInput(attrs={'min': 0}),
+        validators=[MinValueValidator(0)],
+        required=False
+    )
+
+
+
 
 def create_property(request):
     form = PropertyForm()
