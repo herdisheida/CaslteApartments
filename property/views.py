@@ -43,8 +43,8 @@ def create_property(request):
     if request.method == 'POST':
         form = PropertyForm(request.POST, request.FILES)
         if form.is_valid():
-            save_property = form.save()
-            return redirect('property_detail', pk=save_property.pk)
+            form.save()
+            return redirect('success_url')
     else:
         form = PropertyForm()
     return render(request, 'property/create_property.html', {'form': form})
