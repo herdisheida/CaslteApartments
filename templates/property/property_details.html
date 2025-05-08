@@ -6,7 +6,7 @@
 
     <!-- image -->
     <div class="mb-3 card-img-top position-relative"
-         style="min-height: 400px; background: url('{% if property.image %}{{ property.image.url }}{% else %}{% static 'images/no_image.jpg' %}{% endif %}') center/cover no-repeat;">
+         style="min-height: 400px; background: url('{% if property.image %}{{ property.image.url }}{% else %}{% url 'images/no_image.jpg' %}{% endif %}') center/cover no-repeat;">
     </div>
 
     <!-- the status of the property-->
