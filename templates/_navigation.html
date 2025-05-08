@@ -30,7 +30,7 @@
             <!-- Profile picture -->
             <div class="profile-pic-container">
                 <a href="{% url 'user_profile-index' %}">
-                   <img id="profile-pic-small" src="{% static 'images/profile_pic.png' %}" alt="profile picture" />
+                    <img id="profile-pic-small" src="{% if user_profile.image %}{{ user_profile.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}" alt="profile picture" />
                 </a>
 
             </div>

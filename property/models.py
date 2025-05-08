@@ -45,10 +45,7 @@ class Property(models.Model):
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
-   image = models.ImageField(
-       default='images/no_image.jpg',
-       upload_to='properties/',  # Changed from static/images/
-   )
+   image = models.ImageField(upload_to='properties/')
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    is_sold = models.BooleanField(default=False)
 
