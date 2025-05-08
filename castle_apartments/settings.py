@@ -66,6 +66,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+
+                # TODO: make it work ég bætti þessu
+                'django.template.context_processors.request',
+
             ],
         },
     },
