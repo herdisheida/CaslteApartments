@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'offer.apps.OfferConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,11 +75,14 @@ WSGI_APPLICATION = 'castle_apartments.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# TODO: stilla sqlite3 í annað fyrir verkefnið
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'verklegt_namskeid_db',
+        'USER': 'verklegt_db_user',
+        'PASSWORD': 'LFCNf61ubPJPKhOz1kj7K9gP',
+        'HOST': 'db-verklegt-namskeid-ii-eu-1jt0s8.postgres.database.azure.com',
+        'PORT': '5432'
     }
 }
 
