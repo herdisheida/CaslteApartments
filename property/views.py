@@ -44,7 +44,10 @@ def create_property(request):
         form = PropertyForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('success_url')
+            return redirect('property-create-success')
     else:
         form = PropertyForm()
-    return render(request, 'property/create_property.html', {'form': form})
+    return render(request, 'property/create/create_property.html', {'form': form})
+
+def property_create_success(request):
+    return render(request, 'property/create/success.html')

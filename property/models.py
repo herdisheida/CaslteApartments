@@ -65,7 +65,6 @@ class PropertyForm(forms.ModelForm):
             }),
             'price': forms.NumberInput(attrs={
                 'min': 0,
-                'step': 100000,
                 'placeholder': '0.00'
             }),
             'year_built': forms.NumberInput(attrs={
@@ -74,7 +73,6 @@ class PropertyForm(forms.ModelForm):
             }),
             'size': forms.NumberInput(attrs={
                 'min': 0,
-                'step': 0.1,
                 'placeholder': '0.00'
             }),
             'bedrooms': forms.NumberInput(attrs={'min': 0}),
