@@ -1,15 +1,16 @@
     <div class="offer-card">
         <div class="offer-left">
-            <h3>address {{ offer.id }}</h3>
+            <h3>{{ offer.property.street_name }} {{ offer.property.house_nr }}</h3>
             <a class="estate-link" href="https://www.estatebestate.com/details/{{ offer.id }}">
                 www.estatebestate.com/details/{{ offer.id }}
             </a>
 
             <!-- ✅ Good-looking image section -->
-            <div class="property-image-wrapper">
-                <img src="{{ offer.image }}"
-                     alt="Property image"
-                     class="property-image">
+            <div class="property-image-wrapper position-relative">
+                <div class="mb-3 card-img-top position-relative"
+                     style="min-height: 200px; background: url('{% if offer.property.image %}{{ offer.property.image.url }}{% else %}{% url 'images/no_image.jpg' %}{% endif %}') center/cover no-repeat;">
+                </div>
+
                 <div class="badge-wrapper">
                     <span class="badge bg-dark text-white">
                         {% if not offer.is_sold %}For Sale{% else %}Sold{% endif %}
