@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'offer.apps.OfferConfig',
+    'property.apps.PropertyConfig',
+    'user_profile.apps.UserConfig'
 ]
 
 MIDDLEWARE = [

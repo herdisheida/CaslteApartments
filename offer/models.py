@@ -1,4 +1,6 @@
 from django.db import models
+from property.models import Property
+from user_profile.models import UserProfile, SellerProfile
 
 
 class States(models.TextChoices):
@@ -16,8 +18,8 @@ class Offer(models.Model):
        choices=States.choices,
        default=States.PENDING
    )
-   property_id = models.IntegerField()
-   seller_id = models.IntegerField()
+   seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
+   property = models.ForeignKey(Property, on_delete=models.CASCADE)
 
 
    def __str__(self):
