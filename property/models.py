@@ -99,3 +99,9 @@ class PropertyForm(forms.Form):
         validators=[MinValueValidator(0)],
     )
 
+
+    image = models.ImageField(
+        upload_to='properties/',  # Uploads to MEDIA_ROOT/properties/
+        blank=True,               # Optional field
+        null=True                # Optional in database
+    )

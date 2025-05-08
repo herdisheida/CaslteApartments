@@ -16,8 +16,7 @@ class Offer(models.Model):
         default=States.PENDING
     )
     property_id = models.IntegerField()
-    seller = models.IntegerField()
-    image = models.ImageField()
+    seller_id = models.IntegerField()
 
     def __str__(self):
         return f"{self.property_id} {self.price} ({self.id})"
