@@ -1,18 +1,13 @@
 {% load static %}
 
 <div class="card">
-{#    <div class="card-img-top" style="height: 200px; background: {{ property.image.url }} center / cover no-repeat;">#}
-    <div class="card-img-top" style="height: 200px; background: url('{% if property.image %}{{ property.image.url }}{% else %}{% static 'images/../../media/static/images/../../static/images/../../static/images/no_image.jpg' %}{% endif %}') center/cover no-repeat;">
 
+    <div class="card-img-top" style="height: 200px; background: url('{{ property.image.url }}') center/cover no-repeat;">
         <span class="badge bg-dark text-white m-2">
             {% if not property.is_sold %}For Sale{% else %}Sold{% endif %}
         </span>
     </div>
 
-    <img src="{% if property.image %}{{ property.image.url }}{% else %}{% static 'images/no_image.jpg' %}{% endif %}"
-         alt="Property image"
-         style="display: none;"
-         onerror="this.style.display='none'; document.querySelector('.card-img-top').style.backgroundImage = 'url({% static 'images/no_image.jpg' %})'">
 
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-1">
