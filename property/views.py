@@ -1,10 +1,6 @@
 from django.shortcuts import render
-from django import forms
 from django.http import Http404
-
-
-from django.core.validators import MinValueValidator, MaxValueValidator
-import datetime
+from property.models import Property, PropertyForm
 
 
 # Create your views here.
@@ -189,6 +185,8 @@ def get_property_by_id(request, id):
     })
 
 
+
+# TODO: virkar ekki
 def get_seller_by_property_id(request, property_id):
     try:
         # get the property object
@@ -206,85 +204,6 @@ def get_seller_by_property_id(request, property_id):
     return render(request, 'profile/_seller_profile.html', {
         'seller': seller
     })
-
-
-
-class PropertyForm(forms.Form):
-    street_name = forms.CharField(label='street_name')
-    house_nr = forms.CharField(label='house_nr')
-    city = forms.CharField(label='city')
-    postal_code = forms.CharField(label='postal_code')
-
-    building_type = forms.CharField(label='Type of building')
-
-    price = forms.DecimalField(
-        label='Price',
-        max_digits=12,
-        decimal_places=2,
-        widget=forms.NumberInput(attrs={
-            'min': 0,
-            'max': 100000000000000,
-            'step': 100000,
-            'placeholder': '0.00'
-        }),
-        validators=[MinValueValidator(0)]
-    )
-
-    description = forms.CharField(
-        label='Description',
-        widget=forms.Textarea(attrs={
-            'placeholder': 'Write your description here...',
-            'rows': 4
-        })
-    )
-
-    year_built = forms.IntegerField(
-        label='Built Year',
-        widget=forms.NumberInput(attrs={
-            'min': 1000,
-            'max': datetime.datetime.now().year,
-        }),
-        validators=[
-            MinValueValidator(1800),
-            MaxValueValidator(datetime.datetime.now().year)
-        ]
-    )
-
-    size = forms.DecimalField(
-        label='Size (m²)',
-        max_digits=7,
-        decimal_places=2,
-        widget=forms.NumberInput(attrs={
-            'min': 0,
-            'step': 0.1,
-            'placeholder': '0.00'
-        }),
-        validators=[MinValueValidator(0)]
-    )
-
-    bedrooms = forms.IntegerField(
-        label='Bedrooms',
-        widget=forms.NumberInput(attrs={'min': 0}),
-        validators=[MinValueValidator(0)],
-        required=False
-    )
-
-    bathrooms = forms.IntegerField(
-        label='Bathrooms',
-        widget=forms.NumberInput(attrs={'min': 0}),
-        validators=[MinValueValidator(0)],
-        required=False
-    )
-
-    toilets = forms.IntegerField(
-        label='Toilets',
-        widget=forms.NumberInput(attrs={'min': 0}),
-        validators=[MinValueValidator(0)],
-        required=False
-    )
-
-
-
 
 def create_property(request):
     form = PropertyForm()
