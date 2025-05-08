@@ -254,7 +254,7 @@ const displayFilteredProperties = (filteredProperties) => {
         } else {
             const link = document.createElement('a');
             link.className = 'btn btn-outline-primary btn-sm';
-            link.href = `/properties/${property.id}`; // Update with your actual URL pattern
+            link.href = `/property/${property.id}`; // Update with your actual URL pattern
             link.textContent = 'See More';
             bottomContent = link;
         }
