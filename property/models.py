@@ -1,10 +1,11 @@
-from math import trunc
 
 from django.core.exceptions import ValidationError
 from django.db import models
 from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator, FileExtensionValidator, validate_image_file_extension
 import datetime
+
+from user_profile.models import SellerProfile
 
 
 class BuildingTypes(models.TextChoices):
@@ -46,6 +47,7 @@ class Property(models.Model):
    toilets = models.IntegerField()
    image = models.ImageField(default='images/no_image.jpg', upload_to='static/images/')
 
+   seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
 
    def __str__(self):
        return f"{self.street_name} {self.house_nr} ({self.pk})"
@@ -136,3 +138,4 @@ class PropertyForm(forms.Form):
    image = models.ImageField(
        upload_to='media/',  # Uploads to MEDIA_ROOT/properties/
    )
+

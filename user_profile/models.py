@@ -7,6 +7,9 @@ class UserProfile(models.Model):
     password = models.CharField(max_length=100)
     image = models.ImageField(default='images/profile_pic.png', upload_to='images/')
 
+    def __str__(self):
+        return self.name
+
 
 class SellerType(models.TextChoices):
    INDIVIDUAL = 'INDIVIDUAL', 'Individual'
@@ -24,3 +27,6 @@ class SellerProfile(models.Model):
     postal_code = models.CharField(max_length=100)
     bio = models.TextField(max_length=500)
     logo = models.ImageField(default='images/profile_pic.png', upload_to='images/')
+
+    def __str__(self):
+        return self.user.name
