@@ -44,7 +44,7 @@ class Property(models.Model):
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
-   image = models.ImageField(default='static/images/no_image.jpg', upload_to='static/images/')
+   image = models.ImageField(default='images/no_image.jpg', upload_to='static/images/')
 
 
    def __str__(self):
@@ -134,5 +134,5 @@ class PropertyForm(forms.Form):
 
 
    image = models.ImageField(
-       upload_to='static/images/',  # Uploads to MEDIA_ROOT/properties/
+       upload_to='media/',  # Uploads to MEDIA_ROOT/properties/
    )

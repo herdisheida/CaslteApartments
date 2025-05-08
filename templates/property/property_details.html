@@ -6,16 +6,8 @@
 
     <!-- image -->
     <div class="mb-3 card-img-top position-relative"
-         style="min-height: 400px;
-                {% if property.image %} background: url('{{ property.image.url }}') center;{% endif %}">
-        <img src="{% if property.image %}{{ property.image.url }}{% else %}{% static 'images/no_image.jpg' %}{% endif %}"
-             alt="Property image"
-             class="img-fluid w-100 h-100"
-             style="object-fit: cover;"
-             onerror="this.style.display='none';"
-             loading="lazy">
+         style="min-height: 400px; background: url('{% if property.image %}{{ property.image.url }}{% else %}{% static 'images/no_image.jpg' %}{% endif %}') center/cover no-repeat;">
     </div>
-
 
     <!-- the status of the property-->
     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -25,7 +17,7 @@
 
     <!-- address and price of property -->
     <div class="d-flex justify-content-between align-items-center">
-        <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }}</h2>
+        <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }} ({{ property.city }}, {{ property.postal_code }})</h2>
         <h4 class="text-primary fw-bold">${{ property.price|floatformat:"0" }}</h4>
     </div>
 
@@ -41,10 +33,11 @@
 
     <!-- the details of the property WILL CHANGE LATER -->
     <div class="mt-4 row text-center">
-        <div class="col">Built {{ property.when }}</div>
-        <div class="col">{{ property.size }}</div>
-        <div class="col">{{ property.bed }} Bedrooms</div>
-        <div class="col">{{ property.bath }} Bathrooms</div>
+        <div class="col">Built {{ property.year_built }}</div>
+        <div class="col">{{ property.size }} m2</div>
+        <div class="col">{{ property.bedrooms }} Bedroom(s)</div>
+        <div class="col">{{ property.bathrooms }} Bathroom(s)</div>
+        <div class="col">{{ property.toilets }} Toilet(s)</div>
     </div>
 
 
