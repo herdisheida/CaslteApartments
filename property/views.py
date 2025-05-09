@@ -91,12 +91,14 @@ def get_seller_by_property_id(request, property_id):
 
 def create_property(request):
     if request.method == 'POST':
-        form = PropertyForm(request.POST, request.FILES)
+        form = PropertyForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
-            form.save()
+            property_save = form.save(commit=False)
+            property_save.seller = request.user.sellerprofile
+            property_save.save()
             return redirect('property-create-success')
     else:
-        form = PropertyForm()
+        form = PropertyForm(user=request.user)
     return render(request, 'property/create/create_property.html', {'form': form})
 
 def property_create_success(request):

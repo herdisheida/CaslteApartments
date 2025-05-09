@@ -4,6 +4,8 @@ from django.db import models
 from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator, FileExtensionValidator, validate_image_file_extension
 import datetime
+from django.utils import timezone
+
 
 from user_profile.models import SellerProfile
 from django.utils.text import slugify
@@ -60,6 +62,7 @@ class Property(models.Model):
    is_sold = models.BooleanField(default=False)
 
    preview_pic = models.ImageField(upload_to=property_image_path)
+   listing_date = models.DateField(default=timezone.now, editable=False)
 
 
    def __str__(self):
@@ -75,6 +78,22 @@ class PropertyImages(models.Model):
         return f"{self.property.__str__()}"
 
 class PropertyForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs): # get curr user
+        self.user = kwargs.pop('user', None)
+        super(PropertyForm, self).__init__(*args, **kwargs)
+
+        # user is found
+        if self.user:
+            self.fields['seller'].initial = self.user.sellerprofile
+            # Make the field read-only
+            self.fields['seller'].widget.attrs['readonly'] = True
+            self.fields['seller'].widget.attrs['disabled'] = True
+
+    listing_date = forms.DateField(
+        widget=forms.DateInput(attrs={'readonly': True}),
+        initial=timezone.now().date()
+    )
     class Meta:
         model = Property
         fields = '__all__'  # Or specify fields explicitly
