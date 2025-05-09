@@ -83,3 +83,28 @@
     cursor: pointer;
     margin-top: 1rem;
 }
+
+.editable {
+  width: 100%;
+  max-width: 400px;
+  min-height: 30px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f2f2f2;
+  font-size: 14px;
+  color: #000;
+  outline: none;
+  position: relative;
+}
+
+/* Placeholder text */
+.editable:empty::before {
+  content: attr(data-placeholder);
+  color: #888;
+  pointer-events: none;
+}
+
+
+
