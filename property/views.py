@@ -1,280 +1,66 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-# from property.models import Property, PropertyForm
 
+from property.models import Property, PropertyForm
 
-# Create your views here.
-properties = [
-    {
-        'id': 1,
-        'street_name': 'Baker Street',
-        'house_nr': '221B',
-        'city': 'London',
-        'postal_code': 3000,
-        'description': 'Historic apartment with classic British charm',
-        'type': 'Apartment',
-        'listing_price': 10,
-        'listing_date': '30.12.2025',
-        'is_sold': False,
-        'seller_id': 1,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Katsura_Imperial_Villa_in_Spring.jpg/1920px-Katsura_Imperial_Villa_in_Spring.jpg",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002',
-    },
-    {
-        'id': 2,
-        'street_name': 'Fifth Avenue',
-        'house_nr': '1001',
-        'city': 'New York',
-        'postal_code': 10001,
-        'description': 'Luxury penthouse with Central Park views',
-        'type': 'Penthouse',
-        'listing_price': 9999999999999,
-        'listing_date': '15.01.2026',
-        'is_sold': True,
-        'seller_id': 2,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/16%2C_Calea_Doroban%C8%9Bilor%2C_Bucharest_%28Romania%29_1.jpg/1920px-16%2C_Calea_Doroban%C8%9Bilor%2C_Bucharest_%28Romania%29_1.jpg",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002'
-
-    },
-    {
-        'id': 3,
-        'street_name': 'Champs-Élysées',
-        'house_nr': '72',
-        'city': 'Paris',
-        'postal_code': 75008,
-        'description': 'Elegant Haussmannian-style villa',
-        'type': 'Villa',
-        'listing_price': 2222,
-        'listing_date': '10.03.2025',
-        'is_sold': False,
-        'seller_id': 3,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/8A%2C_Bulevardul_Aviatorilor_%2C_Bucharest_%28Romania%29.jpg/1920px-8A%2C_Bulevardul_Aviatorilor_%2C_Bucharest_%28Romania%29.jpg",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002'
-    },
-    {
-        'id': 4,
-        'street_name': 'Shibuya Crossing',
-        'house_nr': '5-6',
-        'city': 'Tokyo',
-        'postal_code': 1500041,
-        'description': 'Modern high-rise condo with smart home tech',
-        'type': 'Condo',
-        'listing_price': 33333,
-        'listing_date': '22.09.2024',
-        'is_sold': True,
-        'seller_id': 1,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/6/6a/248_Ashley_Ave_-_2017.jpg",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002'
-    },
-    {
-        'id': 5,
-        'street_name': 'Palm Jumeirah',
-        'house_nr': 'Villa 12',
-        'city': 'Dubai',
-        'postal_code': 00000,
-        'description': 'Private beachfront mansion with infinity pool',
-        'type': 'Mansion',
-        'listing_price': 10301000304299922444242,
-        'listing_date': '05.05.2025',
-        'is_sold': False,
-        'seller_id': 2,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/f/f7/Casa_Assan_1.jpg",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002'
-    },
-    {
-        'id': 6,
-        'street_name': 'Bondi Beach',
-        'house_nr': '42',
-        'city': 'Sydney',
-        'postal_code': 2026,
-        'description': 'Beachside cottage with ocean views',
-        'type': 'House',
-        'listing_price': 0,
-        'listing_date': '18.07.2024',
-        'is_sold': True,
-        'seller_id': 3,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Cam0492_Habitation_de_Pouss.jpg/2560px-Cam0492_Habitation_de_Pouss.jpg",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002'
-    },
-    {
-        'id': 7,
-        'street_name': 'Unter den Linden',
-        'house_nr': '77',
-        'city': 'Berlin',
-        'postal_code': 10117,
-        'description': 'Industrial-chic loft in city center',
-        'type': 'Loft',
-        'listing_price': 2,
-        'listing_date': '01.11.2025',
-        'is_sold': False,
-        'seller_id': 1,
-        'image': "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bamboo_House_in_Sambava_Madagascar.JPG/1920px-Bamboo_House_in_Sambava_Madagascar.JPG",
-        'bed': '5',
-        'bath': '3',
-        'size': '230m²',
-        'when': '2002'
-    }
-]
-
-sellers = [
-    {
-        'id': 1,
-        'type': 'Real Estate Agency',
-        'bio': 'Premier luxury property specialists with 20+ years experience in global markets',
-        'street_name': 'Park Avenue',
-        'city': 'New York',
-        'postal_code': 10022,
-        'seller_logo': 'https://picsum.photos/200/200?random=1',
-        'cover_image': 'https://picsum.photos/1200/400?random=1',
-        'properties': [p for p in properties if p['seller_id'] == 1]
-    },
-    {
-        'id': 2,
-        'type': 'Luxury Property Consultant',
-        'bio': 'Curator of exceptional high-end residences in emerging markets',
-        'street_name': 'Palm Jumeirah Road',
-        'city': 'Dubai',
-        'postal_code': 00000,
-        'seller_logo': 'https://picsum.photos/200/200?random=2',
-        'cover_image': 'https://picsum.photos/1200/400?random=2',
-        'properties': [p for p in properties if p['seller_id'] == 2]
-    },
-    {
-        'id': 3,
-        'type': 'Boutique Real Estate',
-        'bio': 'Specialists in unique architectural properties across Europe',
-        'street_name': 'Rue de Rivoli',
-        'city': 'Paris',
-        'postal_code': 75001,
-        'seller_logo': 'https://picsum.photos/200/200?random=3',
-        'cover_image': 'https://picsum.photos/1200/400?random=3',
-        'properties': [p for p in properties if p['seller_id'] == 3]
-    }
-]
+from django.db.models import Q
 
 
 
-
-
-
-# Create your models here.
-from django.db import models
-from django import forms
-from django.core.validators import MinValueValidator, MaxValueValidator
-import datetime
-
-
-
-class PropertyForm(forms.Form):
-   street_name = forms.CharField(label='street_name')
-   house_nr = forms.CharField(label='house_nr')
-   city = forms.CharField(label='city')
-   postal_code = forms.CharField(label='postal_code')
-
-
-   building_type = forms.CharField(label='Type of building')
-
-
-   price = forms.DecimalField(
-       label='Price',
-       max_digits=12,
-       decimal_places=2,
-       widget=forms.NumberInput(attrs={
-           'min': 0,
-           'max': 100000000000000,
-           'step': 100000,
-           'placeholder': '0.00'
-       }),
-       validators=[MinValueValidator(0)]
-   )
-
-
-   description = forms.CharField(
-       label='Description',
-       widget=forms.Textarea(attrs={
-           'placeholder': 'Write your description here...',
-           'rows': 4
-       })
-   )
-
-
-   year_built = forms.IntegerField(
-       label='Built Year',
-       widget=forms.NumberInput(attrs={
-           'min': 1800,
-           'max': datetime.datetime.now().year,
-       }),
-       validators=[
-           MinValueValidator(1800),
-           MaxValueValidator(datetime.datetime.now().year)
-       ]
-   )
-
-
-   size = forms.DecimalField(
-       label='Size (m²)',
-       max_digits=7,
-       decimal_places=2,
-       widget=forms.NumberInput(attrs={
-           'min': 0,
-           'step': 0.1,
-           'placeholder': '0.00'
-       }),
-       validators=[MinValueValidator(0)]
-   )
-
-
-   bedrooms = forms.IntegerField(
-       label='Bedrooms',
-       widget=forms.NumberInput(attrs={'min': 0}),
-       validators=[MinValueValidator(0)],
-   )
-
-
-   bathrooms = forms.IntegerField(
-       label='Bathrooms',
-       widget=forms.NumberInput(attrs={'min': 0}),
-       validators=[MinValueValidator(0)],
-   )
-
-
-   toilets = forms.IntegerField(
-       label='Toilets',
-       widget=forms.NumberInput(attrs={'min': 0}),
-       validators=[MinValueValidator(0)],
-   )
-
-   image = forms.ImageField()
+# def index(request):
+#     return render(request, 'property/properties.html', {
+#         'properties': Property.objects.all(),
+#     })
 
 def index(request):
-    return render(request, 'property/properties.html', {
-        'properties': properties
-    })
+    properties = Property.objects.all()
+
+    # Get filter parameters from URL
+    postal_code = request.GET.get('postal_code')
+    property_type = request.GET.get('building_type')
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+    availability = request.GET.getlist('availability')  # For checkboxes
+
+    # Apply filters
+    if postal_code and postal_code != 'all':
+        properties = properties.filter(postal_code=postal_code)
+
+    if property_type and property_type != 'all':
+        properties = properties.filter(building_type=property_type)
+
+    if min_price:
+        properties = properties.filter(price__gte=min_price)
+    if max_price:
+        properties = properties.filter(price__lte=max_price)
+
+
+    if availability:
+        # Handle availability checkboxes
+        status_filter = Q()
+        if 'for-sale' in availability:
+            status_filter |= Q(is_sold=False)
+        if 'is-sold' in availability:
+            status_filter |= Q(is_sold=True)
+        properties = properties.filter(status_filter)
+
+    # Get unique values for filter dropdowns
+    unique_postal_codes = Property.objects.values_list('postal_code', flat=True).distinct()
+    unique_types = Property.objects.values_list('building_type', flat=True).distinct()
+
+    context = {
+        'properties': properties,
+        'unique_postal_codes': unique_postal_codes,
+        'unique_types': unique_types,
+    }
+    return render(request, 'property/properties.html', context)
 
 def get_property_by_id(request, id):
-    property_objs = [x for x in properties if x['id'] == int(id)][0]
+    # Get by database ID (proper way)
+    property_obj = get_object_or_404(Property, pk=id)
     return render(request, 'property/property_details.html', {
-        'property': property_objs
+        'property': property_obj
     })
-
 
 
 # TODO: virkar ekki
@@ -296,6 +82,16 @@ def get_seller_by_property_id(request, property_id):
         'seller': seller
     })
 
+
 def create_property(request):
-    form = PropertyForm()
-    return render(request, 'property/create_property.html', {'form': form})
+    if request.method == 'POST':
+        form = PropertyForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('property-create-success')
+    else:
+        form = PropertyForm()
+    return render(request, 'property/create/create_property.html', {'form': form})
+
+def property_create_success(request):
+    return render(request, 'property/create/success.html')
