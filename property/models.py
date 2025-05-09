@@ -106,3 +106,5 @@ class PropertyForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['seller'].queryset = SellerProfile.objects.all()
         self.fields['building_type'].initial = BuildingTypes.AREA
+
+

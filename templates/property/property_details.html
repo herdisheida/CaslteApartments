@@ -53,8 +53,9 @@
             <p class="mb-3">{{ property.description }}</p>
             <div class="d-flex gap-3">
                 <!-- TODO: klára tenginuna á seller profile-index hérna að neaðan -->
-                <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Seller Profile</a>
-                <a href="#" class="btn btn-outline-dark" id="submit-offer-btn">Submit an Offer</a>
+                <a href="{% url 'seller-by-property' property.id %}" class="btn btn-dark">Seller Profile</a>
+
+                <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Submit an Offer</a>
             </div>
         </div>
 

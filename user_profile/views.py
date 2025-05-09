@@ -14,3 +14,4 @@ def get_profile_by_id(request):
     return render(request, 'profile/profile_details.html', {
         'profile': profiles
     })
+

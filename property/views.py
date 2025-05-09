@@ -4,6 +4,9 @@ from django.http import Http404
 from property.models import Property, PropertyForm
 from django.db.models import Q
 
+from django.shortcuts import get_object_or_404, render
+from property.models import Property
+from user_profile.models import Seller
 
 
 # def index(request):
@@ -62,23 +65,14 @@ def get_property_by_id(request, id):
     })
 
 
-# TODO: virkar ekki
 def get_seller_by_property_id(request, property_id):
-    try:
-        # get the property object
-        property_obj = get_property_by_id(request, property_id)
-
-        # get seller_id from the property
-        seller_id = property_obj['seller_id']
-
-        # find matching seller
-        seller = next(s for s in sellers if s['id'] == seller_id)
-
-    except (KeyError, StopIteration) as e:
-        raise Http404("Seller not found for this property") from e
+    property_obj = get_object_or_404(Property, id=property_id)
+    seller = property_obj.seller
+    properties = Property.objects.filter(seller=seller)
 
     return render(request, 'profile/_seller_profile.html', {
-        'seller': seller
+        'seller': seller,
+        'properties': properties
     })
 
 
@@ -94,3 +88,7 @@ def create_property(request):
 
 def property_create_success(request):
     return render(request, 'property/create/success.html')
+
+def seller_profile(request, seller_id):
+    seller = get_object_or_404(seller_profile, id=seller_id)
+    return render(request, 'profile/_seller_profile.html', {'seller': seller})

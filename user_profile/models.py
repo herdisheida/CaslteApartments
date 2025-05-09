@@ -29,3 +29,13 @@ class SellerProfile(models.Model):
 
     def __str__(self):
         return self.user.name
+
+from django.db import models
+
+class Seller(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    # possibly more fields like phone, profile_image, etc.
+
+    def __str__(self):
+        return self.name
