@@ -5,9 +5,36 @@
     <div class="container my-4 p-4 border rounded shadow-sm bg-white">
 
         <!-- image -->
-        <div class="mb-3 card-img-top position-relative"
-             style="min-height: 400px; background: url('{{ property.preview_pic.url }}') center/cover no-repeat;">
+        <div class="mb-3 card-img-top position-relative">
+            <!-- Image Gallery Container -->
+            <div class="gallery-container">
+                <!-- Full-width Slides -->
+                {% for image in property.images.all %}
+                <div class="mySlides fade" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
+                    <div class="numbertext">{{ forloop.counter }} / {{ property.images.count }}</div>
+                    <img src="{{ image.image.url }}" style="width:100%" alt="Property Image {{ forloop.counter }}">
+                </div>
+                {% endfor %}
+
+                <!-- Navigation Arrows -->
+                {% if property.images.count > 1 %}
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+                {% endif %}
+            </div>
+
+            <!-- Thumbnail Grid -->
+            <div class="thumbnail-row">
+                {% for image in property.images.all %}
+                <div class="thumbnail-column">
+                    <img class="demo cursor" src="{{ image.image.url }}"
+                         onclick="currentSlide({{ forloop.counter }})"
+                         alt="Thumbnail {{ forloop.counter }}">
+                </div>
+                {% endfor %}
+            </div>
         </div>
+
 
         <!-- the status of the property-->
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -31,7 +58,7 @@
             </div>
         </div>
 
-        <!-- the details of the property WILL CHANGE LATER -->
+        <!-- the details of the property -->
         <div class="mt-4 row text-center">
             <div class="col">Built {{ property.year_built }}</div>
             <div class="col">{{ property.size }} m2</div>
@@ -39,7 +66,6 @@
             <div class="col">{{ property.bathrooms }} Bathroom(s)</div>
             <div class="col">{{ property.toilets }} Toilet(s)</div>
         </div>
-
 
     </div>
 {% endblock %}
