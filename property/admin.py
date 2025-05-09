@@ -3,3 +3,4 @@ import property.models
 
 # Register your models here.
 admin.site.register(property.models.Property)
+admin.site.register(property.models.PropertyImages)

@@ -8,8 +8,8 @@ from django.db.models import Q
 
 
 # def index(request):
-#     return render(request, 'property/properties.html', {
-#         'properties': Property.objects.all(),
+#     return render(request, 'property/property_images.html', {
+#         'property_images': Property.objects.all(),
 #     })
 
 def index(request):

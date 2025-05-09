@@ -15,8 +15,6 @@ class BuildingTypes(models.TextChoices):
    TOWNHOUSE = 'TOWNHOUSE', 'Townhouse'
    AREA = 'AREA', 'Area'
 
-
-
 # Create your models here.
 class Property(models.Model):
    street_name = models.CharField(max_length=100)
@@ -45,12 +43,19 @@ class Property(models.Model):
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
-   image = models.ImageField(upload_to='properties/')
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    is_sold = models.BooleanField(default=False)
 
+   preview_pic = models.ImageField(upload_to='property_images/')
+
+
    def __str__(self):
        return f"{self.street_name} {self.house_nr} ({self.pk})"
+
+
+class PropertyImages(models.Model):
+    property = models.OneToOneField(Property, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='property_images/')
 
 
 class PropertyForm(forms.ModelForm):

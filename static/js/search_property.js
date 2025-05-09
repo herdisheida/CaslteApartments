@@ -59,7 +59,7 @@ const sort = () => {
     const container = document.querySelector('.property-container'); // Changed to actual container
 
     if (!propertyElements.length || !container) {
-        console.error('No properties or container found');
+        console.error('No property_images or container found');
         return;
     }
 
