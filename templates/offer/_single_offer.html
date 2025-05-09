@@ -8,7 +8,7 @@
             <!-- ✅ Good-looking image section -->
             <div class="property-image-wrapper position-relative">
                 <div class="mb-3 card-img-top position-relative"
-                     style="min-height: 200px; background: url('{% if offer.property.image %}{{ offer.property.image.url }}{% else %}{% url 'images/no_image.jpg' %}{% endif %}') center/cover no-repeat;">
+                     style="min-height: 200px; background: url('{{ offer.property.preview_pic.url }}') center/cover no-repeat;">
                 </div>
 
                 <div class="badge-wrapper">
