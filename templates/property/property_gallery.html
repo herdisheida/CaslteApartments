@@ -10,7 +10,7 @@
         </div>
 
             {% for image in property.images.all %}
-                <div class="mySlides" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
+                <div class="mySlides">
                 <div class="numbertext">{{ forloop.counter|add:1 }} / {{ property.images.count|add:1 }}</div>
                     <img src="{{ image.image.url }}" class="gallery-property-image" alt="{{ image.image.url }}">
                 </div>
