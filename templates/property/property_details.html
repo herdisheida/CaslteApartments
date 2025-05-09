@@ -23,9 +23,9 @@
         <!-- description of property -->
         <div class="mt-3">
             <p class="mb-3">{{ property.description }}</p>
-            <div class="d-flex gap-3">
 
-                <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Seller Profile</a>
+            <div class="d-flex gap-3" id="seller-info-on-property-container">
+                {{ property.seller.user.name }}
                 <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Seller Profile</a>
                 <a href="#" class="btn btn-outline-dark" id="submit-offer-btn">Submit an Offer</a>
             </div>
