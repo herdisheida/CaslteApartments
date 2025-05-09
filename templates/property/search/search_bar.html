@@ -1,0 +1,18 @@
+<div class="search-section">
+    <form method="GET" action="{% url 'property-index' %}">
+    <!-- Preserve existing filters -->
+    {% if request.GET.postal_code %}
+        <input type="hidden" name="postal_code" value="{{ request.GET.postal_code }}">
+    {% endif %}
+
+    <!-- SEARCH BAR -->
+    <label class="search-container">
+        <input type="text"
+             name="search"
+             placeholder="Search by street or city..."
+             value="{{ search_query|default:'' }}"
+             class="search-input">
+        <button type="submit" class="search-btn">🔎</button>
+    </label>
+    </form>
+</div>

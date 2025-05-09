@@ -79,6 +79,16 @@
 }
 
 
+#link-to-seller-btn {
+    background-color: #3b2e58;
+    color: white;
+    border: none;
+}
+#link-to-seller-btn:hover {
+    background-color: #5e3b8a;
+}
+
+
 
 /* Property search | filter | sort styling */
 .search-item {
@@ -108,13 +118,3 @@
     display: flex;
     justify-content: center;
 }
-
-#link-to-seller-btn {
-    background-color: #3b2e58;
-    color: white;
-    border: none;
-}
-#link-to-seller-btn:hover {
-    background-color: #5e3b8a;
-}
-

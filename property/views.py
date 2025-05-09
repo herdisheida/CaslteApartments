@@ -12,6 +12,14 @@ from user_profile.models import Seller
 def index(request):
     properties = Property.objects.all()
 
+    # SEARCH
+    search_query = request.GET.get('search')
+    if search_query:
+        properties = properties.filter(
+            Q(street_name__icontains=search_query) |
+            Q(city__icontains=search_query)
+        )
+
     # FILTER
     # Get filter parameters from URL
     postal_code = request.GET.get('postal_code')
@@ -57,6 +65,7 @@ def index(request):
         'unique_postal_codes': unique_postal_codes,
         'unique_types': unique_types,
         'current_sort': sort,
+        'search_query': search_query,
     }
     return render(request, 'property/properties.html', context)
 

@@ -1,4 +1,5 @@
 let slideIndex = 1;
+let slides;
 
 // Next/previous controls
 const plusSlides = (n) => {
@@ -14,7 +15,7 @@ const currentSlide = (n) => {
 
 const showSlides = (n) => {
   let i;
-  let slides = document.getElementsByClassName("mySlides");
+  slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("demo");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
@@ -27,4 +28,8 @@ const showSlides = (n) => {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
-showSlides(slideIndex);
+
+const seeMoreBtn = document.querySelector(".see-more-btn");
+if (seeMoreBtn) {
+    seeMoreBtn.addEventListener('click', () => showSlides(slideIndex));
+}
