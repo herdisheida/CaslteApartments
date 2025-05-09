@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 
 from property.models import Property, PropertyForm
-
 from django.db.models import Q
 
 
