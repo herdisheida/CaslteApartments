@@ -8,6 +8,15 @@ import datetime
 from user_profile.models import SellerProfile
 
 
+from django.utils.text import slugify
+
+def property_image_path(instance, filename):
+    """Dynamically generates upload path based on property address"""
+    street = slugify(instance.street_name)  # Convert "Main St." to "main-st"
+    house = slugify(instance.house_nr)      # Convert "123A" to "123a"
+    return f'property_images/{street}_{house}/{filename}'
+
+
 class BuildingTypes(models.TextChoices):
    APARTMENT = 'APARTMENT', 'Apartment'
    HOUSE = 'HOUSE', 'House'
@@ -46,11 +55,12 @@ class Property(models.Model):
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    is_sold = models.BooleanField(default=False)
 
-   preview_pic = models.ImageField(upload_to='property_images/')
+   preview_pic = models.ImageField(upload_to=property_image_path)
 
 
    def __str__(self):
        return f"{self.street_name} {self.house_nr} ({self.pk})"
+
 
 
 class PropertyImages(models.Model):
