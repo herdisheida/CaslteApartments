@@ -39,21 +39,21 @@
         <!-- the status of the property-->
         <div class="d-flex justify-content-between align-items-center mb-2">
             <span class="text-muted text-capitalize">{{ property.type }}</span>
-            <span class="text-uppercase small">{{ property.is_sold|yesno:"SOLD,THIS PROPERTY HAS NOT BEEN SOLD" }}</span>
+            <span class="text-uppercase small">
+            </span>
         </div>
 
         <!-- address and price of property -->
         <div class="d-flex justify-content-between align-items-center">
             <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }} ({{ property.city }}, {{ property.postal_code }})</h2>
-            <h4 class="text-primary fw-bold">${{ property.price|floatformat:"0" }}</h4>
+            <h4 class="text-primary fw-bold">${{ property.price}}</h4>
         </div>
 
         <!-- description of property -->
         <div class="mt-3">
             <p class="mb-3">{{ property.description }}</p>
             <div class="d-flex gap-3">
-                <!-- TODO: klára tenginuna á seller profile-index hérna að neaðan -->
-                <a href="{% url 'seller-by-property' property.id %}" class="btn btn-dark">Seller Profile</a>
+                <a href="{% url 'seller-by-property' property.id %}" class="btn btn-outline-dark" id="link-to-seller-btn">Seller Profile</a>
 
                 <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Submit an Offer</a>
             </div>
