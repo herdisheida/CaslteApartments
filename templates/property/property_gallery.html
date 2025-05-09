@@ -1,31 +1,31 @@
-        <div class="mb-3 card-img-top position-relative">
+<div class="mb-3 card-img-top position-relative">
 {#             style="min-height: 400px; background: url('{{ property.preview_pic.url }}') center/cover no-repeat;">#}
 
-            <!-- Container for the image gallery -->
-            <div class="container">
-                <!-- Full-width images with number text -->
-                {% for image in property.images.all %}
-                    <div class="mySlides" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
-                        <div class="numbertext">{{ forloop.counter }} / {{ property.images.count }}</div>
-                        <img src="{{ image.image.url }}" style="width:100%;">
-                    </div>
-                {% endfor %}
-
-                <!-- Next and previous buttons -->
-                {% if property.images.count > 1 %}
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                {% endif %}
-
-                <!-- Thumbnail images -->
-                <div class="row">
-                    {% for image in property.images.all %}
-                <div class="column">
-                    <img class="demo cursor" src="{{ image.image.url }}" style="width:100%"
-                        onclick="currentSlide({{ forloop.counter }})"
-                        alt="Image {{ forloop.counter }}">
-                </div>
-                {% endfor %}
+    <!-- Container for the image gallery -->
+    <div class="container">
+        <!-- Full-width images with number text -->
+        {% for image in property.images.all %}
+            <div class="mySlides" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
+                <div class="numbertext">{{ forloop.counter }} / {{ property.images.count }}</div>
+                <img src="{{ image.image.url }}" class="gallery-property-image" alt="{{ image.image.url }}">
             </div>
+        {% endfor %}
+
+        <!-- Next and previous buttons -->
+        {% if property.images.count > 1 %}
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        {% endif %}
+
+        <!-- Thumbnail images (on the bottom) -->
+        <div class="row">
+            {% for image in property.images.all %}
+            <div class="column">
+                <img class="demo cursor" src="{{ image.image.url }}" style="width:100%; height: 6rem; object-fit: cover"
+                    onclick="currentSlide({{ forloop.counter }})"
+                    alt="Image {{ forloop.counter }}">
+            </div>
+            {% endfor %}
         </div>
     </div>
+</div>
