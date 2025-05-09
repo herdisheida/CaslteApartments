@@ -269,64 +269,79 @@
     </div>
   </div>
 
-  <!-- Payment Step Section -->
-  <div class="payment-text">Payment Step</div>
 
-  <div class="form-grid">
-    <div class="form-field" style="grid-column: span 2;">
-      <select name="payment_method">
-        <option value="">Select payment method</option>
-        <option value="card">Card</option>
-        <option value="bank">Bank transfer</option>
-        <option value="bank">Mortgage</option>
-      </select>
-    </div>
+<!-- Payment Step Section -->
+<div class="payment-text">Payment Step</div>
+
+<div class="form-grid">
+  <div class="form-field" style="grid-column: span 2;">
+    <select name="payment_method" id="payment-method">
+      <option value="">Select payment method</option>
+      <option value="card">Card</option>
+      <option value="bank">Bank transfer</option>
+      <option value="mortgage">Mortgage</option>
+    </select>
   </div>
-</div>
 
-<!-- Payment step -->
-  <div class="payment-text">Payment Step</div>
+  <!-- Card Payment Fields -->
+  <div id="card-fields" class="form-field" style="display: none; grid-column: span 2;">
+    <input type="text" name="card_number" maxlength="19" placeholder="Card number"> <br> <br>
+    <input type="text" name="name-on-card" placeholder="Name on card">
 
-
-    <div class="form-grid">
-      <div class="form-field" style="grid-column: span 2;">
-        <select name="payment_method" id="payment-method">
-          <option value="">Select payment method</option>
-          <option value="card">credit card</option>
-          <option value="bank">bank transfer</option>
-          <option value="bank">Mortgage</option>
-        </select>
-      </div>
-    </div>
-
-
-
-  <!-- Credit Card Fields (hidden by default) -->
-  <div id="credit-card-fields" class="hidden">
-    <div class="form-grid">
-      <div class="form-field" style="grid-column: span 2;">
-        <label>Card number</label>
-        <input type="text" placeholder="Card number" />
-      </div>
-      <div class="form-field">
-        <label>Name on card</label>
-        <input type="text" placeholder="name on card" />
-      </div>
+    <!-- Expiration + CVV Row -->
+    <div class="form-row">
       <div class="form-field">
         <label>Expiration Date</label>
-        <div class="expiration-row">
-          <input type="text" placeholder="month" />
-          <input type="text" placeholder="year" />
+        <div class="expiry-wrapper">
+          <input type="text" placeholder="MM" maxlength="2">
+          <span class="slash">/</span>
+          <input type="text" placeholder="YY" maxlength="2">
         </div>
       </div>
+
       <div class="form-field">
         <label>CVV</label>
-        <input type="text" placeholder="CVV" />
+        <input type="text" name="cvv" placeholder="CVV" maxlength="4">
       </div>
     </div>
   </div>
 
-  <button type="submit" class="btn-continue">continue</button>
+  <!-- Bank Transfer Fields -->
+  <div id="bank-fields" class="form-field" style="display: none; grid-column: span 2;">
+        <input type="text" placeholder="Bank number"> <br> <br>
+        <input type="text" placeholder="Loan Reference Number">
+  </div>
+
+  <!-- Mortgage Fields -->
+    <div id="mortgage-fields" class="form-field" style="display: none; grid-column: span 2;">
+        <input type="text" placeholder="Bank number"> <br> <br>
+        <input type="text" placeholder="Loan Reference Number">
+    </div>
+
+    </div> <!-- ✅ This closes the main form-grid -->
 </div>
+
+
+<!-- JavaScript -->
+<script>
+  const methodSelect = document.getElementById("payment-method");
+  const card = document.getElementById("card-fields");
+  const bank = document.getElementById("bank-fields");
+  const mortgage = document.getElementById("mortgage-fields");
+
+  methodSelect.addEventListener("change", function () {
+    card.style.display = "none";
+    bank.style.display = "none";
+    mortgage.style.display = "none";
+
+    if (this.value === "card") {
+      card.style.display = "block";
+    } else if (this.value === "bank") {
+      bank.style.display = "block";
+    } else if (this.value === "mortgage") {
+      mortgage.style.display = "block";
+    }
+  });
+</script>
 
 {% endblock %}
