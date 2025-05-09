@@ -24,10 +24,12 @@
             <p class="mb-3">{{ property.description }}</p>
         </div>
 
-        <div class="seller-info-in-property-container">
-            <img src="{{ property.seller.user.image }}" class="gallery-property-image" alt="seller-profile-thumbnail">
-        </div>
         <div class="d-flex gap-3" id="seller-info-on-property-container">
+
+        <div class="seller-profile-pic-container">
+            <img id="seller-profile-pic-in-property" src="{{ property.seller.user.image.url }}" alt="seller-profile-thumbnail">
+        </div>
+
             <a href="{% url 'seller-by-property' property.id %}" class="btn btn-outline-dark" id="link-to-seller-btn">Seller: {{ property.seller.user.name }}</a>
             <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Submit an Offer</a>
         </div>

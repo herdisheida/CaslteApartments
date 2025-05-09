@@ -118,3 +118,17 @@
     display: flex;
     justify-content: center;
 }
+
+
+/* SELLER info on property details page*/
+#seller-profile-pic-in-property {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+.d-flex {
+    display: flex;
+    align-items: center
+}
