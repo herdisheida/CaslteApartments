@@ -10,25 +10,38 @@
         <button class="btn btn-outline-secondary">Edit Profile</button>
     </div>
 
-    <!-- Profile Picture -->
-    <div class="text-center mb-4">
-        <a href="{% url 'user_profile-index' %}">
-            <img id="profile-pic-big" src="{% static 'images/default_profile_pic.png' %}" alt="Profile Picture" class="rounded-circle" width="150" />
-        </a>
+    <!-- Seller Info Section -->
+    <div class="row align-items-start mb-5">
+        <!-- Profile Picture + Name/Email -->
+        <div class="col-md-4 text-center">
+            <img src="{% if seller.profile_pic %}{{ seller.profile_pic.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}"
+                 alt="Profile Picture" class="rounded-circle mb-3 border" width="150">
+            <h5 class="fw-bold mb-0">
+                {{ seller.user.name}}
+            </h5>
+            <br>
+            <p class="text-muted mb-1">{{ seller.user.email }}</p>
+            <p class="text-muted">Individual</p>
+        </div>
+
+        <!-- Text Info -->
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-bold">Information About Seller</h4>
+                <a href="#" class="btn btn-outline-dark">Edit Profile</a>
+            </div>
+
+            <p><span class="fw-bold">Street Name:</span> {{ seller.street_name }}</p>
+            <p><span class="fw-bold">City:</span> {{ seller.city }}</p>
+            <p><span class="fw-bold">Postal Code:</span> {{ seller.postal_code }}</p>
+
+            <h5 class="mt-4 fw-bold">Bio</h5>
+            <p class="text-muted">{{ seller.bio}}</p>
+        </div>
     </div>
 
-    <!-- Seller Info -->
-    <div class="mb-5 text-center">
-        <label class="fw-bold">Name:</label>
-        <p class="text-muted">
-            {{ property.seller.user.name }}
-        </p>
 
-        <label class="fw-bold mt-3">Email:</label>
-        <p class="text-muted">
-            {{ property.seller.user.email }}
-        </p>
-    </div>
+
 
 
     <!-- Seller Properties -->
