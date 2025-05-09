@@ -29,7 +29,4 @@ const showSlides = (n) => {
   dots[slideIndex-1].className += " active";
 }
 
-const seeMoreBtn = document.querySelector(".see-more-btn");
-if (seeMoreBtn) {
-    seeMoreBtn.addEventListener('click', () => showSlides(slideIndex));
-}
+showSlides(slideIndex);
