@@ -5,35 +5,7 @@
     <div class="container my-4 p-4 border rounded shadow-sm bg-white">
 
         <!-- image -->
-        <div class="mb-3 card-img-top position-relative">
-            <!-- Image Gallery Container -->
-            <div class="gallery-container">
-                <!-- Full-width Slides -->
-                {% for image in property.images.all %}
-                <div class="mySlides fade" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
-                    <div class="numbertext">{{ forloop.counter }} / {{ property.images.count }}</div>
-                    <img src="{{ image.image.url }}" style="width:100%" alt="Property Image {{ forloop.counter }}">
-                </div>
-                {% endfor %}
-
-                <!-- Navigation Arrows -->
-                {% if property.images.count > 1 %}
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
-                {% endif %}
-            </div>
-
-            <!-- Thumbnail Grid -->
-            <div class="thumbnail-row">
-                {% for image in property.images.all %}
-                <div class="thumbnail-column">
-                    <img class="demo cursor" src="{{ image.image.url }}"
-                         onclick="currentSlide({{ forloop.counter }})"
-                         alt="Thumbnail {{ forloop.counter }}">
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+        {% include 'property/property_gallery.html' %}
 
 
         <!-- the status of the property-->
