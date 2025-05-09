@@ -2,11 +2,14 @@
 
 {% block content %}
     {% include 'property/search/search.html' %}
+    <div id="error-container" class="d-none"></div>
 
-    <div class="container mt-4">
+    <div class="container mt-4 properties-container">
         <div class="row property-container">
             {% for property in properties %}
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-4"
+                     data-price="{{ property.listing_price }}"
+                     data-name="{{ property.street_name }}">
                     {% include "property/_single_property.html" with property=property is_detail=False %}
                 </div>
             {% endfor %}

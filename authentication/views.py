@@ -16,3 +16,6 @@ def get_authentication_by_id(request, id):
     return render(request, 'authentication/login.html', {
         'authentication': authentication
     })
+
+def seller_index(request):
+    return render(request, 'authentication/seller.html')

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'offer.apps.OfferConfig',
+    'property.apps.PropertyConfig',
+    'user_profile.apps.UserConfig'
 ]
 
 MIDDLEWARE = [
@@ -62,6 +66,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+
+                # TODO: make it work ég bætti þessu
+                'django.template.context_processors.request',
+
             ],
         },
     },
@@ -73,11 +82,14 @@ WSGI_APPLICATION = 'castle_apartments.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# TODO: stilla sqlite3 í annað fyrir verkefnið
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'verklegt_namskeid_db',
+        'USER': 'verklegt_db_user',
+        'PASSWORD': 'LFCNf61ubPJPKhOz1kj7K9gP',
+        'HOST': 'db-verklegt-namskeid-ii-eu-1jt0s8.postgres.database.azure.com',
+        'PORT': '5432'
     }
 }
 
@@ -117,10 +129,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+# url for images
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

@@ -2,10 +2,10 @@
     <label>
         <input type="text" id="search-bar" placeholder="Search..">
     </label>
-    <button type="button" class="search-item" onclick="displayOrderBy()">order by</button>
-    <button type="button" class="search-item" onclick="displayFilters()">filters</button>
+    <button type="button" class="search-item" onclick="showOrderBy()">order by</button>
+    <button type="button" class="search-item" onclick="showFilterPopup()">filters</button>
 
 </div>
 
-    {% include 'property/search/filter_popup.html' %}
-    {% include 'property/search/order_by.html' %}
+{% include 'property/search/filter_popup.html' %}
+{% include 'property/search/order_by.html' %}

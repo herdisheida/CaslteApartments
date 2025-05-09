@@ -3,28 +3,24 @@
     <div class="sort-section-order">
 
       <!-- Price Range -->
-      <div class="sort-group-order">
-        <label class="sort-label-order">Price Range</label>
-        <div class="sort-buttons-order">
-          <button class="sort-btn-order active-order">$</button>
-          <button class="sort-btn-order">↓</button>
-        </div>
-      </div>
+    <div class="sort-group-order">
+        <span class="sort-label-order">Price Range</span>
+        <p class="sort-btn-order active-order" disabled>$</p>
+        <button class="sort-btn-order sort-arrow-btn">↑↓</button>
+    </div>
 
       <!-- Name -->
-      <div class="sort-group-order">
-        <label class="sort-label-order">Name</label>
-        <div class="sort-buttons-order">
-          <button class="sort-btn-order active-order">🛣️</button>
-          <button class="sort-btn-order">↓</button>
-        </div>
-      </div>
+    <div class="sort-group-order">
+        <span class="sort-label-order">Name</span>
+        <p class="sort-btn-order active-order" disabled>🛣</p>
+        <button class="sort-btn-order sort-arrow-btn">↑↓</button>
+    </div>
 
     </div>
 
     <div class="btn-action-container">
-      <button class="action-btn cancel">Cancel</button>
-      <button class="action-btn confirm">Confirm</button>
+      <button class="action-btn cancel" id="sort-cancel-btn" onclick="hidePopupWindows()">Cancel</button>
+      <button class="action-btn confirm" onclick="hidePopupWindows()">Confirm</button>
     </div>
   </div>
 </div>
