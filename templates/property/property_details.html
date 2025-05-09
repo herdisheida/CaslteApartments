@@ -26,8 +26,8 @@
 
             <div class="d-flex gap-3" id="seller-info-on-property-container">
                 {{ property.seller.user.name }}
-                <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Seller Profile</a>
-                <a href="#" class="btn btn-outline-dark" id="submit-offer-btn">Submit an Offer</a>
+                <a href="{% url 'seller-by-property' property.id %}" class="btn btn-outline-dark" id="link-to-seller-btn">Seller Profile</a>
+                <a href="#" class="btn btn-outline-dark" id="link-to-seller-btn">Submit an Offer</a>
             </div>
         </div>
 
