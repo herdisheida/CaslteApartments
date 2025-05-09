@@ -179,4 +179,28 @@ select:focus {
 }
 
 
+/* SEARCH BAR */
+.search-container {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+}
+
+.search-btn {
+  background: #f8f9fa;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #e9ecef;
+}
