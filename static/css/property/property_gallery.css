@@ -86,13 +86,13 @@
   object-fit: cover;
   margin-bottom: 5px;
 }
+
 .gallery-property-image:hover {
   object-fit: scale-down;
-  transition-duration: 2s;
 }
 
 .gallery-property-thumbnail {
   width: 100%;
-  height: 6rem;
+  height: 3rem;
   object-fit: cover;
 }
