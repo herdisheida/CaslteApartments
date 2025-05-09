@@ -9,12 +9,14 @@
             <div class="numbertext">1 / {{ property.images.count|add:1 }}</div>
             <img src="{{ property.preview_pic.url }}" class="gallery-property-image" alt="Property Preview">
         </div>
-        {% for image in property.images.all %}
-            <div class="mySlides" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
+        <div class="mt-3">
+            {% for image in property.images.all %}
+                <div class="mySlides" style="display: {% if forloop.first %}block{% else %}none{% endif %}">
                 <div class="numbertext">{{ forloop.counter|add:1 }} / {{ property.images.count|add:1 }}</div>
-                <img src="{{ image.image.url }}" class="gallery-property-image" alt="{{ image.image.url }}">
-            </div>
-        {% endfor %}
+                    <img src="{{ image.image.url }}" class="gallery-property-image" alt="{{ image.image.url }}">
+                </div>
+            {% endfor %}
+        </div>
 
         <!-- Next and previous buttons -->
         {% if property.images.count > 1 %}
