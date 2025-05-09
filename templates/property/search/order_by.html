@@ -4,34 +4,52 @@
       <!-- Price Sorting -->
       <div class="sort-group-order">
         <span class="sort-label-order">Price</span>
-        <a href="?{{ request.GET.urlencode }}&sort=price_asc"
-           class="sort-btn-order {% if current_sort == 'price_asc' %}active-order{% endif %}">
-          Low to High
-        </a>
-        <a href="?{{ request.GET.urlencode }}&sort=price_desc"
-           class="sort-btn-order {% if current_sort == 'price_desc' %}active-order{% endif %}">
-          High to Low
-        </a>
+        <div class="sort-arrows">
+          <a href="?{{ request.GET.urlencode }}&sort=price_asc"
+             class="arrow-btn {% if current_sort == 'price_asc' %}active-arrow{% endif %}"
+             title="Sort ascending">
+            ↑
+          </a>
+          <a href="?{{ request.GET.urlencode }}&sort=price_desc"
+             class="arrow-btn {% if current_sort == 'price_desc' %}active-arrow{% endif %}"
+             title="Sort descending">
+            ↓
+          </a>
+          <a href="?{% if request.GET.urlencode %}{{ request.GET.urlencode|cut:'&sort='|cut:'sort=' }}{% endif %}"
+             class="arrow-btn {% if not current_sort or 'price' not in current_sort %}active-arrow{% endif %}"
+             title="No sorting">
+            ↔
+          </a>
+        </div>
       </div>
 
       <!-- Street Name Sorting -->
       <div class="sort-group-order">
-        <span class="sort-label-order">Street Name</span>
-        <a href="?{{ request.GET.urlencode }}&sort=street_asc"
-           class="sort-btn-order {% if current_sort == 'street_asc' %}active-order{% endif %}">
-          A to Z
-        </a>
-        <a href="?{{ request.GET.urlencode }}&sort=street_desc"
-           class="sort-btn-order {% if current_sort == 'street_desc' %}active-order{% endif %}">
-          Z to A
-        </a>
+        <span class="sort-label-order">Street</span>
+        <div class="sort-arrows">
+          <a href="?{{ request.GET.urlencode }}&sort=street_asc"
+             class="arrow-btn {% if current_sort == 'street_asc' %}active-arrow{% endif %}"
+             title="Sort A-Z">
+            ↑
+          </a>
+          <a href="?{{ request.GET.urlencode }}&sort=street_desc"
+             class="arrow-btn {% if current_sort == 'street_desc' %}active-arrow{% endif %}"
+             title="Sort Z-A">
+            ↓
+          </a>
+          <a href="?{% if request.GET.urlencode %}{{ request.GET.urlencode|cut:'&sort='|cut:'sort=' }}{% endif %}"
+             class="arrow-btn {% if not current_sort or 'street' not in current_sort %}active-arrow{% endif %}"
+             title="No sorting">
+            ↔
+          </a>
+        </div>
       </div>
     </div>
 
     <div class="btn-action-container">
       <a href="?{% if request.GET.urlencode %}{{ request.GET.urlencode|cut:'&sort='|cut:'sort=' }}{% endif %}"
          class="action-btn cancel">
-        Reset
+        Reset All
       </a>
     </div>
   </div>
