@@ -6,6 +6,19 @@ from django.core.validators import MinValueValidator, MaxValueValidator, FileExt
 import datetime
 
 from user_profile.models import SellerProfile
+from django.utils.text import slugify
+
+def property_image_path(instance, filename):
+    """Generates upload-path based on property address"""
+    street = slugify(instance.street_name)
+    house = slugify(instance.house_nr)      # Convert "123A" to "123a"
+    return f'property_images/{street}_{house}/{filename}'
+
+def property_images_path(instance, filename):
+    """Matches the Property model's folder structure"""
+    street = slugify(instance.property.street_name)
+    house = slugify(instance.property.house_nr)
+    return f'property_images/{street}_{house}/{filename}'
 
 
 class BuildingTypes(models.TextChoices):
@@ -14,8 +27,6 @@ class BuildingTypes(models.TextChoices):
    VILLA = 'VILLA', 'Villa'
    TOWNHOUSE = 'TOWNHOUSE', 'Townhouse'
    AREA = 'AREA', 'Area'
-
-
 
 # Create your models here.
 class Property(models.Model):
@@ -45,13 +56,23 @@ class Property(models.Model):
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
-   image = models.ImageField(upload_to='properties/')
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    is_sold = models.BooleanField(default=False)
+
+   preview_pic = models.ImageField(upload_to=property_image_path)
+
 
    def __str__(self):
        return f"{self.street_name} {self.house_nr} ({self.pk})"
 
+
+class PropertyImages(models.Model):
+    property = models.ForeignKey(
+        Property, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to=property_images_path)
+
+    def __str__(self):
+        return f"{self.property.__str__()}"
 
 class PropertyForm(forms.ModelForm):
     class Meta:
@@ -85,3 +106,5 @@ class PropertyForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['seller'].queryset = SellerProfile.objects.all()
         self.fields['building_type'].initial = BuildingTypes.AREA
+
+
