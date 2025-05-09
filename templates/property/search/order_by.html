@@ -1,26 +1,38 @@
 <div class="popup-box" id="order-by-popup">
   <div class="pop-up-content">
     <div class="sort-section-order">
+      <!-- Price Sorting -->
+      <div class="sort-group-order">
+        <span class="sort-label-order">Price</span>
+        <a href="?{{ request.GET.urlencode }}&sort=price_asc"
+           class="sort-btn-order {% if current_sort == 'price_asc' %}active-order{% endif %}">
+          Low to High
+        </a>
+        <a href="?{{ request.GET.urlencode }}&sort=price_desc"
+           class="sort-btn-order {% if current_sort == 'price_desc' %}active-order{% endif %}">
+          High to Low
+        </a>
+      </div>
 
-      <!-- Price Range -->
-    <div class="sort-group-order">
-        <span class="sort-label-order">Price Range</span>
-        <p class="sort-btn-order active-order" disabled>$</p>
-        <button class="sort-btn-order sort-arrow-btn">↑↓</button>
-    </div>
-
-      <!-- Name -->
-    <div class="sort-group-order">
-        <span class="sort-label-order">Name</span>
-        <p class="sort-btn-order active-order" disabled>🛣</p>
-        <button class="sort-btn-order sort-arrow-btn">↑↓</button>
-    </div>
-
+      <!-- Street Name Sorting -->
+      <div class="sort-group-order">
+        <span class="sort-label-order">Street Name</span>
+        <a href="?{{ request.GET.urlencode }}&sort=street_asc"
+           class="sort-btn-order {% if current_sort == 'street_asc' %}active-order{% endif %}">
+          A to Z
+        </a>
+        <a href="?{{ request.GET.urlencode }}&sort=street_desc"
+           class="sort-btn-order {% if current_sort == 'street_desc' %}active-order{% endif %}">
+          Z to A
+        </a>
+      </div>
     </div>
 
     <div class="btn-action-container">
-      <button class="action-btn cancel" id="sort-cancel-btn" onclick="hidePopupWindows()">Cancel</button>
-      <button class="action-btn confirm" onclick="hidePopupWindows()">Confirm</button>
+      <a href="?{% if request.GET.urlencode %}{{ request.GET.urlencode|cut:'&sort='|cut:'sort=' }}{% endif %}"
+         class="action-btn cancel">
+        Reset
+      </a>
     </div>
   </div>
 </div>

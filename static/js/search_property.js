@@ -1,7 +1,12 @@
 // Handle popup visibility
-function showFilterPopup() {
+const showFilterPopup = () => {
     document.getElementById('filter-popup').style.display = 'flex';
 }
+const showOrderByPopup = () => {
+    document.getElementById('order-by-popup').style.display = 'flex';
+}
+
+
 
 const showError = (message) => {
     const errorContainer = document.getElementById('error-container');
@@ -57,7 +62,7 @@ document.querySelectorAll('.sort-arrow-btn').forEach(button => {
             directionBtn.textContent = currentSortDirection === 'asc' ? '↑' : '↓';
         }
 
-        sort(); // Call your sort function
+        sort();
     });
 });
 
