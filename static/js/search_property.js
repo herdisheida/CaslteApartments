@@ -3,7 +3,15 @@ function showFilterPopup() {
     document.getElementById('filter-popup').style.display = 'flex';
 }
 
-
+const showError = (message) => {
+    const errorContainer = document.getElementById('error-container');
+    errorContainer.innerHTML = `
+        <div class="alert alert-danger">
+            ${message}
+        </div>
+    `;
+    errorContainer.classList.remove('d-none');
+}
 
 
 
