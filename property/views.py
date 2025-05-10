@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 
-from property.models import Property, PropertyForm
+from property.models import Property
+from property.forms import PropertyForm, PropertyImageForm
 from django.db.models import Q
 
 from django.shortcuts import get_object_or_404, render
-from property.models import Property
+from property.models import Property, PropertyImages
 from user_profile.models import Seller
 
 
@@ -89,17 +90,37 @@ def get_seller_by_property_id(request, property_id):
     })
 
 
+    # TODO use thise þegar við ætlum að tengja curr user við þann sem er að búa til property
+# def create_property(request):
+#     if request.method == 'POST':
+#         form = PropertyForm(request.POST, request.FILES, user=request.user)
+#         if form.is_valid():
+#             property_save = form.save(commit=False)
+#             property_save.seller = request.user.sellerprofile
+#             property_save.save()
+#             return redirect('property-create-success')
+#     else:
+#         form = PropertyForm(user=request.user)
+#     return render(request, 'property/create/create_property.html', {'form': form})
 def create_property(request):
     if request.method == 'POST':
-        form = PropertyForm(request.POST, request.FILES, user=request.user)
+        form = PropertyForm(request.POST, request.FILES)
         if form.is_valid():
-            property_save = form.save(commit=False)
-            property_save.seller = request.user.sellerprofile
-            property_save.save()
+            new_property = form.save(commit=False)  # create unsaved property instance
+            # new_property.seller = request.user.sellerprofile  # add seller to property
+            new_property.save() # save to database
+
+            for image in request.FILES.getlist('images'):
+                PropertyImages.objects.create(
+                    property=new_property,
+                    image=image
+                )
             return redirect('property-create-success')
     else:
-        form = PropertyForm(user=request.user)
+        form = PropertyForm()
     return render(request, 'property/create/create_property.html', {'form': form})
+
+
 
 def property_create_success(request):
     return render(request, 'property/create/success.html')
@@ -107,4 +128,3 @@ def property_create_success(request):
 def seller_profile(request, seller_id):
     seller = get_object_or_404(seller_profile, id=seller_id)
     return render(request, 'profile/_seller_profile.html', {'seller': seller})
-

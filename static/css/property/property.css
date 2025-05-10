@@ -63,7 +63,7 @@
 #create-property-title {
     margin: 2rem 0 4rem; /* top right-left bottom */
 }
-#create-property-form {
+#create-property-container {
     margin: 0 11rem 0; /* top right-left bottom */
 }
 .add-image-container input {
