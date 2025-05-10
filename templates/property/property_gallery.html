@@ -18,26 +18,27 @@
         {% endfor %}
 
         <!-- Next and previous buttons -->
-        {% if property.gallery.count > 1 %}
+        {% if property.gallery.count > 0 %}
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <!-- Thumbnail images (on the bottom) -->
+            <div class="row">
+                <div class="column">
+                    <img class="demo cursor gallery-property-thumbnail" src="{{ property.preview_pic.url }}"
+                        onclick="currentSlide(1)"
+                        alt="Thumbnail for property preview">
+                </div>
+                {% for image in property.gallery.all %}
+                <div class="column">
+                    <img class="demo cursor gallery-property-thumbnail" src="{{ image.image.url }}"
+                        onclick="currentSlide({{ forloop.counter|add:1 }})"
+                        alt="Image {{ forloop.counter }}">
+                </div>
+                {% endfor %}
+            </div>
         {% endif %}
 
-        <!-- Thumbnail images (on the bottom) -->
-        <div class="row">
-            <div class="column">
-                <img class="demo cursor gallery-property-thumbnail" src="{{ property.preview_pic.url }}"
-                    onclick="currentSlide(1)"
-                    alt="Thumbnail for property preview">
-            </div>
-            {% for image in property.gallery.all %}
-            <div class="column">
-                <img class="demo cursor gallery-property-thumbnail" src="{{ image.image.url }}"
-                    onclick="currentSlide({{ forloop.counter|add:1 }})"
-                    alt="Image {{ forloop.counter }}">
-            </div>
-            {% endfor %}
-        </div>
 
 
     </div>
