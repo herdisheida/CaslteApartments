@@ -7,7 +7,7 @@ from django.db.models import Q
 
 from django.shortcuts import get_object_or_404, render
 from property.models import Property, PropertyImages
-from user_profile.models import Seller
+from user_profile.models import SellerProfile
 
 
 def index(request):

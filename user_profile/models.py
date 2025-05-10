@@ -3,7 +3,7 @@ from django.utils.text import slugify
 
 def profile_pic_path(instance, filename):
     """Generates upload-path based on users name and id"""
-    name = slugify(instance.name)
+    name = slugify(instance.UserProfile.name)
     return f'profile_pics/{name}/{filename}'
 
 
@@ -34,14 +34,7 @@ class SellerProfile(models.Model):
     logo = models.ImageField(upload_to=profile_pic_path)
 
     def __str__(self):
-        return self.user.name
+        return f"Seller Profile for {self.user.name}"
 
 from django.db import models
 
-class Seller(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    # possibly more fields like phone, profile_image, etc.
-
-    def __str__(self):
-        return self.name
