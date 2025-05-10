@@ -1,11 +1,14 @@
 from django import forms
 import datetime
+
+from django.core.exceptions import ValidationError
 from django.utils import timezone
 from property.models import Property, BuildingTypes, PropertyImages
 from user_profile.models import SellerProfile
 
 
 class PropertyImageForm(forms.ModelForm):
+
     class Meta:
         model = PropertyImages
         fields = '__all__'

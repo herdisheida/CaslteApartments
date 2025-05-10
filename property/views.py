@@ -116,6 +116,8 @@ def create_property(request):
                     image=image
                 )
             return redirect('property-create-success')
+        if not form.is_valid():
+            print(form.errors)
     else:
         form = PropertyForm()
     return render(request, 'property/create/create_property.html', {'form': form})

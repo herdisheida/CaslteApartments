@@ -132,3 +132,7 @@
     display: flex;
     align-items: center
 }
+
+#property-details-container {
+    width: 80%;
+}
