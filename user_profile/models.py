@@ -1,13 +1,17 @@
 from django.db import models
 from django.utils.text import slugify
 
+
 def profile_pic_path(instance, filename):
-    """Generates upload-path based on users name and id"""
-    name = slugify(instance.UserProfile.name)
-    return f'profile_pics/{name}/{filename}'
+    """
+    Generates upload paths for:
+    - UserProfile.image = SellerProfile.cover_img -> profile_pics/{user_id}/profile_img/{filename}
+    - SellerProfile.logo -> profile_pics/{user_id}/logo/{filename}
+    """
+    user_profile = instance if isinstance(instance, UserProfile) else instance.user
+    subfolder = "logo" if hasattr(instance, 'logo') else "profile_pic"
+    return f'profile_pics/user_{user_profile.id}/{subfolder}/{filename}'
 
-
-# Create your models here.
 class UserProfile(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -15,7 +19,7 @@ class UserProfile(models.Model):
     image = models.ImageField(upload_to=profile_pic_path)
 
     def __str__(self):
-        return f"{self.name} {self.image}"
+        return f"{self.name} ({self.pk})"
 
 class SellerType(models.TextChoices):
    INDIVIDUAL = 'Individual', 'Individual'
@@ -33,8 +37,8 @@ class SellerProfile(models.Model):
     bio = models.TextField(max_length=500)
     logo = models.ImageField(upload_to=profile_pic_path)
 
-    def __str__(self):
-        return f"Seller Profile for {self.user.name}"
 
-from django.db import models
+    def __str__(self):
+        return f"{self.user.name} ({self.pk})"
+
 
