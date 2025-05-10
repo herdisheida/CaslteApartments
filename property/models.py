@@ -10,7 +10,7 @@ def property_image_path(instance, filename):
     """Generates upload-path based on property address,
     for Property.preview_pic"""
     street = slugify(instance.street_name)
-    house = slugify(instance.house_nr)      # Convert "123A" to "123a"
+    house = slugify(instance.house_nr)      # convert "123A" to "123a"
     return f'property_images/{street}_{house}/preview/{filename}'
 
 def property_gallery_path(instance, filename):

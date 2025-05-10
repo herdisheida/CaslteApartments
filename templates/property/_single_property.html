@@ -1,8 +1,7 @@
 {% load static %}
 
 <div class="card">
-
-    <div class="card-img-top" style="height: 200px; background: url('{{ property.preview_pic.url }}') center/cover no-repeat;">
+    <div class="card-img-top" style="height: 300px; background: url('{{ property.preview_pic.url }}') center/cover no-repeat;">
         <span class="badge bg-dark text-white m-2">
             {% if not property.is_sold %}For Sale{% else %}Sold{% endif %}
         </span>
