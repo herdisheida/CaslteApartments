@@ -27,8 +27,10 @@
 }
 
 #seller-logo-img {
-  width: 20rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
   object-fit: cover;
-  margin-left: -3rem; /* put picture more in the center */
+
+  margin: 0.5rem 2rem 2rem 2rem; /* top right bottom left*/
+  border: black solid 2px;
 }
