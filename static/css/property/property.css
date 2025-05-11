@@ -67,37 +67,6 @@
 }
 
 
-
-/* Property search | filter | sort styling */
-.search-item {
-    background-color: #372549;
-    color: white;
-    border-radius: 0.4rem;
-    width: 7rem;
-    height: 2.5rem;
-    margin-left: 0.5rem;
-}
-
-.search-item:hover {
-    background-color: #5e3b8a;
-}
-.search-item:active {
-    background-color: #372549;
-}
-#search-bar {
-    border-radius: 0.4rem;
-    width: 40rem;
-    height: 2.5rem;
-    padding: 1rem;
-    margin-right: 0.5rem;
-}
-#search-container {
-    margin: 1rem 1rem 3rem 1rem;  /* top left bottom right */
-    display: flex;
-    justify-content: center;
-}
-
-
 /* SELLER info on property details page*/
 #seller-profile-pic-in-property {
     width: 5rem;
@@ -113,4 +82,42 @@
 
 #property-details-container {
     width: 80%;
+}
+
+
+
+/* The preview picture on each Property homepage */
+.property-card {
+    height: 100%;
+}
+
+.property-card-img-container {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.property-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.property-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1;
+}
+
+.property-card-body {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 200px); /* Subtract image height */
+    align-items: center;
+}
+
+.property-card-btn {
+    margin-top: auto;
 }

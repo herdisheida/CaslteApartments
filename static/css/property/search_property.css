@@ -1,3 +1,28 @@
+/* SEARCH CONTAINER (search bar, sort, filter) on homepage */
+.search-item { /* Buttons to begin Sorting and Filtering */
+    background-color: #372549;
+    color: white;
+    border-radius: 0.4rem;
+    width: 7rem;
+    height: 2.5rem;
+    margin-left: 0.5rem;
+}
+.search-item:hover {
+    background-color: #5e3b8a;
+}
+.search-item:active {
+    background-color: #372549;
+}
+#search-container {
+    margin: 1rem 1rem 3rem 1rem;  /* top left bottom right */
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
 /* Popup container */
 .popup-box {
     position: fixed;
@@ -204,3 +229,4 @@ select:focus {
 .search-btn:hover {
   background: #e9ecef;
 }
+
