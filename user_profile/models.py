@@ -10,7 +10,11 @@ def profile_pic_path(instance, filename):
     """
     user_profile = instance if isinstance(instance, UserProfile) else instance.user
     subfolder = "logo" if hasattr(instance, 'logo') else "profile_pic"
-    return f'profile_pics/user_{user_profile.id}/{subfolder}/{filename}'
+
+    name =  slugify(user_profile.name)
+    id =  slugify(user_profile.id)
+    return f'profile_pics/{name}_{id}/{subfolder}/{filename}'
+
 
 class UserProfile(models.Model):
     name = models.CharField(max_length=100)
@@ -34,7 +38,7 @@ class SellerProfile(models.Model):
     street_name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
-    bio = models.TextField(max_length=500)
+    bio = models.TextField(max_length=600)
     logo = models.ImageField(upload_to=profile_pic_path)
 
 

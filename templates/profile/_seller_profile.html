@@ -12,8 +12,8 @@
 
     <!-- Seller Info Section -->
     <div class="row align-items-start mb-5">
-        <!-- Profile Picture + Name/Email -->
-        <div class="col-md-4 text-center">
+        <!-- Profile Picture + Name/Email (left) -->
+        <div class="col-md-3 text-center">
             <img id="seller-profile-pic" src="{% if seller.user.image %}{{ seller.user.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}"
                  alt="Profile Picture" class="rounded-circle mb-3 border">
             <h5 class="fw-bold mb-0">
@@ -24,8 +24,8 @@
             <p class="text-muted">Individual</p>
         </div>
 
-        <!-- Text Info -->
-        <div class="col-md-8">
+        <!-- Text Info (middle) -->
+        <div class="col-md-6">
             <p><span class="fw-bold">Street Name:</span> {{ seller.street_name }}</p>
             <p><span class="fw-bold">City:</span> {{ seller.city }}</p>
             <p><span class="fw-bold">Postal Code:</span> {{ seller.postal_code }}</p>
@@ -34,8 +34,8 @@
             <p class="text-muted">{{ seller.bio}}</p>
         </div>
 
-        <!-- Seller Logo -->
-        <div class="col-md">
+        <!-- Seller Logo (right) -->
+        <div class="col-md-3 text-center">
             <img id="seller-logo-img" src="{% if seller.logo %}{{ seller.logo.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}"
                  alt="Seller logo">
         </div>

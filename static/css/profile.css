@@ -21,7 +21,14 @@
 
 /* on Seller profile page */
 #seller-profile-pic {
-  width: 150px;
-  height: 150px;
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
 }
 
+#seller-logo-img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+  margin-left: -3rem; /* put picture more in the center */
+}
