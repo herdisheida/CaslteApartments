@@ -57,28 +57,6 @@
     font-size: 13px;
 }
 
-
-
-/* create property styling */
-#create-property-title {
-    margin: 2rem 0 4rem; /* top right-left bottom */
-}
-#create-property-container {
-    margin: 0 11rem 0; /* top right-left bottom */
-}
-.add-image-container input {
-    margin: 0.6rem 0 1.5rem; /* top right-left bottom */
-}
-
-/* create property success msg */
-.success-message {
-    margin: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
 #link-to-seller-btn {
     background-color: #3b2e58;
     color: white;

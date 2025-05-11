@@ -5,13 +5,11 @@ let slides;
 const plusSlides = (n) => {
   showSlides(slideIndex += n);
 }
-
 // Thumbnail image controls
 const currentSlide = (n) => {
   showSlides(slideIndex = n);
 
 }
-
 
 const showSlides = (n) => {
   let i;
