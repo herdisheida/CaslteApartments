@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href={% static 'css/main.css' %} />
     <link rel="stylesheet" href={%  static 'css/property/property.css' %} />
+    <link rel="stylesheet" href={%  static 'css/property/property_card.css' %} />
     <link rel="stylesheet" href="{% static 'css/property/search_property.css' %}">
     <link rel="stylesheet" href={%  static 'css/property/property_gallery.css' %} />
     <link rel="stylesheet" href={%  static 'css/property/create_property.css' %} />
@@ -23,8 +24,7 @@
 <body>
 
     {% include '_navigation.html' %}
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
     {% include '_footer.html' %}
 
     <script src="{% static 'js/property_gallery.js' %}"></script>

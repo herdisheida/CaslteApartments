@@ -44,16 +44,16 @@
     </div>
 
 
-    <!-- Seller Properties -->
+    <!-- Sellers Properties -->
     <h3 class="mb-4">Properties Listed</h3>
-    
+
     <div class="row">
         {% for property in properties %}
         <div class="col-md-6 col-lg-4 mb-4">
             <div class="card property-card shadow-sm">
                 <div class="property-card-img-container">
-                    <img src="{{ property.preview_pic.url }}" 
-                         alt="{{ property.street_name }} {{ property.house_nr }}"
+                    <img src="{{ property.preview_pic.url }}"
+                         alt="Preview picture of {{ property.street_name }} {{ property.house_nr }}"
                          class="property-card-img">
                     <span class="badge property-badge bg-dark text-white">
                         {% if not property.is_sold %}For Sale{% else %}Sold{% endif %}
@@ -63,7 +63,7 @@
                     <h5 class="mb-1">{{ property.street_name }} {{ property.house_nr }}</h5>
                     <small class="text-muted mb-2">{{ property.city }}</small>
                     <p class="text-primary fw-bold">${{ property.price }}</p>
-                    <a href="{% url 'property-by-id' id=property.id %}" 
+                    <a href="{% url 'property-by-id' id=property.id %}"
                        class="btn btn-outline-primary btn-sm property-card-btn">
                         See More
                     </a>
