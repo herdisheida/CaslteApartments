@@ -26,9 +26,11 @@
 
         <!-- Text Info (middle) -->
         <div class="col-md-6">
-            <p><span class="fw-bold">Street Name:</span> {{ seller.street_name }}</p>
-            <p><span class="fw-bold">City:</span> {{ seller.city }}</p>
-            <p><span class="fw-bold">Postal Code:</span> {{ seller.postal_code }}</p>
+            {% if seller.type == 'Real Estate Agency' %}
+                <p><span class="fw-bold">Street Name:</span> {{ seller.street_name }}</p>
+                <p><span class="fw-bold">City:</span> {{ seller.city }}</p>
+                <p><span class="fw-bold">Postal Code:</span> {{ seller.postal_code }}</p>
+            {% endif %}
 
             <h5 class="mt-4 fw-bold">Bio</h5>
             <p class="text-muted">{{ seller.bio}}</p>
