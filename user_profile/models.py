@@ -1,3 +1,5 @@
+import os.path
+
 from django.db import models
 from django.utils.text import slugify
 
@@ -11,16 +13,15 @@ def profile_pic_path(instance, filename):
     user_profile = instance if isinstance(instance, UserProfile) else instance.user
     subfolder = "logo" if hasattr(instance, 'logo') else "profile_pic"
 
-    name =  slugify(user_profile.name)
-    id =  slugify(user_profile.id)
-    return f'profile_pics/{name}_{id}/{subfolder}/{filename}'
-
+    user_name =  slugify(user_profile.name)
+    user_id =  slugify(user_profile.id)
+    return f'profile_pics/{user_name}_{user_id}/{subfolder}/{filename}'
 
 class UserProfile(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    image = models.ImageField(upload_to=profile_pic_path)
+    image = models.ImageField(default="../static/images/default_profile_pic.png", upload_to=profile_pic_path)
 
     def __str__(self):
         return f"{self.name} ({self.pk})"
@@ -39,8 +40,7 @@ class SellerProfile(models.Model):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
     bio = models.TextField(max_length=600)
-    logo = models.ImageField(upload_to=profile_pic_path)
-
+    logo = models.ImageField(default="../static/images/default_logo.png", upload_to=profile_pic_path)
 
     def __str__(self):
         return f"{self.user.name} ({self.pk})"
