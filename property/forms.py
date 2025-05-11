@@ -28,13 +28,13 @@ class PropertyForm(forms.ModelForm):
     #         self.fields['seller'].widget.attrs['disabled'] = True
 
 
-    listing_date = forms.DateField(
-        widget=forms.DateInput(attrs={'readonly': True}),
-        initial=timezone.now().date()
-    )
+    # listing_date = forms.DateField(
+    #     widget=forms.DateInput(attrs={'readonly': True}),
+    #     initial=timezone.now().date()
+    # )
     class Meta:
         model = Property
-        exclude = ['is_sold']
+        exclude = ['is_sold', 'listing_date']
         # exclude = ['is_sold', 'seller'] # TODO add the seller later
         fields = '__all__'
         widgets = {

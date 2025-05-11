@@ -33,6 +33,7 @@ class Property(models.Model):
    house_nr = models.CharField(max_length=100)
    city = models.CharField(max_length=100)
    postal_code = models.CharField(max_length=100)
+   seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    building_type = models.CharField(
        max_length=9,
        choices=BuildingTypes.choices,
@@ -55,9 +56,8 @@ class Property(models.Model):
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
-   seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
-   is_sold = models.BooleanField(default=False)
    preview_pic = models.ImageField(upload_to=property_image_path)
+   is_sold = models.BooleanField(default=False)
    listing_date = models.DateField(default=timezone.now, editable=False)
 
 
