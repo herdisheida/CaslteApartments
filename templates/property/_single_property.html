@@ -29,7 +29,7 @@
 <div class="card">
     <div class="detail-card-img-container">
         <img src="{{ property.preview_pic.url }}"
-             alt="{{ property.street_name }} {{ property.house_nr }}"
+             alt="Preview picture of {{ property.street_name }} {{ property.house_nr }}"
              class="detail-card-img">
         <span class="badge property-badge bg-dark text-white">
             {% if not property.is_sold %}For Sale{% else %}Sold{% endif %}
