@@ -84,7 +84,7 @@ def get_seller_by_property_id(request, property_id):
     seller = property_obj.seller
     properties = Property.objects.filter(seller=seller)
 
-    return render(request, 'profile/_seller_profile.html', {
+    return render(request, 'profile/seller_profile.html', {
         'seller': seller,
         'properties': properties
     })
@@ -129,4 +129,4 @@ def property_create_success(request):
 
 def seller_profile(request, seller_id):
     seller = get_object_or_404(seller_profile, id=seller_id)
-    return render(request, 'profile/_seller_profile.html', {'seller': seller})
+    return render(request, 'profile/seller_profile.html', {'seller': seller})

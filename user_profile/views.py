@@ -6,7 +6,7 @@ from .models import UserProfile
 
 # Create your views here.
 def index(request):
-    return render(request, 'profile/profiles.html', {
+    return render(request, 'profile/profile.html', {
         'profiles': UserProfile.objects.all(),
     })
 
