@@ -1,38 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="seller-container">
-  <form class="seller-form">
-    <h2 class="form-title">Seller Info</h2>
+    <div class="seller-container">
+        <form class="seller-form">
+            <h2 class="form-title">Seller Info</h2>
 
-    <div class="form-section">
-      <div class="address-group">
-        <label for="street">Address:</label>
-        <input type="text" id="street" name="street" placeholder="street name" />
-        <input type="text" id="city" name="city" placeholder="city" />
-        <input type="text" id="postal-code" name="postal_code" placeholder="postal code" />
-      </div>
+            <div class="form-section">
+                <div class="address-group">
+                    <label for="street">Address:</label>
+                    <input type="text" id="street" name="street" placeholder="street name" />
+                    <input type="text" id="city" name="city" placeholder="city" />
+                    <input type="text" id="postal-code" name="postal_code" placeholder="postal code" />
+                </div>
 
-      <div class="bio-group">
-        <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" placeholder="write your bio here..."></textarea>
-      </div>
+                <div class="bio-group">
+                    <label for="bio">Bio:</label>
+                    <textarea id="bio" name="bio" placeholder="write your bio here..."></textarea>
+                </div>
 
-      <div class="type-group">
-        <label for="type" class="sr-only">Type</label>
-        <select id="type" name="type">
-          <option value="">Type</option>
-          <option value="agency">Agency</option>
-          <option value="individual">Individual</option>
-        </select>
-      </div>
+                <div class="type-group">
+                    <label for="type">Type: </label>
+                    <select id="type" name="type">
+                        <option value="agency">Agency</option>
+                        <option value="individual">Individual</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn cancel">cancel</button>
+                <button type="submit" class="btn confirm">become seller</button>
+            </div>
+        </form>
     </div>
-
-    <div class="form-actions">
-      <button type="button" class="btn cancel">cancel</button>
-      <button type="submit" class="btn confirm">become seller</button>
-    </div>
-  </form>
-</div>
-
 {% endblock %}
