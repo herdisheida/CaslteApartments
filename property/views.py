@@ -8,6 +8,8 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
 from property.models import Property, PropertyImages
 from user_profile.models import SellerProfile
+from .forms import OfferForm
+from .models import PropertyOffer
 
 
 def index(request):
@@ -133,3 +135,21 @@ def seller_profile(request, seller_id):
 
 def submit_offer(request):
     return render(request, 'offer/submit_offer.html')
+
+def submit_offer_prop(request, property_id):
+    property_obj = get_object_or_404(Property, id=property_id)
+
+    if request.method == 'POST':
+        form = OfferForm(request.POST)
+        if form.is_valid():
+            offer = form.save(commit=False)
+            offer.property = property_obj
+            offer.save()
+            return redirect('payment-index')  # or any success page
+    else:
+        form = OfferForm()
+
+    return render(request, 'offer/submit_offer.html', {
+        'form': form,
+        'property': property_obj
+    })

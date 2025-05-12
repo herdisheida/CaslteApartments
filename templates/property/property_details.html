@@ -33,7 +33,7 @@
                 <img id="seller-profile-pic-in-property" src="{{ property.seller.user.image.url }}" alt="seller-profile-thumbnail">
             </div>
                 <a href="{% url 'seller-by-property' property.id %}" class="custom-offer-button">Seller: {{ property.seller.user.name }}</a>
-                <a href="{% url 'submit-offer' %}" class="custom-offer-button">Submit an Offer</a>
+                <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Submit an Offer</a>
 
         </div>
     

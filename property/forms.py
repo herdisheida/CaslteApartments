@@ -1,5 +1,6 @@
 from django import forms
 import datetime
+from .models import PropertyOffer
 
 from django.core.exceptions import ValidationError
 from django.utils import timezone
@@ -83,3 +84,7 @@ class PropertyForm(forms.ModelForm):
         self.fields['building_type'].initial = BuildingTypes.AREA
 
 
+class OfferForm(forms.ModelForm):
+    class Meta:
+        model = PropertyOffer
+        fields = ['price', 'start_date', 'expiration_date']
