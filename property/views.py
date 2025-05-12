@@ -47,8 +47,8 @@ def index(request):
         properties = properties.filter(status_filter)
 
     # Get unique values for filter dropdowns
-    unique_postal_codes = Property.objects.values_list('postal_code', flat=True).distinct()
-    unique_types = Property.objects.values_list('building_type', flat=True).distinct()
+    unique_postal_codes = Property.objects.values_list('postal_code', flat=True).distinct().order_by('postal_code')
+    unique_types = Property.objects.values_list('building_type', flat=True).distinct().order_by('building_type')
 
     # SORTING
     sort = request.GET.get('sort')
