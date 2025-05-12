@@ -2,19 +2,33 @@
 {% load static %}
 
 {% block content %}
-    <div class="profile-header">
-      <button class="profile-right">Edit Profile</button>
-    </div>
-    
-    <div class="profile-section">
-        <form method="post" action="{% url 'profile' %}">
-            {% csrf_token %}
-            {{ form }}
+<div class="d-flex justify-content-center">
+  <div class="profile-container">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
 
-{#            <img id="profile-pic-big" src="{% if user.image %}{{ user.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}" alt="Profile Picture on profile page" />#}
-{#            <h2>{{ profiles.name }} Sindri</h2>#}
-{#            <h3>{{ profiles.email }} hetja36@gmail.com</h3>#}
-        </form>
-    </div>
+      <!-- Profile Picture -->
+      <img src="{% if profile.image %}{{ profile.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}"
+           alt="Profile Picture"
+           class="profile-pic">
 
+      <!-- Display name and email above form -->
+      <div class="profile-name">{{ profile.name }}</div>
+      <div class="profile-email">{{ profile.user.email }}</div>
+
+      <!-- Form fields -->
+      {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+            <div class="text-danger small">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="submit-btn">Save Changes</button>
+    </form>
+  </div>
+</div>
 {% endblock %}
