@@ -7,17 +7,13 @@
 
     <form class="auth-form" method="post" action="{% url 'register' %}">
         {% csrf_token %}
-    
+
         <!-- Username Field -->
         <div class="form-group mb-3">
-            <label class="fw-bold">Username:</label>
-            <input type="text"
-                   name="username"
-                   class="form-control {% if form.username.errors %}is-invalid{% endif %}"
-                   value="{{ form.username.value|default:'' }}"
-                   required>
+            <label class="fw-bold" for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
             {% if form.username.errors %}
-                <div class="invalid-feedback">
+                <div class="invalid-feedback d-block">
                     {{ form.username.errors.0 }}
                 </div>
             {% endif %}
@@ -25,13 +21,10 @@
 
         <!-- Password Field -->
         <div class="form-group mb-3">
-            <label class="fw-bold">Password:</label>
-            <input type="password"
-                   name="password1"
-                   class="form-control {% if form.password1.errors %}is-invalid{% endif %}"
-                   required>
+            <label class="fw-bold" for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
             {% if form.password1.errors %}
-                <div class="invalid-feedback">
+                <div class="invalid-feedback d-block">
                     {{ form.password1.errors.0 }}
                 </div>
             {% endif %}
@@ -39,13 +32,10 @@
 
         <!-- Password Confirmation Field -->
         <div class="form-group mb-3">
-            <label class="fw-bold">Password Confirmation:</label>
-            <input type="password"
-                   name="password2"
-                   class="form-control {% if form.password2.errors %}is-invalid{% endif %}"
-                   required>
+            <label class="fw-bold" for="{{ form.password2.id_for_label }}">Password Confirmation:</label>
+            {{ form.password2 }}
             {% if form.password2.errors %}
-                <div class="invalid-feedback">
+                <div class="invalid-feedback d-block">
                     {{ form.password2.errors.0 }}
                 </div>
             {% endif %}
@@ -53,7 +43,7 @@
 
         <input type="submit" class="btn btn-primary" value="register"/>
 
-    
+
         <!-- LOGIN BUTTON-->
         <p>
             <strong>Have an account?</strong>
