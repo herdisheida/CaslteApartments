@@ -130,3 +130,6 @@ def property_create_success(request):
 def seller_profile(request, seller_id):
     seller = get_object_or_404(seller_profile, id=seller_id)
     return render(request, 'profile/seller_profile.html', {'seller': seller})
+
+def submit_offer(request):
+    return render(request, 'offer/submit_offer.html')

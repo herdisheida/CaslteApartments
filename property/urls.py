@@ -15,7 +15,5 @@ urlpatterns = [
 
     path('create/success/', views.property_create_success, name='property-create-success'), # success window
 
-
-    # submit offer (by user)
-    # path('<int:property_id>submit', views.submit_offer, name='offer-submit'),
+    path('submit-offer/', views.submit_offer, name='submit-offer'),
 ]
