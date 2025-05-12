@@ -11,19 +11,19 @@
 
   <div class="form-grid">
     <div class="form-field">
-      <input type="text" placeholder="Street Name" name="street_name" />
+      <input id="street-name" type="text" placeholder="Street Name" name="street_name" />
     </div>
     <div class="form-field">
-        <input type="text" placeholder="City" name="city" />
+        <input id="city" type="text" placeholder="City" name="city" />
     </div>
     <div class="form-field">
-      <input type="text" placeholder="Postal code" name="postal_code" />
+      <input id="postal-code" type="text" placeholder="Postal code" name="postal_code" />
     </div>
     <div class="form-field">
-      <input type="text" placeholder="National id" name="national_id" />
+      <input id="national-id" type="text" placeholder="National id" name="national_id" />
     </div>
     <div class="form-field" style="grid-column: span 2;">
-      <select name="country">
+      <select id="select-country" name="country">
         <option value="">Select a country</option>
         <option value="United States">United States</option>
         <option value="Afghanistan">Afghanistan</option>
@@ -270,78 +270,63 @@
   </div>
 
 
-<!-- Payment Step Section -->
-<div class="payment-text">Payment Step</div>
 
-<div class="form-grid">
-  <div class="form-field" style="grid-column: span 2;">
-    <select name="payment_method" id="payment-method">
-      <option value="">Select payment method</option>
-      <option value="card">Card</option>
-      <option value="bank">Bank transfer</option>
-      <option value="mortgage">Mortgage</option>
-    </select>
-  </div>
+    <!-- Payment Step Section -->
+    <div class="payment-text">Payment Step</div>
 
-  <!-- Card Payment Fields -->
-  <div id="card-fields" class="form-field" style="display: none; grid-column: span 2;">
-    <input type="text" name="card_number" maxlength="19" placeholder="Card number"> <br> <br>
-    <input type="text" name="name-on-card" placeholder="Name on card">
+    <div class="form-grid">
+      <div class="form-field" style="grid-column: span 2;">
+        <select name="payment_method" id="payment-method">
+          <option value="">Select payment method</option>
+          <option value="card">Card</option>
+          <option value="bank">Bank transfer</option>
+          <option value="mortgage">Mortgage</option>
+        </select>
+      </div>
 
-    <!-- Expiration + CVV Row -->
-    <div class="form-row">
-      <div class="form-field">
-        <label>Expiration Date</label>
-        <div class="expiry-wrapper">
-          <input type="text" placeholder="MM" maxlength="2">
-          <span class="slash">/</span>
-          <input type="text" placeholder="YY" maxlength="2">
+      <!-- Card Payment Fields -->
+      <div id="card-fields" class="form-field" style="display: none; grid-column: span 2;">
+        <input id="card-name" type="text" name="card_name" placeholder="Name on card"> <br><br>
+        <input id="card-number" type="text" name="card_number" maxlength="19" placeholder="Card number">
+
+        <div class="form-row">
+          <div class="form-field">
+            <label>Expiration Date</label>
+            <div class="expiry-wrapper">
+              <input id="card-month" type="text" placeholder="MM" maxlength="2">
+              <span class="slash">/</span>
+              <input id="card-year" type="text" placeholder="YY" maxlength="4">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>CVV</label>
+            <input id="card-cvv" type="text" name="cvv" placeholder="CVV" maxlength="4">
+          </div>
         </div>
       </div>
 
-      <div class="form-field">
-        <label>CVV</label>
-        <input type="text" name="cvv" placeholder="CVV" maxlength="4">
+      <!-- Bank Transfer Fields -->
+      <div id="bank-fields" class="form-field" style="display: none; grid-column: span 2;">
+        <input id="bank-number" type="text" placeholder="Bank number"> <br><br>
+        <input id="bank-reference-number" type="text" placeholder="Loan Reference Number">
+      </div>
+
+      <!-- Mortgage Fields -->
+      <div id="mortgage-fields" class="form-field" style="display: none; grid-column: span 2;">
+        <input id="mortgage-bank-number" type="text" placeholder="Bank number"> <br><br>
+        <input id="mortgage-loan-reference-number" type="text" placeholder="Loan Reference Number">
       </div>
     </div>
-  </div>
 
-  <!-- Bank Transfer Fields -->
-  <div id="bank-fields" class="form-field" style="display: none; grid-column: span 2;">
-        <input type="text" placeholder="Bank number"> <br> <br>
-        <input type="text" placeholder="Loan Reference Number">
-  </div>
-
-  <!-- Mortgage Fields -->
-    <div id="mortgage-fields" class="form-field" style="display: none; grid-column: span 2;">
-        <input type="text" placeholder="Bank number"> <br> <br>
-        <input type="text" placeholder="Loan Reference Number">
+    <!-- Submit Button -->
+    <div class="form-field">
+      <button id="pay-button" type="submit" disabled>Continue</button>
     </div>
+  </div>
+</form>
 
-    </div> <!-- ✅ This closes the main form-grid -->
-</div>
-
-
-<!-- JavaScript -->
-<script>
-  const methodSelect = document.getElementById("payment-method");
-  const card = document.getElementById("card-fields");
-  const bank = document.getElementById("bank-fields");
-  const mortgage = document.getElementById("mortgage-fields");
-
-  methodSelect.addEventListener("change", function () {
-    card.style.display = "none";
-    bank.style.display = "none";
-    mortgage.style.display = "none";
-
-    if (this.value === "card") {
-      card.style.display = "block";
-    } else if (this.value === "bank") {
-      bank.style.display = "block";
-    } else if (this.value === "mortgage") {
-      mortgage.style.display = "block";
-    }
-  });
-</script>
+{% load static %}
+<script src="{% static 'js/payment.js' %}"></script>
 
 {% endblock %}
