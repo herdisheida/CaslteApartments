@@ -1,5 +1,6 @@
 import os.path
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
 
@@ -18,13 +19,12 @@ def profile_pic_path(instance, filename):
     return f'profile_pics/{user_name}_{user_id}/{subfolder}/{filename}'
 
 class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    email = models.EmailField()
-    password = models.CharField(max_length=100)
     image = models.ImageField(default="../static/images/default_profile_pic.png", upload_to=profile_pic_path)
 
     def __str__(self):
-        return f"{self.name} ({self.pk})"
+        return f"{self.name} ({self.pk}) {self.user}"
 
 class SellerType(models.TextChoices):
    INDIVIDUAL = 'Individual', 'Individual'
