@@ -2,9 +2,11 @@
 
 {% block content %}
     <div class="seller-container">
-        <form class="seller-form">
-            <h2 class="form-title">Seller Info</h2>
+        <span class="d-flex justify-content-center text-center text-secondary">(You don't have a seller profile,<br>become a seller before creating a property)</span><br>
+        <h2 class="form-title">Seller Info</h2>
 
+        <form class="seller-form">
+            
             <div class="form-section">
                 <div class="address-group">
                     <label for="street">Address:</label>
@@ -21,14 +23,16 @@
                 <div class="type-group">
                     <label for="type">Type: </label>
                     <select id="type" name="type">
-                        <option value="agency">Agency</option>
-                        <option value="individual">Individual</option>
+                        <option value="Real Estate Agency">Agency</option>
+                        <option value="Individual">Individual</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-actions">
-                <button type="button" class="btn cancel">cancel</button>
+                <a href="{% url 'property-index' %}">
+                    <button type="button" class="btn cancel">cancel</button>
+                </a>
                 <button type="submit" class="btn confirm">become seller</button>
             </div>
         </form>
