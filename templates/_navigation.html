@@ -32,7 +32,9 @@
 
             <!-- Profile picture -->
             {% if user.is_authenticated %}
-            <div class="profile-pic-in-navbar" style="background-image: url({{ user.userprofile.image.url }})"></div>
+            <a href="{% url 'profile' %}">
+                <div class="profile-pic-in-navbar" style="background-image: url({{ user.userprofile.image.url }})"></div>
+            </a>
             {% endif %}
 
 
