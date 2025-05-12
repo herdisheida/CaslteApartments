@@ -3,9 +3,9 @@
 {% block content %}
 
 <div class="auth-container" id="signup-container">
-    <h2>Sign up</h2>
 
     <form class="auth-form" method="post" action="{% url 'register' %}">
+        <h2>Sign up</h2>
         {% csrf_token %}
 
         <!-- Username Field -->
@@ -50,7 +50,7 @@
             <a href="{% url 'login' %}" class="text-primary fw-bold">Login</a>
         </p>
     </form>
-    <img class="background-pic" src="{% static 'images/startup_background.jpg' %}" alt="blurred houses">
+    <img class="background-pic" src="{% static 'images/startup_background.jpg' %}" alt="blurred houses as background">
 </div>
 
 {% endblock %}
