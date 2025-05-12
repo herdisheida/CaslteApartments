@@ -32,11 +32,10 @@
             </div>
 
             <!-- Profile picture -->
-                <a href="{% url 'profile' %}">
-                    <div class="profile-pic-in-navbar" style="background-image: url({{ user.userprofile.image.url }})"></div>
-                </a>
+            <a href="{% url 'profile' %}">
+                <div class="profile-pic-in-navbar" style="background-image: {% if user.userprofile.image %}url({{ user.userprofile.image.url }}){% else %}url({% static 'images/default_profile_pic.png' %}){% endif %}"></div>
+            </a>
         </div>
     </div>
 </nav>
-
 {% endif %}

@@ -49,10 +49,9 @@
     align-items: center;
 }
 .profile-pic-in-profile {
-    height: 25rem;
-    width: 25rem;
+    height: 28rem;
+    width: 28rem;
     border-radius: 50%;
-    border: #372549 solid 3px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
