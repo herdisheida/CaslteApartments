@@ -1,3 +1,28 @@
+/* SEARCH CONTAINER (search bar, sort, filter) on homepage */
+.search-item { /* Buttons to begin Sorting and Filtering */
+    background-color: #372549;
+    color: white;
+    border-radius: 0.4rem;
+    width: 7rem;
+    height: 2.5rem;
+    margin-left: 0.5rem;
+}
+.search-item:hover {
+    background-color: #5e3b8a;
+}
+.search-item:active {
+    background-color: #372549;
+}
+#search-container {
+    margin: 1rem 1rem 3rem 1rem;  /* top left bottom right */
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
 /* Popup container */
 .popup-box {
     position: fixed;
@@ -67,34 +92,41 @@
   align-items: center;
 }
 
-.sort-label-order {
-  margin-bottom: 0.625rem;
-  font-size: 1rem;
-  color: #111;
-}
-
-.sort-buttons-order {
+.sort-arrows {
   display: flex;
-  border-radius: 0.25rem;
-  overflow: hidden;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  gap: 4px;
+  margin-left: 10px;
 }
 
-.sort-btn-order {
-  padding: 0.75rem 1.125rem;
-  font-size: 1.375rem;
-  border: none;
-  background: #cfcfcf;
-  color: black;
-  cursor: pointer;
+.arrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+  transition: all 0.2s;
 }
 
-.sort-btn.active-order {
-  background: #3b2e58;
+.arrow-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.active-arrow {
+  background-color: #007bff;
   color: white;
+  border-color: #007bff;
 }
 
-
+.sort-label-order {
+  min-width: 60px;
+  font-weight: 500;
+  font-size: 14px;
+}
 
 
 
@@ -171,4 +203,30 @@ select:focus {
     color: #444;
 }
 
+
+/* SEARCH BAR */
+.search-container {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+}
+
+.search-btn {
+  background: #f8f9fa;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #e9ecef;
+}
 

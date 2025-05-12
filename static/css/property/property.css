@@ -53,60 +53,8 @@
 #see-more-btn:hover, .btn-sm:hover {
     opacity: 0.5;
 }
-.card-body a {
+.card-body a { /* "See more" Text */
     font-size: 13px;
-}
-
-
-
-/* create property styling */
-#create-property-title {
-    margin: 2rem 0 4rem; /* top right-left bottom */
-}
-#create-property-form {
-    margin: 0 11rem 0; /* top right-left bottom */
-}
-.add-image-container input {
-    margin: 0.6rem 0 1.5rem; /* top right-left bottom */
-}
-
-/* create property success msg */
-.success-message {
-    margin: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-
-/* Property search | filter | sort styling */
-.search-item {
-    background-color: #372549;
-    color: white;
-    border-radius: 0.4rem;
-    width: 7rem;
-    height: 2.5rem;
-    margin-left: 0.5rem;
-}
-
-.search-item:hover {
-    background-color: #5e3b8a;
-}
-.search-item:active {
-    background-color: #372549;
-}
-#search-bar {
-    border-radius: 0.4rem;
-    width: 40rem;
-    height: 2.5rem;
-    padding: 1rem;
-    margin-right: 0.5rem;
-}
-#search-container {
-    margin: 1rem 1rem 3rem 1rem;  /* top left bottom right */
-    display: flex;
-    justify-content: center;
 }
 
 #link-to-seller-btn {
@@ -118,3 +66,20 @@
     background-color: #5e3b8a;
 }
 
+
+/* SELLER info on property details page*/
+#seller-profile-pic-in-property {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+.d-flex {
+    display: flex;
+    align-items: center
+}
+
+#property-details-container {
+    width: 80%;
+}

@@ -1,12 +1,14 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    # http://localhost:8000 (root)
-    path('', views.index, name='authentication-index'),
+    path('register', views.register, name='register'),
 
-    # http://localhost:8000/id
-    path('<int:id>', views.get_authentication_by_id, name='authentication-by-id'),
+    path('login', LoginView.as_view(template_name='authentication/login.html'), name='login'),
+    path('logout', LogoutView.as_view(), name='logout'),
+
+    path('profile', views.profile, name='profile'),
 
     path('seller_signup/', views.seller_index, name='seller-signup'),
 

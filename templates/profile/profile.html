@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="profile-header">
+      <button class="profile-right">Edit Profile</button>
+    </div>
+    
+    <div class="profile-section">
+      <a href="{% url 'profile' %}">
+        <img id="profile-pic-big" src="{% static 'images/default_profile_pic.png' %}" alt="Profile Picture" />
+      </a>
+      <h2>{{ profiles.name }} Sindri</h2>
+      <h3>{{ profiles.email }} hetja36@gmail.com</h3>
+    </div>
+{% endblock %}

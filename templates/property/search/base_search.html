@@ -1,0 +1,8 @@
+<div id="search-container">
+    {% include 'property/search/search_bar.html' %}
+    <button type="button" class="search-item" onclick="showOrderByPopup()">order by</button>
+    <button type="button" class="search-item" onclick="showFilterPopup()">filters</button>
+</div>
+
+{% include 'property/search/filter_popup.html' %}
+{% include 'property/search/order_by.html' %}

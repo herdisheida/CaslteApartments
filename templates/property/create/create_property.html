@@ -1,9 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-form">
+    <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-container">
         {% csrf_token %}
-        {{ form.as_p }}
+
+{#        <div class="form-group">#}
+{#            {{ form.year_built.label_tag }}#}
+{#            {{ form.year_built }}#}
+{#            {% if form.year_built.errors %}#}
+{#                <div class="errorlist">#}
+{#                    {% for error in form.year_built.errors %}#}
+{#                        <span class="text-danger">{{ error }}</span>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+
+
+
+    <!-- Main property fields -->
+    {{ form.as_p }}
+
+    <!-- Gallery (Property Images) -->
+        <div class="gallery-upload-container mt-5">
+            <h5>Property Image Gallery</h5>
+            <div class="image-upload">
+                <label class="file-upload-label">
+                    <span>Select images (Maximum 10)</span>
+                    <input type="file" name="images" multiple accept="image/*" id="image-upload">
+                </label>
+                <div id="image-preview" class="preview-container"></div><br>
+            </div>
+        </div>
+
 
         {# TODO: sorry júlia, i know this is sad, en ég hef enga huhmynd hvernig á að tengja fancy stuffið þitt #}
 {#        <h2 id="create-property-title">Create Property</h2>#}

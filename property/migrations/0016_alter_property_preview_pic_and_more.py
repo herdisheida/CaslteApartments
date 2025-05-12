@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='propertyimages',
             name='image',
-            field=models.ImageField(upload_to=property.models.property_images_path),
+            field=models.ImageField(upload_to=property.models.property_gallery_path),
         ),
         migrations.AlterField(
             model_name='propertyimages',

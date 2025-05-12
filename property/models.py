@@ -1,24 +1,24 @@
-
 from django.core.exceptions import ValidationError
 from django.db import models
-from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator, FileExtensionValidator, validate_image_file_extension
-import datetime
-
+from django.utils import timezone
 from user_profile.models import SellerProfile
 from django.utils.text import slugify
 
-def property_image_path(instance, filename):
-    """Generates upload-path based on property address"""
-    street = slugify(instance.street_name)
-    house = slugify(instance.house_nr)      # Convert "123A" to "123a"
-    return f'property_images/{street}_{house}/{filename}'
 
-def property_images_path(instance, filename):
-    """Matches the Property model's folder structure"""
+def property_image_path(instance, filename):
+    """Generates upload-path based on property address,
+    for Property.preview_pic"""
+    street = slugify(instance.street_name)
+    house = slugify(instance.house_nr)      # convert "123A" to "123a"
+    return f'property_images/{street}_{house}/preview/{filename}'
+
+def property_gallery_path(instance, filename):
+    """Matches a specific Property model's upload-path,
+    for PropertyImages.image"""
     street = slugify(instance.property.street_name)
     house = slugify(instance.property.house_nr)
-    return f'property_images/{street}_{house}/{filename}'
+    return f'property_images/{street}_{house}/gallery/{filename}'
 
 
 class BuildingTypes(models.TextChoices):
@@ -28,12 +28,12 @@ class BuildingTypes(models.TextChoices):
    TOWNHOUSE = 'TOWNHOUSE', 'Townhouse'
    AREA = 'AREA', 'Area'
 
-# Create your models here.
 class Property(models.Model):
    street_name = models.CharField(max_length=100)
    house_nr = models.CharField(max_length=100)
    city = models.CharField(max_length=100)
    postal_code = models.CharField(max_length=100)
+   seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    building_type = models.CharField(
        max_length=9,
        choices=BuildingTypes.choices,
@@ -43,23 +43,22 @@ class Property(models.Model):
    price = models.DecimalField(
        max_digits=12,
        decimal_places=2,
-       validators=[MinValueValidator(0)]
+       validators=[MinValueValidator(0, message="Price must be positive")]
    )
    description = models.TextField()
    year_built = models.IntegerField(
        validators=[
-           MinValueValidator(1800),
-           # MaxValueValidator(datetime.now().year)
+           MinValueValidator(1800, message="Year built cannot be before 1800"),
+           MaxValueValidator(timezone.now().year, message="Year built cannot be in the future")
        ]
    )
    size = models.DecimalField(max_digits=10, decimal_places=2)
    bedrooms = models.IntegerField()
    bathrooms = models.IntegerField()
    toilets = models.IntegerField()
-   seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
-   is_sold = models.BooleanField(default=False)
-
    preview_pic = models.ImageField(upload_to=property_image_path)
+   is_sold = models.BooleanField(default=False)
+   listing_date = models.DateField(default=timezone.now, editable=False)
 
 
    def __str__(self):
@@ -67,44 +66,8 @@ class Property(models.Model):
 
 
 class PropertyImages(models.Model):
-    property = models.ForeignKey(
-        Property, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to=property_images_path)
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='gallery')
+    image = models.ImageField(upload_to=property_gallery_path)
 
     def __str__(self):
-        return f"{self.property.__str__()}"
-
-class PropertyForm(forms.ModelForm):
-    class Meta:
-        model = Property
-        fields = '__all__'  # Or specify fields explicitly
-        widgets = {
-            'building_type': forms.Select(choices=BuildingTypes.choices),
-            'description': forms.Textarea(attrs={
-                'placeholder': 'Write your description here...',
-                'rows': 4
-            }),
-            'price': forms.NumberInput(attrs={
-                'min': 0,
-                'placeholder': '0.00'
-            }),
-            'year_built': forms.NumberInput(attrs={
-                'min': 1800,
-                'max': datetime.datetime.now().year,
-            }),
-            'size': forms.NumberInput(attrs={
-                'min': 0,
-                'placeholder': '0.00'
-            }),
-            'bedrooms': forms.NumberInput(attrs={'min': 0}),
-            'bathrooms': forms.NumberInput(attrs={'min': 0}),
-            'toilets': forms.NumberInput(attrs={'min': 0}),
-            'image': forms.FileInput(attrs={'accept': 'image/*'}),
-        }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['seller'].queryset = SellerProfile.objects.all()
-        self.fields['building_type'].initial = BuildingTypes.AREA
-
-
+        return f"Image for {self.property}"

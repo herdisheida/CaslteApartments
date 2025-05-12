@@ -1,15 +1,30 @@
-from django.db import models
+import os.path
 
-# Create your models here.
+from django.db import models
+from django.utils.text import slugify
+
+
+def profile_pic_path(instance, filename):
+    """
+    Generates upload paths for:
+    - UserProfile.image = SellerProfile.cover_img -> profile_pics/{user_id}/profile_img/{filename}
+    - SellerProfile.logo -> profile_pics/{user_id}/logo/{filename}
+    """
+    user_profile = instance if isinstance(instance, UserProfile) else instance.user
+    subfolder = "logo" if hasattr(instance, 'logo') else "profile_pic"
+
+    user_name =  slugify(user_profile.name)
+    user_id =  slugify(user_profile.id)
+    return f'profile_pics/{user_name}_{user_id}/{subfolder}/{filename}'
+
 class UserProfile(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='profile_pics/')
+    image = models.ImageField(default="../static/images/default_profile_pic.png", upload_to=profile_pic_path)
 
     def __str__(self):
-        return f"{self.name} {self.image}"
-
+        return f"{self.name} ({self.pk})"
 
 class SellerType(models.TextChoices):
    INDIVIDUAL = 'Individual', 'Individual'
@@ -24,18 +39,10 @@ class SellerProfile(models.Model):
     street_name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
-    bio = models.TextField(max_length=500)
-    logo = models.ImageField(default='images/default_profile_pic.png', upload_to='images/')
+    bio = models.TextField(max_length=600)
+    logo = models.ImageField(default="../static/images/default_logo.png", upload_to=profile_pic_path)
 
     def __str__(self):
-        return self.user.name
+        return f"{self.user.name} ({self.pk})"
 
-from django.db import models
 
-class Seller(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    # possibly more fields like phone, profile_image, etc.
-
-    def __str__(self):
-        return self.name

@@ -1,21 +1,23 @@
-from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 
 
-# Create your views here.
-authentications = [
-    {
-        'id': 1
-    }
-]
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
 
-def index(request):
-    return render(request, 'authentication/authentications.html')
-
-def get_authentication_by_id(request, id):
-    authentication = [x for x in authentications if x['id'] == id][0]
-    return render(request, 'authentication/login.html', {
-        'authentication': authentication
+    return render(request, 'authentication/signup.html', {
+        'form': form
     })
+
+def profile(request):
+    return render(request, 'profile/profile.html')
+
 
 def seller_index(request):
     return render(request, 'authentication/seller.html')
