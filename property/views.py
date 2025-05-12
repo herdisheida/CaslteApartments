@@ -128,7 +128,7 @@ def create_property(request):
                     image=image
                 )
             messages.success(request, "Property created successfully!")
-            return redirect('property-create-success')
+            return redirect('property-by-id', id=new_property.id)
     else:
         form = PropertyForm()
     return render(request, 'property/create/create_property.html', {
