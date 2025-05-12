@@ -8,54 +8,53 @@
     <form class="auth-form" method="post" action="{% url 'register' %}">
         {% csrf_token %}
     
-        {% if form.errors %}
-        <div class="alert alert-danger">
-            <strong>Error:</strong> Please correct the issues below.
-        </div>
-        {% endif %}
-        
-        <!-- Username -->
+        <!-- Username Field -->
         <div class="form-group mb-3">
             <label class="fw-bold">Username:</label>
-            {{ form.username }}
+            <input type="text"
+                   name="username"
+                   class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+                   value="{{ form.username.value|default:'' }}"
+                   required>
             {% if form.username.errors %}
-                <div class="text-danger small">
-                    {% for error in form.username.errors %}
-                        <p class="mb-0">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="form-text small">
-                    <ul>
-                        <li>150 characters or fewer</li>
-                        <li>Letters, digits and @/./+/-/_ only</li>
-                    </ul>
+                <div class="invalid-feedback">
+                    {{ form.username.errors.0 }}
                 </div>
             {% endif %}
         </div>
-        
-        <!-- Password -->
+
+        <!-- Password Field -->
         <div class="form-group mb-3">
             <label class="fw-bold">Password:</label>
-            {{ form.password1 }}
+            <input type="password"
+                   name="password1"
+                   class="form-control {% if form.password1.errors %}is-invalid{% endif %}"
+                   required>
             {% if form.password1.errors %}
-                <div class="text-danger small">
-                    {% for error in form.password1.errors %}
-                        <p class="mb-0">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="form-text small">
-                    <ul>
-                        <li>At least 8 characters</li>
-                        <li>Can't be entirely numeric</li>
-                        <li>Can't be too common</li>
-                    </ul>
+                <div class="invalid-feedback">
+                    {{ form.password1.errors.0 }}
                 </div>
             {% endif %}
         </div>
-        
+
+        <!-- Password Confirmation Field -->
+        <div class="form-group mb-3">
+            <label class="fw-bold">Password Confirmation:</label>
+            <input type="password"
+                   name="password2"
+                   class="form-control {% if form.password2.errors %}is-invalid{% endif %}"
+                   required>
+            {% if form.password2.errors %}
+                <div class="invalid-feedback">
+                    {{ form.password2.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
         <input type="submit" class="btn btn-primary" value="register"/>
+
+    
+        <!-- LOGIN BUTTON-->
         <p>
             <strong>Have an account?</strong>
             <a href="{% url 'login' %}" class="text-primary fw-bold">Login</a>

@@ -7,9 +7,7 @@
     <form class="auth-form" method="post" action="{% url 'login' %}">
         {% csrf_token %}
         {{ form }}
-
-{#        <label for="login-email"></label><input type="email" id="login-email" name="email" placeholder="Email">#}
-{#        <label for="login-password"></label><input type="password" id="login-password" name="password" placeholder="Password">#}
+        
         <input type="submit" class="btn btn-primary" value="login"/>
         <p>
             <strong>New user?</strong>
