@@ -26,18 +26,21 @@
                             {% csrf_token %}
                             <button type="submit" class="nav-link nav-menu-link">log-out</button>
                         </form>
-{#                        <a class="nav-link nav-menu-link" href="{% url 'register' %}">log-out</a>#}
                     </li>
                 </ul>
             </div>
 
             <!-- Profile picture -->
-            <div class="profile-pic-container">
-                <a href="{% url 'profile' %}">
-                    <img id="profile-pic-small" src="{% if user_profile.image %}{{ user_profile.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}" alt="profile picture" />
-                </a>
+            {% if user.is_authenticated %}
+            <div class="profile-pic-container avatar" style="background-image: url({{ user.userprofile.image.url }})"></div>
+            {% endif %}
 
-            </div>
+
+{#                <a href="{% url 'profile' %}">#}
+{#                    <img id="profile-pic-small" src="{% if user_profile.image %}{{ user_profile.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}" alt="profile picture" />#}
+{#                </a>#}
+
+
         </div>
     </div>
 </nav>
