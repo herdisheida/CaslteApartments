@@ -40,7 +40,7 @@ def register(request):
     })
 
 def profile(request):
-    user_profile = UserProfile.objects.get(user=request.user).first()
+    user_profile = UserProfile.objects.filter(user=request.user).first()
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=user_profile)
