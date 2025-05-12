@@ -7,8 +7,14 @@
     </div>
     
     <div class="profile-section">
-        <img id="profile-pic-big" src="{% if user.image %}{{ user.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}" alt="Profile Picture on profile page" />
-        <h2>{{ profiles.name }} Sindri</h2>
-        <h3>{{ profiles.email }} hetja36@gmail.com</h3>
+        <form method="post" action="{% url 'profile' %}">
+            {% csrf_token %}
+            {{ form }}
+
+            <img id="profile-pic-big" src="{% if user.image %}{{ user.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}" alt="Profile Picture on profile page" />
+            <h2>{{ profiles.name }} Sindri</h2>
+            <h3>{{ profiles.email }} hetja36@gmail.com</h3>
+        </form>
     </div>
+
 {% endblock %}
