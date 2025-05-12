@@ -6,13 +6,55 @@
     <h2>Sign up</h2>
 
     <form class="auth-form" method="post" action="{% url 'register' %}">
-
         {% csrf_token %}
-        {{ form }}
-{#        #}
-{#        <label for="signup-email"></label><input type="email" id="signup-email" name="email" placeholder="Email">#}
-{#        <label for="full-name"></label><input type="text" id="full-name" name="name" placeholder="Full name">#}
-{#        <label for="signup-password"></label><input type="password" id="signup-password" name="password" placeholder="Password">#}
+    
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Error:</strong> Please correct the issues below.
+        </div>
+        {% endif %}
+        
+        <!-- Username -->
+        <div class="form-group mb-3">
+            <label class="fw-bold">Username:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div class="text-danger small">
+                    {% for error in form.username.errors %}
+                        <p class="mb-0">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="form-text small">
+                    <ul>
+                        <li>150 characters or fewer</li>
+                        <li>Letters, digits and @/./+/-/_ only</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Password -->
+        <div class="form-group mb-3">
+            <label class="fw-bold">Password:</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <div class="text-danger small">
+                    {% for error in form.password1.errors %}
+                        <p class="mb-0">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="form-text small">
+                    <ul>
+                        <li>At least 8 characters</li>
+                        <li>Can't be entirely numeric</li>
+                        <li>Can't be too common</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        
         <input type="submit" class="btn btn-primary" value="register"/>
         <p>
             <strong>Have an account?</strong>
