@@ -7,12 +7,11 @@
         <!-- Profile Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Seller Profile</h2>
-            <button class="btn btn-outline-secondary">Edit Profile</button>
         </div>
     
         <!-- Seller Info Section -->
         <div class="row align-items-start mb-5">
-            <!-- Profile Picture + Name/Email (left) -->
+            <!-- Profile Picture + Name + username (left) -->
             <div class="col-md-3 text-center">
                 <img id="seller-profile-pic" src="{% if seller.user.image %}{{ seller.user.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}"
                      alt="Profile Picture" class="rounded-circle mb-3 border">
@@ -20,8 +19,7 @@
                     {{ seller.user.name}}
                 </h5>
                 <br>
-                <p class="text-muted mb-1">{{ seller.user.email }}</p>
-                <p class="text-muted">Individual</p>
+                <p class="text-muted">{{ seller.type }}</p>
             </div>
     
             <!-- Text Info (middle) -->
