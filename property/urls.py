@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('<int:property_id>/seller/', views.get_seller_by_property_id, name='seller-by-property'),
 
-    path('create/', views.create_property, name='property-create-index'),
+    path('create/', views.create_property, name='property-create'),
 
     path('create/success/', views.property_create_success, name='property-create-success'), # success window
 

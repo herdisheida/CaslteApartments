@@ -24,11 +24,11 @@ urlpatterns = [
     path('', include('authentication.urls')),
     path('property/', include('property.urls')),
     path('offer/', include('offer.urls')),
-    path('user_profile/', include('user_profile.urls')),
 
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
 ]
 
+# path('user_profile/', include('user_profile.urls')),
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
