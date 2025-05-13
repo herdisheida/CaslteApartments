@@ -3,10 +3,10 @@ from . import views
 
 urlpatterns = [
     # http://localhost:8000 (root)
-    path('', views.index, name='offer-index'),
+    path('display-submitted', views.display_submitted_offers, name='submitted-offer-index'),
 
-    # http://localhost:8000/id
-    path('<int:id>', views.get_offer_by_id, name='offer-by-id'),
+    path('display-received', views.display_received_offers, name='received-offer-index'),
+
 
     # accept offer (by seller)
     # path('<int:offer_id>/accept', views.accept_offer, name='accept-offer'),

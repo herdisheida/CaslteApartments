@@ -5,15 +5,18 @@ from property.models import Property
 from .forms import OfferForm
 # Create your views here.
 
-def index(request):
-    return render(request, 'offer/offers.html', {
-        'offers': Offer.objects.all(),
+def display_submitted_offers(request):
+    user_offers = Offer.objects.filter(buyer=request.user.userprofile)
+    return render(request, 'offer/submitted_offer/offers.html', {
+        'offers': user_offers,
     })
 
-def get_offer_by_id(request):
-    offer = [x for x in Offer.objects.all() if x['id'] == id][0]
-    return render(request, 'offer/offer_details.html', {
-        'offer': offer
+
+def display_received_offers(request):
+    user_seller_profile = request.user.userprofile.sellerprofile
+    offers = Offer.objects.filter(seller=user_seller_profile)
+    return render(request, 'offer/submitted_offer/offers.html', {
+        'received_offers': offers,
     })
 
 def payment(request):
