@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="purchase-offer-title">
+        <h3>My Submitted Purchase Offers</h3>
+        {% for offer in offers %}
+            {% include 'offer/received_offer/_single_offer.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -21,8 +21,9 @@ class Offer(models.Model):
    )
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+   buyer = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
 
    def __str__(self):
-       return f"{self.state} {self.price} ({self.id})"
+       return f"{self.state} {self.price} ({self.id}) - Seller: {self.seller.user.name}- Buyer: {self.user.name}"
 
