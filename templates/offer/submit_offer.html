@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="offer-form-container">
+    <h2>Purchase Offer</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-row">
+            <a href="{% url 'property-index' %}" class="offer-button">Cancel</a>
+            <button type="submit" class="offer-button">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
