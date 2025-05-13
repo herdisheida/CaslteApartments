@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="purchase-offer-title">
-        <h3>My Submitted Purchase Offers</h3>
+    <div class="purchase-offer-title mb-6">
+        <div class="offer-title-group ms-5 mt-5">
+            <h2 class="h3 fw-semibold mb-1">Your Submitted Offers</h2>
+            <p class="text-muted mb-3">A list of the purchase offers you’ve made.</p>
+        </div>
+
         {% for offer in offers %}
             {% include 'offer/submitted_offer/_single_offer.html' %}
         {% endfor %}
