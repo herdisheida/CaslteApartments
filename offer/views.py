@@ -6,7 +6,6 @@ from user_profile.models import SellerProfile
 from .forms import OfferForm
 from django.utils import timezone
 
-# Create your views here.
 
 def display_submitted_offers(request):
     now = timezone.now()
