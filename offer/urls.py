@@ -14,5 +14,5 @@ urlpatterns = [
     # finalize offer (by user)
     path('payment/', views.payment, name='payment-index'),
 
-path('<int:property_id>/submit-offer/', views.submit_offer_prop, name='submit-offer'),
-]
+    path('<int:property_id>/submit-offer/', views.submit_offer_prop, name='submit-offer'),
+    ]

@@ -1,4 +1,4 @@
-from user_profile.models import UserProfile
+from user_profile.models import UserProfile, SellerProfile
 from django.forms import ModelForm
 from django import forms
 from user_profile import models
