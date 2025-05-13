@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import CharField
+
 from property.models import Property
 from user_profile.models import UserProfile, SellerProfile
 
@@ -18,6 +20,10 @@ class Offer(models.Model):
        max_length=10,
        choices=States.choices,
        default=States.PENDING
+   )
+   contingent_msg = CharField(
+       default=None,
+       max_length=100,
    )
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    property = models.ForeignKey(Property, on_delete=models.CASCADE)
