@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% load static %}
 <div class="container-fluid-payment">
   <!-- Header -->
   <div class="payment-header">Finalize Offer</div>
@@ -323,10 +323,8 @@
     <div class="form-field">
       <button id="pay-button" type="submit" disabled>Continue</button>
     </div>
-  </div>
+  
 </form>
-
-{% load static %}
 <script src="{% static 'js/payment.js' %}"></script>
-
+</div>
 {% endblock %}
