@@ -27,6 +27,11 @@ from user_profile.models import UserProfile
 
 
 def register(request):
+    # logged-in user can't access sign-up-page
+    if request.user.is_authenticated:
+        return redirect('property-index')
+
+    # create a new user
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():

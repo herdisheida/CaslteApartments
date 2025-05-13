@@ -51,6 +51,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'castle_apartments.middleware.LoginRequiredMiddleware',  # make sure user can't access site without account
 ]
 
 ROOT_URLCONF = 'castle_apartments.urls'
@@ -66,11 +69,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-
-                # TODO: make it work ég bætti þessu
-                'django.template.context_processors.request',
-
             ],
         },
     },
@@ -145,5 +143,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'property-index' # default go to property listing page when logging in
 LOGIN_URL = '/'

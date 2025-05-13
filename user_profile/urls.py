@@ -5,10 +5,13 @@ from . import views
 urlpatterns = [
     path('register', views.register, name='register'),
 
-    path('login', LoginView.as_view(template_name='authentication/login.html'), name='login'),
+    path('login', LoginView.as_view(
+        template_name='authentication/login.html',
+        redirect_authenticated_user=True, # logged-in users cant go to login-page
+    ), name='login'),
     path('logout', LogoutView.as_view(next_page='login'), name='logout'),
 
     path('profile', views.profile, name='profile'),
 
-    path('seller_signup/', views.seller_index, name='seller-signup'),
+    path('seller_signup/', views.seller_index, name='become-seller'),
 ]

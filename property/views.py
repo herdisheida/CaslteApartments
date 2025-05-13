@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 
@@ -49,8 +50,8 @@ def index(request):
         properties = properties.filter(status_filter)
 
     # Get unique values for filter dropdowns
-    unique_postal_codes = Property.objects.values_list('postal_code', flat=True).distinct()
-    unique_types = Property.objects.values_list('building_type', flat=True).distinct()
+    unique_postal_codes = Property.objects.values_list('postal_code', flat=True).distinct().order_by('postal_code')
+    unique_types = Property.objects.values_list('building_type', flat=True).distinct().order_by('building_type')
 
     # SORTING
     sort = request.GET.get('sort')
@@ -105,26 +106,37 @@ def get_seller_by_property_id(request, property_id):
 #         form = PropertyForm(user=request.user)
 #     return render(request, 'property/create/create_property.html', {'form': form})
 def create_property(request):
+
+    try:
+        seller_profile = request.user.userprofile.sellerprofile
+    except AttributeError:
+        messages.error(request, "You need to register as a seller first")
+        return redirect('become-seller')
+
+
     if request.method == 'POST':
         form = PropertyForm(request.POST, request.FILES)
         if form.is_valid():
-            new_property = form.save(commit=False)  # create unsaved property instance
-            # new_property.seller = request.user.sellerprofile  # add seller to property
-            new_property.save() # save to database
+            new_property = form.save(commit=False)
 
+            # get SellerProfile through UserProfile through User
+            new_property.seller = seller_profile
+            new_property.save()
+
+            # handle multiple images
             for image in request.FILES.getlist('images'):
                 PropertyImages.objects.create(
                     property=new_property,
                     image=image
                 )
-            return redirect('property-create-success')
-        if not form.is_valid():
-            print(form.errors)
+            messages.success(request, "Property created successfully!")
+            return redirect('property-by-id', id=new_property.id)
     else:
         form = PropertyForm()
-    return render(request, 'property/create/create_property.html', {'form': form})
-
-
+    return render(request, 'property/create/create_property.html', {
+        'form': form,
+        'is_seller': hasattr(request.user.userprofile, 'sellerprofile'),
+    })
 
 def property_create_success(request):
     return render(request, 'property/create/success.html')
