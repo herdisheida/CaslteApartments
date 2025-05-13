@@ -1,4 +1,4 @@
-# Environments
+git# Environments
 .env
 .venv
 env/
@@ -32,3 +32,5 @@ offer/__pycache__/views.cpython-312.pyc
 /.idea/vcs.xml
 /.idea/shelf/Uncommitted_changes_before_Update_at_6_5_2025,_12_47_[Changes]/shelved.patch
 .idea/modules.xml
+/.idea/dataSources.local.xml
+/.idea/dataSources.xml
