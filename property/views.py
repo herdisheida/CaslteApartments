@@ -1,14 +1,15 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 
 from property.models import Property
 from property.forms import PropertyForm, PropertyImageForm
 from django.db.models import Q
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from property.models import Property, PropertyImages
 from user_profile.models import SellerProfile
+from .forms import OfferForm
+from .models import PropertyOffer
 
 
 def index(request):
@@ -142,3 +143,7 @@ def property_create_success(request):
 def seller_profile(request, seller_id):
     seller = get_object_or_404(seller_profile, id=seller_id)
     return render(request, 'profile/seller_profile.html', {'seller': seller})
+
+def submit_offer(request):
+    return render(request, 'offer/submit_offer.html')
+

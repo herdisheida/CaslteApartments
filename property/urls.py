@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.urls import path
 from . import views
+from offer.views import submit_offer_prop
 
 
 urlpatterns = [
@@ -15,7 +16,4 @@ urlpatterns = [
 
     path('create/success/', views.property_create_success, name='property-create-success'), # success window
 
-
-    # submit offer (by user)
-    # path('<int:property_id>submit', views.submit_offer, name='offer-submit'),
 ]
