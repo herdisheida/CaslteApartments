@@ -19,13 +19,7 @@
             <span class="status-dot {{ offer.state }}"></span>{{ offer.state }}
         </div>
 
-        <p><strong>Seller:</strong> {{ offer.seller.user.name }} ({{ offer.seller.type }})</p>
-
-
-
-    {# TODO: eyða debug #}
-        <p><strong>DEBUG:</strong> {{ offer.buyer.name }}</p>
-
+        <p><strong>Buyer:</strong> {{ offer.buyer.name }}</p>
         <a href="{% url 'property-by-id' id=offer.property.id %}"
            class="btn btn-primary w-50">
             See More
