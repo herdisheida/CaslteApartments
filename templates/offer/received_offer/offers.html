@@ -8,6 +8,7 @@
         </div>
 
         {% for offer in offers %}
+            {{ offer }}
             {% include 'offer/received_offer/_single_offer.html' %}
         {% endfor %}
     </div>

@@ -12,12 +12,11 @@ def display_submitted_offers(request):
         'offers': user_offers,
     })
 
-
 def display_received_offers(request):
     user_seller_profile = request.user.userprofile.sellerprofile
     offers = Offer.objects.filter(seller=user_seller_profile)
     return render(request, 'offer/received_offer/offers.html', {
-        'received_offers': offers,
+        'offers': offers,
     })
 
 def payment(request):
