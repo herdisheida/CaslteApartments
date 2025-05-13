@@ -20,9 +20,6 @@
         </div>
 
         <p><strong>Seller:</strong> {{ offer.seller.user.name }} ({{ offer.seller.type }})</p>
-        <p><strong>DEBUG:</strong> {{ offer.buyer.name }}</p>
-{#    TODO: EYÐA DEBUG #}
-
 
         <a href="{% url 'property-by-id' id=offer.property.id %}"
            class="btn btn-primary w-50">

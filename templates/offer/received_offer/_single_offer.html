@@ -1,2 +1,44 @@
-<div>HELLO
+<div class="offer-card m-5">
+    <div class="offer-left">
+        <h3>{{ offer.property.street_name }} {{ offer.property.house_nr }}</h3>
+
+        <!-- image section -->
+        <div class="property-image-wrapper position-relative">
+
+            <img class="img-fluid" src="{{ offer.property.preview_pic.url }}"
+                alt="Preview picure of {{ property.street_name }} {{ property.house_nr }} in offers">
+
+            <div class="badge-wrapper">
+                <span class="badge bg-dark text-white">
+                    {% if not offer.is_sold %}For Sale{% else %}Sold{% endif %}
+                </span>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot {{ offer.state }}"></span>{{ offer.state }}
+        </div>
+
+        <p><strong>Seller:</strong> {{ offer.seller.user.name }} ({{ offer.seller.type }})</p>
+
+
+
+    {# TODO: eyða debug #}
+        <p><strong>DEBUG:</strong> {{ offer.buyer.name }}</p>
+
+        <a href="{% url 'property-by-id' id=offer.property.id %}"
+           class="btn btn-primary w-50">
+            See More
+        </a>
+
+    </div>
+
+    <div class="offer-right">
+        <p><strong>offer amount:</strong> {{ offer.price }}$</p>
+        <p><strong>Listing Date:</strong> {{ offer.creation_date }} - {{ offer.expiration_date }}</p>
+
+        {% if offer.state == 'accepted' or offer.state == 'contingent' %}
+            <button class="finalize-button">finalize offer</button>
+        {% endif %}
+    </div>
 </div>
