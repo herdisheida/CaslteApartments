@@ -15,8 +15,14 @@
     
         <!-- address and price of property -->
         <div class="d-flex justify-content-between align-items-center">
-            <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }} ({{ property.city }}, {{ property.postal_code }})</h2>
-            <h4 class="text-primary fw-bold">${{ property.price|floatformat:"0" }}</h4>
+            <div>
+                <h2 class="mb-0">{{ property.street_name }} {{ property.house_nr }} ({{ property.city }}, {{ property.postal_code }})</h2>
+            </div>
+            <div>
+                {% if property.seller != user.userprofile.sellerprofile %}
+                <h4 class="text-primary fw-bold">${{ property.price|floatformat:"0" }}</h4>
+                {% endif %}
+            </div>
         </div>
     
         <!-- listing date of a property -->
