@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import Http404
 
+from offer.models import Offer
 from property.models import Property
 from property.forms import PropertyForm, PropertyImageForm
 from django.db.models import Q
@@ -24,7 +25,6 @@ def index(request):
         )
 
     # FILTER
-    # Get filter parameters from URL
     postal_code = request.GET.get('postal_code')
     property_type = request.GET.get('building_type')
     min_price = request.GET.get('min_price')
@@ -74,10 +74,22 @@ def index(request):
 
 
 def get_property_by_id(request, id):
-    # Get by database ID (proper way)
     property_obj = get_object_or_404(Property, pk=id)
+
+    # Get user's submitted offers
+    user_submitted_offer_ids = []
+    if request.user.is_authenticated:
+        try:
+            user_profile = request.user.userprofile
+            user_submitted_offer_ids = Offer.objects.filter(buyer=user_profile).values_list('property_id', flat=True)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            user_submitted_offer_ids = []  # Default to an empty list if error occurs
+
     return render(request, 'property/property_details.html', {
-        'property': property_obj
+        'property': property_obj,
+    'user_submitted_offer_ids': user_submitted_offer_ids,
+
     })
 
 

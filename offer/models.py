@@ -25,5 +25,5 @@ class Offer(models.Model):
 
 
    def __str__(self):
-       return f"{self.state} {self.price} ({self.id}) - Seller: {self.seller.user.name}- Buyer: {self.buyer.name}"
+       return f"{self.state} {self.price} ({self.id}) - Property: {self.property.street_name} - Seller: {self.seller.user.name} - Buyer: {self.buyer.name}"
 

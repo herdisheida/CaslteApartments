@@ -16,7 +16,7 @@ def display_submitted_offers(request):
 def display_received_offers(request):
     user_seller_profile = request.user.userprofile.sellerprofile
     offers = Offer.objects.filter(seller=user_seller_profile)
-    return render(request, 'offer/submitted_offer/offers.html', {
+    return render(request, 'offer/received_offer/offers.html', {
         'received_offers': offers,
     })
 
