@@ -24,7 +24,7 @@ class Offer(models.Model):
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    property = models.ForeignKey(Property, on_delete=models.CASCADE)
    buyer = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-
+   contingent_msg = models.TextField(blank=True, null=True, default=None)
 
    def __str__(self):
        return f"{self.state} {self.price} ({self.id}) - Property: {self.property.street_name} - Seller: {self.seller.user.name} - Buyer: {self.buyer.name}"
