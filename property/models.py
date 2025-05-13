@@ -35,7 +35,6 @@ class Property(models.Model):
    postal_code = models.CharField(max_length=100)
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    building_type = models.CharField(
-       max_length=9,
        choices=BuildingTypes.choices,
        default=BuildingTypes.AREA
    )
@@ -43,13 +42,13 @@ class Property(models.Model):
    price = models.DecimalField(
        max_digits=12,
        decimal_places=2,
-       validators=[MinValueValidator(0, message="Price must be positive")]
+       validators=[MinValueValidator(0)]
    )
    description = models.TextField()
    year_built = models.IntegerField(
        validators=[
-           MinValueValidator(1800, message="Year built cannot be before 1800"),
-           MaxValueValidator(timezone.now().year, message="Year built cannot be in the future")
+           MinValueValidator(1800),
+           MaxValueValidator(timezone.now().year)
        ]
    )
    size = models.DecimalField(max_digits=10, decimal_places=2)
