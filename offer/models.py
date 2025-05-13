@@ -21,10 +21,6 @@ class Offer(models.Model):
        choices=States.choices,
        default=States.PENDING
    )
-   contingent_msg = CharField(
-       default=None,
-       max_length=100,
-   )
    seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
    property = models.ForeignKey(Property, on_delete=models.CASCADE)
    buyer = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
