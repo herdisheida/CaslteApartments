@@ -4,28 +4,28 @@
 
 <div class="auth-container" id="login-container">
 
-    
+
 
     <form class="auth-form" method="post" action="{% url 'login' %}" novalidate>
         <h2>Login</h2>
         {% csrf_token %}
-        
+
         <!-- Username Field -->
         <div class="form-group mb-3">
             <label class="fw-bold" for="{{ form.username.id_for_label }}">Username:</label>
             {{ form.username }}
         </div>
-        
+
         <!-- Password Field -->
         <div class="form-group mb-3">
             <label class="fw-bold" for="{{ form.password.id_for_label }}">Password:</label>
             {{ form.password }}
-        </div>        
-    
+        </div>
+
         <!-- Error Field (invalid username/password) -->
         {% if form.errors %}
         <div class="alert alert-danger">
-            <strong>Login failed:</strong> 
+            <strong>Login failed:</strong>
             {% if form.non_field_errors %}
                 {{ form.non_field_errors.0 }}
             {% else %}
@@ -33,8 +33,9 @@
             {% endif %}
         </div>
         {% endif %}
-        
-        <input type="submit" class="btn btn-primary" value="login"/>
+
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <button type="submit" class="btn btn-primary" value="login">login</button>
         <p>
             <strong>New user?</strong>
             <a href="{% url 'register' %}" class="text-primary fw-bold">Create an account</a>
