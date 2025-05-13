@@ -4,20 +4,32 @@ from django.shortcuts import render, redirect, get_object_or_404
 from property.models import Property
 from user_profile.models import SellerProfile
 from .forms import OfferForm
+from django.utils import timezone
+
 # Create your views here.
 
 def display_submitted_offers(request):
-    user_offers = Offer.objects.filter(buyer=request.user.userprofile)
+    now = timezone.now()
+    submitted_offers = Offer.objects.filter(
+        buyer=request.user.userprofile,
+        expiration_date__gte=now, # don't display expired offers
+    )
     return render(request, 'offer/submitted_offer/offers.html', {
-        'offers': user_offers,
+        'offers': submitted_offers,
     })
 
 def display_received_offers(request):
-    user_seller_profile = request.user.userprofile.sellerprofile
-    offers = Offer.objects.filter(seller=user_seller_profile)
+    now = timezone.now()
+    received_offers = Offer.objects.filter(
+        seller=request.user.userprofile.sellerprofile,
+        expiration_date__gt=now # don't display expired offers
+    )
     return render(request, 'offer/received_offer/offers.html', {
-        'offers': offers,
+        'offers': received_offers,
     })
+
+
+
 
 def payment(request):
     return render(request, 'payment/payment.html', {
