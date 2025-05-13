@@ -320,11 +320,17 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="form-field">
-      <button id="pay-button" type="submit" disabled>Continue</button>
-    </div>
-  
-</form>
+    <form id="payment-form" method="POST" action="{% url 'payment_review' %}">
+        {% csrf_token %}
+
+      <!-- contact + payment fields go here -->
+    
+      <!-- Submit Button -->
+      <div class="form-field">
+        <button id="pay-button" type="submit" disabled>Continue</button>
+      </div>
+    </form>
+    
 <script src="{% static 'js/payment.js' %}"></script>
 </div>
 {% endblock %}
