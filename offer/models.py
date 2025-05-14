@@ -1,9 +1,7 @@
+from django.core.validators import MinValueValidator
 from django.db import models
-from django.db.models import CharField
-
 from property.models import Property
 from user_profile.models import UserProfile, SellerProfile
-
 
 class States(models.TextChoices):
    PENDING = 'pending', 'Pending'
@@ -12,10 +10,12 @@ class States(models.TextChoices):
    CONTINGENT = 'contingent', 'Contingent'
    FINALIZED = 'finalized', 'Finalized'
 
-
-
 class Offer(models.Model):
-   price = models.DecimalField(decimal_places=2, max_digits=20)
+   price = models.DecimalField(
+       max_digits=12,
+       decimal_places=2,
+       validators=[MinValueValidator(0)]
+   )
    creation_date = models.DateField(auto_now_add=True)
    expiration_date = models.DateField()
    state = models.CharField(
@@ -29,5 +29,5 @@ class Offer(models.Model):
    contingent_msg = models.TextField(blank=True, null=True, default=None)
 
    def __str__(self):
-       return f"{self.state} {self.price} ({self.id}) - Property: {self.property.street_name} - Seller: {self.seller.user.name} - Buyer: {self.buyer.name}"
+       return f"{self.state} ({self.id}) - Property: {self.property.street_name} - Seller: {self.seller.user.name} - Buyer: {self.buyer.name}"
 

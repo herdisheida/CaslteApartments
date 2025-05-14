@@ -2,15 +2,11 @@ from django.contrib import messages
 from django.http import Http404
 
 from offer.models import Offer
-from property.models import Property
 from property.forms import PropertyForm, PropertyImageForm
 from django.db.models import Q
 
 from django.shortcuts import get_object_or_404, render, redirect
 from property.models import Property, PropertyImages
-from user_profile.models import SellerProfile
-from .forms import OfferForm
-from .models import PropertyOffer
 
 
 def index(request):
