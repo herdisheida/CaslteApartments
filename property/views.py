@@ -1,4 +1,3 @@
-from django.contrib import messages
 from offer.models import Offer
 from property.forms import PropertyForm
 from django.db.models import Q
@@ -114,7 +113,6 @@ def create_property(request):
     try:
         seller_profile = request.user.userprofile.sellerprofile
     except AttributeError:
-        messages.error(request, "You need to register as a seller first")
         return redirect("become-seller")
 
     if request.method == "POST":
@@ -129,7 +127,6 @@ def create_property(request):
             # handle multiple images
             for image in request.FILES.getlist("images"):
                 PropertyImages.objects.create(property=new_property, image=image)
-            messages.success(request, "Property created successfully!")
             return redirect("property-by-id", id=new_property.id)
     else:
         form = PropertyForm()

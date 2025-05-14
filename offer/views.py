@@ -6,6 +6,11 @@ from offer.forms import OfferForm, TransactionForm
 from django.utils import timezone
 
 
+def clear_messages(request):
+    """clear any existing messages before processing"""
+    storage = messages.get_messages(request)
+    storage.used = True
+
 def display_submitted_offers(request):
     submitted_offers = Offer.objects.filter(
         buyer=request.user.userprofile,
@@ -53,11 +58,9 @@ def submit_offer(request, property_id):
 
 def respond_to_offer(request, offer_id):
     """Sellers responding to submitted offers"""
-    offer = get_object_or_404(Offer, id=offer_id)
+    clear_messages(request)
 
-    # clear any existing messages before processing
-    storage = messages.get_messages(request)
-    storage.used = True
+    offer = get_object_or_404(Offer, id=offer_id)
 
     # permission check - only the seller can update
     if offer.seller != request.user.userprofile.sellerprofile:
@@ -113,6 +116,8 @@ def respond_to_offer(request, offer_id):
 
 def payment(request, offer_id):
     """Buyers (all users) can finalize their purchase offers after sellers accept them"""
+    clear_messages(request)
+
     current_offer = get_object_or_404(Offer, id=offer_id)
 
     if request.method == "POST":
@@ -129,10 +134,7 @@ def payment(request, offer_id):
                 current_offer.property.is_sold = True
                 current_offer.property.save()
 
-                messages.success(request, "Offer finalized successfully!")
-                # return redirect('transaction-detail', transaction_id=transaction.id)
-                # TODO: go to review page
-                return redirect("property-index")
+                return redirect("submitted-offer-index")
 
             except Exception as e:
                 messages.error(request, f"Error creating transaction: {str(e)}")
