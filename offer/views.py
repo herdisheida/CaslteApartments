@@ -28,12 +28,9 @@ def display_received_offers(request):
 
 
 
-def payment(request):
-    return render(request, 'payment/payment.html', {
-        'payment': payment
-    })
 
-def submit_offer_prop(request, property_id):
+def submit_offer(request, property_id):
+    """Buyers (all users) can submit a purchase offer to a specific property."""
     property_obj = get_object_or_404(Property, id=property_id)
     seller_obj = property_obj.seller
     buyer_profile_obj = request.user.userprofile
@@ -56,7 +53,8 @@ def submit_offer_prop(request, property_id):
     })
 
 
-def update_offer_state(request, offer_id):
+def respond_to_offer(request, offer_id):
+    """Sellers responding to submitted offers"""
     offer = get_object_or_404(Offer, id=offer_id)
 
     # clear any existing messages before processing
@@ -105,3 +103,10 @@ def update_offer_state(request, offer_id):
             messages.error(request, f"Error updating offer: {str(e)}")
             return redirect('received-offer-index')
     return redirect('received-offer-index')
+
+
+def payment(request):
+    """Buyers (all users) can finalize their purchase offers after sellers accept them"""
+    return render(request, 'payment/payment.html', {
+        'payment': payment
+    })
