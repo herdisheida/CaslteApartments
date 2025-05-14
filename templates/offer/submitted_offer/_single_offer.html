@@ -32,7 +32,7 @@
         </p>
 
         {% include 'offer/_update_reason.html' %}
-        {% if offer.state != 'accepted' or offer.state == 'contingent' %}
+        {% if offer.state == 'accepted' or offer.state == 'contingent' %}
             <button class="btn btn-success mt-3">finalize offer</button>
         {% endif %}
 
