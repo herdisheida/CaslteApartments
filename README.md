@@ -91,15 +91,11 @@ Install dependencies listed in requirements.txt
    pip install -r requirements.txt
    ```
 4. Running the application
-   a) Apply the migrations
-   ```sh
-   python manage.py migrate
-   ```
-   b) Run the development server:
+   a) Run the development server:
    ```sh
    python manage.py runserver
    ```
-   c) Access the application at:
+   b) Access the application at:
    ```sh
    http://localhost:8000
    ```
