@@ -24,12 +24,6 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(default="../static/images/default_profile_pic.png", upload_to=profile_pic_path)
 
-    @property
-    def image_url(self):
-        if self.image and default_storage.exists(self.image.name):
-            return self.image.url
-        return '/static/images/default_profile_pic.png'
-
     def __str__(self):
         return f"{self.name} ({self.pk}) {self.user}"
 
