@@ -1,8 +1,8 @@
+from django.contrib import messages
 
-from offer.models import Offer
+from offer.models import Offer, States
 from django.shortcuts import render, redirect, get_object_or_404
 from property.models import Property
-from user_profile.models import SellerProfile
 from .forms import OfferForm
 from django.utils import timezone
 
@@ -56,3 +56,35 @@ def submit_offer_prop(request, property_id):
         'form': form,
         'property': property_obj
     })
+
+
+def update_offer_state(request, offer_id):
+    offer = get_object_or_404(Offer, id=offer_id)
+
+    if offer.seller != request.user.userprofile.sellerprofile:
+        messages.error(request, "You don't have permission to update this offer")
+        return redirect('received-offer-index')
+
+    if request.method == 'POST':
+        new_state = request.POST.get('offer-state')
+        contingent_msg = request.POST.get('contingent-reason', '').strip()
+
+        if new_state == 'accept':
+            offer.state = States.ACCEPTED
+            offer.contingent_msg = None
+            messages.success(request, "Offer accepted successfully")
+
+
+
+        elif new_state == 'contingent':
+            if not contingent_msg:
+                messages.error(request, "Please provide a reason for contingency")
+                return redirect('received-offer-index') # go back if no contingent msg was input
+            offer.state = States.CONTINGENT
+            offer.contingent_msg = contingent_msg
+            messages.success(request, "Offer marked as contingent")
+
+        offer.save()
+        return redirect('received-offer-index')
+
+    return redirect('received-offer-index')

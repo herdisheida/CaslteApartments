@@ -4,7 +4,6 @@ from .models import Offer
 class OfferForm(forms.ModelForm):
     class Meta:
         model = Offer
-        # fields = ['price', 'expiration_date']
         exclude = ('state', 'seller', 'property', 'buyer')
         widgets = {
             'expiration_date': forms.DateInput(
@@ -17,3 +16,4 @@ class OfferForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['expiration_date'].input_formats = ['%Y-%m-%d']
+        self.fields['creation_date'].input_formats = ['%Y-%m-%d']

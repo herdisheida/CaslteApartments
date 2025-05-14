@@ -104,26 +104,12 @@ def get_seller_by_property_id(request, property_id):
     })
 
 
-    # TODO use thise þegar við ætlum að tengja curr user við þann sem er að búa til property
-# def create_property(request):
-#     if request.method == 'POST':
-#         form = PropertyForm(request.POST, request.FILES, user=request.user)
-#         if form.is_valid():
-#             property_save = form.save(commit=False)
-#             property_save.seller = request.user.sellerprofile
-#             property_save.save()
-#             return redirect('property-create-success')
-#     else:
-#         form = PropertyForm(user=request.user)
-#     return render(request, 'property/create/create_property.html', {'form': form})
 def create_property(request):
-
     try:
         seller_profile = request.user.userprofile.sellerprofile
     except AttributeError:
         messages.error(request, "You need to register as a seller first")
         return redirect('become-seller')
-
 
     if request.method == 'POST':
         form = PropertyForm(request.POST, request.FILES)
