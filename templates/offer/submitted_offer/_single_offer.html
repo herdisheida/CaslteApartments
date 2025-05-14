@@ -6,7 +6,7 @@
         <div class="property-image-wrapper position-relative">
 
             <img class="img-fluid" src="{{ offer.property.preview_pic.url }}"
-                alt="Preview picure of {{ property.street_name }} {{ property.house_nr }} in offers">
+                alt="Preview picture of {{ property.street_name }} {{ property.house_nr }} in offers">
 
             <div class="badge-wrapper">
                 <span class="badge bg-dark text-white">
@@ -28,10 +28,12 @@
 
     </div>
 
-    <div class="offer-right">
+    <div class="offer-right mt-5">
         <p><strong>offer amount:</strong> {{ offer.price }}$</p>
         <p><strong>Listing Date:</strong> {{ offer.creation_date }} - {{ offer.expiration_date }}</p>
 
+
+        <!-- Reason for updated offer state -->
         {% if offer.state == 'accepted' %}
             <div class="alert alert-success">This offer has been accepted</div>
         {% elif offer.state == 'contingent' %}

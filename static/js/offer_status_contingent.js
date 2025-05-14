@@ -1,17 +1,28 @@
-// Event delegation for all select elements
 document.addEventListener('change', (e) => {
     if (e.target.classList.contains('offer-state-select')) {
         const offerId = e.target.dataset.offerId;
-        const container = document.getElementById(`contingent-reason-container-${offerId}`);
-        container.classList.toggle('d-none', e.target.value !== 'contingent');
+        const selectedValue = e.target.value;
+
+        // Contingent reason container
+        const contingentContainer = document.getElementById(`contingent-reason-container-${offerId}`);
+        contingentContainer.classList.toggle('d-none', selectedValue !== 'contingent');
+
+        // Reject reason container
+        const rejectContainer = document.getElementById(`reject-reason-container-${offerId}`);
+        rejectContainer.classList.toggle('d-none', selectedValue !== 'reject');
     }
 });
 
-// Initialize all selects on page load
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.offer-state-select').forEach(select => {
         const offerId = select.dataset.offerId;
-        const container = document.getElementById(`contingent-reason-container-${offerId}`);
-        container.classList.toggle('d-none', select.value !== 'contingent');
+        const selectedValue = select.value;
+
+        document.getElementById(`contingent-reason-container-${offerId}`)
+                .classList.toggle('d-none', selectedValue !== 'contingent');
+
+        document.getElementById(`reject-reason-container-${offerId}`)
+                .classList.toggle('d-none', selectedValue !== 'reject');
     });
 });

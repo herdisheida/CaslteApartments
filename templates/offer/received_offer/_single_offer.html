@@ -25,44 +25,26 @@
            class="btn btn-primary w-50">
             See More
         </a>
-
     </div>
 
-    <div class="offer-right">
+    <div class="offer-right mt-5">
         <p><strong>offer amount:</strong> {{ offer.price }}$</p>
         <p><strong>Listing Date:</strong> {{ offer.creation_date }} - {{ offer.expiration_date }}</p>
 
+        <!-- Reason for updated offer state -->
         {% if offer.state == 'accepted' %}
-            <div class="alert alert-success">This offer has been accepted</div>
+            <div class="alert alert-success">You accepted this offer</div>
         {% elif offer.state == 'rejected' %}
             <div class="alert alert-danger">
-                This offer has been rejected
+                You rejected this offer
                 {% if offer.contingent_msg %}
                     <p>Reason: {{ offer.contingent_msg }}</p>
                 {% endif %}
             </div>
         {% endif %}
-
-        <!-- Seller can accept offer if it's pending (cannot modify an already accepted offer) -->
-        {% if offer.state == 'pending' %}
-        <div class="offer-action-container">
-            <label for="offer-state-{{ offer.id }}" class="form-label">Confirm the purchase offer:</label>
-            <select name="offer-state" class="form-select mb-2 offer-state-select"
-                    id="offer-state-{{ offer.id }}"
-                    data-offer-id="{{ offer.id }}">
-                <option value="accept">Accept</option>
-                <option value="contingent">Contingent</option>
-                <option value="reject">Reject</option>
-            </select>
-
-            <div id="contingent-reason-container-{{ offer.id }}" class="d-none mt-3">
-                <label for="contingent-reason-{{ offer.id }}" class="form-label">Reason for contingency:</label>
-                <textarea name="contingent-reason" id="contingent-reason-{{ offer.id }}"
-                          class="form-control" rows="3"></textarea>
-            </div>
-            <button class="btn btn-success mt-3" type="submit" value="offer-state">submit</button>
-        </div>
-        {% endif %}
+    
+        {% include 'offer/received_offer/_update_offer.html' %}
+    
     </div>
 </div>
 <script src="{% static 'js/offer_status_contingent.js' %}"></script>
