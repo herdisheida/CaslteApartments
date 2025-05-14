@@ -48,7 +48,7 @@ def submit_offer_prop(request, property_id):
             offer.buyer = buyer_profile
             offer.property = property_obj
             offer.save()
-            return redirect('payment-index')  # or any success page
+            return redirect('submitted-offer-indexu')
     else:
         form = OfferForm()
 
