@@ -1,9 +1,8 @@
 from django.contrib import messages
-
 from offer.models import Offer, States
 from django.shortcuts import render, redirect, get_object_or_404
 from property.models import Property
-from .forms import OfferForm
+from offer.forms import OfferForm, TransactionForm
 from django.utils import timezone
 
 
@@ -24,9 +23,6 @@ def display_received_offers(request):
         'offers': received_offers,
         'now': timezone.now()
     })
-
-
-
 
 
 def submit_offer(request, property_id):
@@ -105,41 +101,53 @@ def respond_to_offer(request, offer_id):
     return redirect('received-offer-index')
 
 
-def confirm_payment(request):
+def payment(request):
+    return redirect('payment-index')
+
+
+def confirm_payment(request, offer_id):
     """Buyers (all users) can finalize their purchase offers after sellers accept them"""
-    offer = get_object_or_404(Offer, id=request.POST.get('offer-id'))
+
+    current_offer = get_object_or_404(Offer, id=offer_id)
+
+    # check if transaction already exists
+    existing_transaction = Offer.objects.filter(
+        property=current_offer.property,
+        state=States.FINALIZED
+    ).exists()
+    if existing_transaction:
+        messages.error(request, "This property already has a finalized transaction")
+        return redirect('offer-detail', offer_id=current_offer.id)
 
     # permission check - only the user who submitted the offer can finalize it
-    if offer.buyer != request.user.userprofile:
+    if current_offer.buyer != request.user.userprofile:
         messages.error(request, "You don't have permission to finalize this offer")
         return redirect('submitted-offer-index')
 
-
     if request.method == 'POST':
-        try:
-            # create transaction
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            try:
+                # create transaction
+                transaction = form.save(commit=False)
+                transaction.offer = current_offer
 
+                # Update offer status
+                current_offer.state = States.FINALIZED
+                current_offer.save()
+                # Mark property as sold
+                current_offer.property.is_sold = True
+                current_offer.property.save()
 
-            # Update offer status
-            offer.state = States.FINALIZED
-            offer.save()
+                messages.success(request, "Offer finalized successfully!")
+                return redirect('transaction-detail', transaction_id=transaction.id) # TODO tengja í preview fyrir payment
 
-            # Mark property as sold
-            offer.property.is_sold = True
-            offer.property.save()
+            except Exception as e:
+                messages.error(request, f"Error creating transaction: {str(e)}")
 
-            messages.success(request, "Transaction completed successfully!")
-            return redirect('transaction-detail', transaction_id=transaction.id)
-
-        except Exception as e:
-            messages.error(request, f"Error creating transaction: {str(e)}")
-
-            # If GET request or error, show confirmation page
-        return render(request, 'payment/payment.html', {
-            'offer': offer
-        })
-
-
+    else:
+        form = TransactionForm()
     return render(request, 'payment/payment.html', {
-        'payment': payment
+        'form': form,
+        'offer': current_offer
     })
