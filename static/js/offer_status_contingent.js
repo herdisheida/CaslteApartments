@@ -1,3 +1,4 @@
+// make contingent/reason container appear/disappear
 document.addEventListener('change', (e) => {
     if (e.target.classList.contains('offer-state-select')) {
         const offerId = e.target.dataset.offerId;
@@ -25,4 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(`reject-reason-container-${offerId}`)
                 .classList.toggle('d-none', selectedValue !== 'reject');
     });
+});
+
+
+// Validation - cannot submit make offer contingent without stating a reason
+document.querySelector('form').addEventListener('submit', e => {
+    const select = document.querySelector('.offer-state-select');
+    if (select?.value === 'contingent' &&
+        !document.getElementById(`contingent-reason-${select.dataset.offerId}`).value.trim()) {
+        e.preventDefault();
+        alert('Please provide a contingency reason');
+        document.getElementById(`contingent-reason-container-${select.dataset.offerId}`).classList.remove('d-none');
+    }
 });

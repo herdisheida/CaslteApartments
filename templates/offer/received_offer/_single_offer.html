@@ -31,18 +31,7 @@
         <p><strong>offer amount:</strong> {{ offer.price }}$</p>
         <p><strong>Listing Date:</strong> {{ offer.creation_date }} - {{ offer.expiration_date }}</p>
 
-        <!-- Reason for updated offer state -->
-        {% if offer.state == 'accepted' %}
-            <div class="alert alert-success">You accepted this offer</div>
-        {% elif offer.state == 'rejected' %}
-            <div class="alert alert-danger">
-                You rejected this offer
-                {% if offer.contingent_msg %}
-                    <p>Reason: {{ offer.contingent_msg }}</p>
-                {% endif %}
-            </div>
-        {% endif %}
-    
+        {% include 'offer/_update_reason.html' %}
         {% include 'offer/received_offer/_update_offer.html' %}
     
     </div>

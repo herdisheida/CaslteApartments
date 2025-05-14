@@ -1,0 +1,18 @@
+<!-- Reason for updated offer state -->
+{% if offer.state == 'accepted' %}
+    <div class="alert alert-success">✅ Offer accepted successfully</div>
+{% elif offer.state == 'contingent' %}
+    <div class="alert alert-warning">
+        ⚠️ Offer accepted with contingencies
+        {% if offer.contingent_msg %}
+            <p><strong>Conditions:</strong> {{ offer.contingent_msg }}</p>
+        {% endif %}
+    </div>
+{% elif offer.state == 'rejected' %}
+    <div class="alert alert-danger">
+        ❌ Offer declined
+        {% if offer.contingent_msg %}
+            <p><strong>Feedback:</strong> {{ offer.contingent_msg }}</p>
+        {% endif %}
+    </div>
+{% endif %}
