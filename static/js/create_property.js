@@ -1,22 +1,21 @@
-// Validate and Display Gallery Upload for Create Property
 document.addEventListener('DOMContentLoaded', () => {
     const uploadInput = document.getElementById('image-upload');
     const previewContainer = document.getElementById('image-preview');
 
-    // only add event listener if elements exist on this page
     if (uploadInput && previewContainer) {
         uploadInput.addEventListener('change', (e) => {
             previewContainer.innerHTML = '';
+            const files = e.target.files;
 
             // Validation - Max 10 images
-            if (this.files.length > 10) {
+            if (files.length > 10) {
                 alert('Maximum 10 images allowed');
-                this.value = '';
+                e.target.value = ''; // Clear selection
                 return;
             }
 
             // Process each file
-            Array.from(this.files).forEach(file => {
+            Array.from(files).forEach(file => {
                 if (!file.type.match('image.*')) {
                     console.warn(`Skipped non-image file: ${file.name}`);
                     return;

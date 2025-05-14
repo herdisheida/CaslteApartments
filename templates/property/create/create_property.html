@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    <!-- Property Form -->
     <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-container">
         {% csrf_token %}
-
         <h2 class="fw-semibold mb-5">Create Property</h2>
+        
         <!-- Main Property Fields -->
         {{ form.as_p }}
 
@@ -22,7 +20,6 @@
             </div>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit" class="btn-confirm">Confirm</button>
     </form>
 

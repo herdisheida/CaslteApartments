@@ -14,7 +14,4 @@ urlpatterns = [
 
     # finalize offer (by user)
     path('<int:offer_id>/payment/', views.payment, name='payment-index'),
-
-    #path('<int:offer_id>/payment/', views.confirm_payment, name='finalize-payment'),
-
 ]

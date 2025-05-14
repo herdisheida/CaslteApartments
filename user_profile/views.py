@@ -44,7 +44,7 @@ def register(request):
                 name=user.username  # Set name to username
             )
 
-            return redirect('login')
+            return redirect('property-index') # newly registered users go to homepage
     else:
         form = UserCreationForm()
 

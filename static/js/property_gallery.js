@@ -1,3 +1,4 @@
+// Property Gallery in Property Detail page
 let slideIndex = 1;
 let slides;
 
