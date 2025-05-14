@@ -1,17 +1,12 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
-
-    <!-- Page Title -->
-    <div class="my-4">
-        <h2 class="fw-semibold" style="margin-left: 120px;">Create Property</h2>
-    </div>
-
+    
     <!-- Property Form -->
     <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-container">
         {% csrf_token %}
 
+        <h2 class="fw-semibold mb-5">Create Property</h2>
         <!-- Main Property Fields -->
         {{ form.as_p }}
 
