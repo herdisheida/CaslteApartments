@@ -28,6 +28,24 @@ class Offer(models.Model):
    buyer = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
    contingent_msg = models.TextField(blank=True, null=True, default=None)
 
+   class Meta:
+       ordering = ['-creation_date']
+
    def __str__(self):
        return f"{self.state} ({self.id}) - Property: {self.property.street_name} - Seller: {self.seller.user.name} - Buyer: {self.buyer.name}"
 
+
+
+class Transaction(models.Model):
+    offer = models.OneToOneField(Offer, on_delete=models.PROTECT)
+    street_name = models.CharField(max_length=100)
+    house_nr = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    postal_code = models.CharField(max_length=100)
+    creation_date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-creation_date']
+
+    def __str__(self):
+        return f"TX-{self.id} | {self.offer.property.street_name} → {self.offer.seller} (${self.offer.price})"
