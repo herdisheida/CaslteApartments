@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from django.urls import path
 from . import views
-from offer.views import submit_offer_prop
+from offer.views import submit_offer
 
 
 urlpatterns = [

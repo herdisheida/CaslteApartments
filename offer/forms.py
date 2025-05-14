@@ -1,6 +1,7 @@
 from django import forms
 from django.utils import timezone
-from offer.models import Offer
+from offer.models import Offer, Transaction
+
 
 class OfferForm(forms.ModelForm):
     class Meta:
@@ -20,4 +21,15 @@ class OfferForm(forms.ModelForm):
                 'min': 0,
                 'placeholder': '0.00',
             }),
+        }
+
+class TransactionForm(forms.ModelForm):
+    class Meta:
+        model = Transaction
+        exclude = ('creation_date', 'offer')
+        widgets = {
+            'national_id' : forms.NumberInput(attrs={
+                'min': 999999999,
+                'max': 10000000001,
+            })
         }
