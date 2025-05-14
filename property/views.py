@@ -2,15 +2,11 @@ from django.contrib import messages
 from django.http import Http404
 
 from offer.models import Offer
-from property.models import Property
 from property.forms import PropertyForm, PropertyImageForm
 from django.db.models import Q
 
 from django.shortcuts import get_object_or_404, render, redirect
 from property.models import Property, PropertyImages
-from user_profile.models import SellerProfile
-from .forms import OfferForm
-from .models import PropertyOffer
 
 
 def index(request):
@@ -104,26 +100,12 @@ def get_seller_by_property_id(request, property_id):
     })
 
 
-    # TODO use thise þegar við ætlum að tengja curr user við þann sem er að búa til property
-# def create_property(request):
-#     if request.method == 'POST':
-#         form = PropertyForm(request.POST, request.FILES, user=request.user)
-#         if form.is_valid():
-#             property_save = form.save(commit=False)
-#             property_save.seller = request.user.sellerprofile
-#             property_save.save()
-#             return redirect('property-create-success')
-#     else:
-#         form = PropertyForm(user=request.user)
-#     return render(request, 'property/create/create_property.html', {'form': form})
 def create_property(request):
-
     try:
         seller_profile = request.user.userprofile.sellerprofile
     except AttributeError:
         messages.error(request, "You need to register as a seller first")
         return redirect('become-seller')
-
 
     if request.method == 'POST':
         form = PropertyForm(request.POST, request.FILES)
@@ -149,8 +131,6 @@ def create_property(request):
         'is_seller': hasattr(request.user.userprofile, 'sellerprofile'),
     })
 
-def property_create_success(request):
-    return render(request, 'property/create/success.html')
 
 def seller_profile(request, seller_id):
     seller = get_object_or_404(seller_profile, id=seller_id)

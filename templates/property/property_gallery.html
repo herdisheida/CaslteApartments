@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="mb-3 card-img-top position-relative">
 
     <!-- Container for the image gallery -->
@@ -18,7 +20,7 @@
         {% endfor %}
 
         <!-- Next and previous buttons -->
-        {% if property.gallery.count > 0 %}
+        {% if property.gallery.count > 0 or property.preview_pic %}
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
@@ -40,3 +42,5 @@
         {% endif %}
     </div>
 </div>
+
+<script src="{% static 'js/property_gallery.js' %}"></script>

@@ -9,24 +9,20 @@
     
         <!-- Display Profile Picture (user can update that field) -->
         {% if user.is_authenticated %}
-        <div class="profile-pic-in-profile" style="background-image: {% if user.userprofile.image %}url({{ user.userprofile.image.url }}){% else %}url({% static 'images/default_profile_pic.png' %}){% endif %}"></div>
+            <div class="profile-pic-in-profile">
+                <img src="{{ user.userprofile.image.url }}" alt="{{ user.username }}-profile-pic">
+            </div>
         {% endif %}
 
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" action="{% url 'profile' %}">
             {% csrf_token %}
+
             <!-- Display name (user can update that field) -->
-            <div class="update-form-container">
-                {% for field in form %}
-                    <div class="form-group">
-                        {{ field.label_tag }}
-                        {{ field }}
-                        {% if field.errors %}
-                            <div class="text-danger small">{{ field.errors }}</div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+            <div class="profile-form-fields">
+             {{ form.as_p }}
             </div>
-            <button type="submit" class="submit-btn">Save Changes</button>
+
+            <button type="submit" class="btn btn-dark">Update Profile</button>
         </form>
     </div>
 </div>

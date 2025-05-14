@@ -74,16 +74,6 @@
     font-size: 0.9rem;
 }
 
-.finalize-button {
-    background-color: #8fcb8f;
-    border: none;
-    padding: 0.5rem 1.2rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    margin-top: 1rem;
-}
-
 .editable {
   width: 100%;
   max-width: 400px;

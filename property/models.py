@@ -38,7 +38,6 @@ class Property(models.Model):
        choices=BuildingTypes.choices,
        default=BuildingTypes.AREA
    )
-
    price = models.DecimalField(
        max_digits=12,
        decimal_places=2,
@@ -58,7 +57,6 @@ class Property(models.Model):
    preview_pic = models.ImageField(upload_to=property_image_path)
    is_sold = models.BooleanField(default=False)
    listing_date = models.DateField(default=timezone.now, editable=False)
-
 
    def __str__(self):
        return f"{self.street_name} {self.house_nr} ({self.pk})"

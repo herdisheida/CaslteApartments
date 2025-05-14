@@ -1,0 +1,39 @@
+{% if offer.state == 'pending' %}
+    <form method="post" action="{% url 'update-offer-state' offer.id %}">
+        {% csrf_token %}
+
+        <div class="offer-action-container">
+            <label for="offer-state-{{ offer.id }}" class="form-label">Respond to purchase offer:</label>
+            <select name="offer-state" class="form-select mb-2 offer-state-select"
+                    id="offer-state-{{ offer.id }}"
+                    data-offer-id="{{ offer.id }}">
+                <option value="accept">Accept</option>
+                <option value="contingent">Contingent</option>
+                <option value="reject">Reject</option>
+            </select>
+
+            <!-- Contingent Reason (only shown when contingent is selected) -->
+            <div id="contingent-reason-container-{{ offer.id }}" class="d-none mt-3">
+                <label for="contingent-reason-{{ offer.id }}" class="form-label">Reason for contingency:</label>
+                <textarea name="contingent-reason" id="contingent-reason-{{ offer.id }}"
+                         class="form-control" rows="3"></textarea>
+                <!-- Display error msg -->
+                {% if show_contingent and messages %}
+                    <div class="text-danger">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Reject Reason (only shown when Rejected is selected) -->
+            <div id="reject-reason-container-{{ offer.id }}" class="d-none mt-3">
+                <label for="reject-reason-{{ offer.id }}" class="form-label">Reason for rejection (optional):</label>
+                <textarea name="reject-reason" id="reject-reason-{{ offer.id }}"
+                         class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Submit Response</button>
+        </div>
+    </form>
+{% endif %}

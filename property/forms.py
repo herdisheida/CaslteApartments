@@ -1,38 +1,17 @@
 from django import forms
 import datetime
-from .models import PropertyOffer
-
-from django.core.exceptions import ValidationError
-from django.utils import timezone
 from property.models import Property, BuildingTypes, PropertyImages
-from user_profile.models import SellerProfile
 
 
 class PropertyImageForm(forms.ModelForm):
-
     class Meta:
         model = PropertyImages
         fields = '__all__'
 
 class PropertyForm(forms.ModelForm):
-
-    # TODO: þegar við bætum user við í kerfið
-    # def __init__(self, *args, **kwargs): # get curr user
-    #     self.user = kwargs.pop('user', None)
-    #     super(PropertyForm, self).__init__(*args, **kwargs)
-    #
-    #     # user is found
-    #     if self.user:
-    #         self.fields['seller'].initial = self.user.sellerprofile
-    #         # Make the field read-only
-    #         self.fields['seller'].widget.attrs['readonly'] = True
-    #         self.fields['seller'].widget.attrs['disabled'] = True
-
-
     class Meta:
         model = Property
         exclude = ['is_sold', 'listing_date', 'seller']
-        # exclude = ['is_sold', 'seller'] # TODO add the seller later
         widgets = {
             'building_type': forms.Select(choices=BuildingTypes.choices),
             'description': forms.Textarea(attrs={
@@ -56,15 +35,3 @@ class PropertyForm(forms.ModelForm):
             'toilets': forms.NumberInput(attrs={'min': 0}),
             'preview_pic': forms.FileInput(attrs={'accept': 'image/*'}),
         }
-
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['seller'].queryset = SellerProfile.objects.all()
-    #     self.fields['building_type'].initial = BuildingTypes.AREA
-    #
-
-class OfferForm(forms.ModelForm):
-    class Meta:
-        model = PropertyOffer
-        fields = ['price', 'start_date', 'expiration_date']

@@ -33,8 +33,10 @@
   margin: 0.5rem 2rem 2rem 2rem; /* top right bottom left*/
   border: black solid 2px;
 }
+
+/* IN Profile on Navbar */
 .profile-container {
-    max-width: 600px;
+    width: 35rem;
     margin: 50px auto;
     padding: 2rem;
     background-color: #fff;
@@ -43,48 +45,14 @@
     text-align: center;
 }
 
-.profile-container form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.profile-pic-in-profile {
-    height: 28rem;
-    width: 28rem;
+.profile-pic-in-profile img {
     border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.profile-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.profile-email {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
 }
 
 .form-group {
     margin-bottom: 1rem;
     text-align: left;
-}
-
-.submit-btn {
-    margin-top: 1rem;
-    padding: 0.6rem 1.4rem;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.submit-btn:hover {
-    background-color: #555;
 }
