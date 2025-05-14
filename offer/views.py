@@ -130,9 +130,7 @@ def payment(request, offer_id):
                 current_offer.property.save()
 
                 messages.success(request, "Offer finalized successfully!")
-                # return redirect('transaction-detail', transaction_id=transaction.id)
-                # TODO: go to review page
-                return redirect("property-index")
+                return redirect("submitted-offer-index")
 
             except Exception as e:
                 messages.error(request, f"Error creating transaction: {str(e)}")

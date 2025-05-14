@@ -20,4 +20,13 @@
             <p><strong>Feedback:</strong> {{ offer.contingent_msg }}</p>
         {% endif %}
     </div>
+{% elif offer.state == 'finalized' %}
+    <div class="alert alert-success">
+        ✅ Offer finalized
+    </div>
+    {% if offer.contingent_msg %}
+        <div class="alert alert-warning">
+            <p><strong>Message from Seller:</strong> {{ offer.contingent_msg }}</p>
+        </div>
+    {% endif %}
 {% endif %}
