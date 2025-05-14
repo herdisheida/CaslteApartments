@@ -1,40 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <div class="seller-container">
-        <span class="d-flex justify-content-center text-center text-secondary">(You don't have a seller profile,<br>become a seller before creating a property)</span><br>
-        <h2 class="form-title">Seller Info</h2>
+<div class="seller-container mt-5 mx-auto p-5 shadow rounded" style="max-width: 1000px; background-color: #f7f7f7;">
+    <p class="text-center text-muted mb-3">
+        (You don't have a seller profile,<br>become a seller before creating a property)
+    </p>
+    <h2 class="text-center mb-4 fw-semibold">Seller Info</h2>
 
-        <form class="seller-form">
+    <form method="POST" action="{% url 'become-seller' %}" class="seller-form" enctype="multipart/form-data">
+        {% csrf_token %}
 
-            <div class="form-section">
-                <div class="address-group">
-                    <label for="street">Address:</label>
-                    <input type="text" id="street" name="street" placeholder="street name" />
-                    <input type="text" id="city" name="city" placeholder="city" />
-                    <input type="text" id="postal-code" name="postal_code" placeholder="postal code" />
-                </div>
+        {{ form.as_p }}
 
-                <div class="bio-group">
-                    <label for="bio">Bio:</label>
-                    <textarea id="bio" name="bio" placeholder="write your bio here..."></textarea>
-                </div>
-
-                <div class="type-group">
-                    <label for="type">Type: </label>
-                    <select id="type" name="type">
-                        <option value="Real Estate Agency">Agency</option>
-                        <option value="Individual">Individual</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <a href="{% url 'property-index' %}">
-                    <button type="button" class="btn cancel">cancel</button>
-                </a>
-                <button type="submit" class="btn confirm">become seller</button>
-            </div>
-        </form>
-    </div>
+        <!-- Action buttons -->
+        <div class="text-center mt-4">
+            <a href="{% url 'property-index' %}" class="btn cancel me-3">cancel</a>
+            <button type="submit" class="btn confirm">become seller</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

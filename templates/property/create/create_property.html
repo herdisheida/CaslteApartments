@@ -1,22 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 
-    <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-container" action="{% url 'property-create' %}">
+    <!-- Page Title -->
+    <div class="my-4">
+        <h2 class="fw-semibold" style="margin-left: 120px;">Create Property</h2>
+    </div>
+
+    <!-- Property Form -->
+    <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-container">
         {% csrf_token %}
-        
-        <!-- Main property fields -->
+
+        <!-- Main Property Fields -->
         {{ form.as_p }}
+
         <!-- Gallery (Property Images) -->
-            <div class="gallery-upload-container mt-5">
-                <h5>Property Image Gallery</h5>
-                <div class="image-upload">
-                    <label class="file-upload-label">
-                        <span>Select images (Maximum 10)</span>
-                        <input type="file" name="images" multiple accept="image/*" id="image-upload">
-                    </label>
-                    <div id="image-preview" class="preview-container"></div><br>
-                </div>
+        <div class="gallery-upload-container mt-5">
+            <h5>Property Image Gallery</h5>
+            <div class="image-upload">
+                <label class="file-upload-label">
+                    <span>Select images (Maximum 10)</span>
+                    <input type="file" name="images" multiple accept="image/*" id="image-upload">
+                </label>
+                <div id="image-preview" class="preview-container"></div><br>
             </div>
+        </div>
+
+        <!-- Submit Button -->
         <button type="submit" class="btn-confirm">Confirm</button>
     </form>
+
 {% endblock %}

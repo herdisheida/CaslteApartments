@@ -24,6 +24,7 @@ from django.shortcuts import render, redirect
 
 from user_profile.forms.profile_form import ProfileForm
 from user_profile.models import UserProfile
+from .form import SellerProfileForm
 
 
 def register(request):
@@ -59,6 +60,24 @@ def profile(request):
         'form': ProfileForm(instance=user_profile),
     })
 
+#
+# def seller_index(request):
+#     return render(request, 'authentication/seller.html')
+#
 
-def seller_index(request):
-    return render(request, 'authentication/seller.html')
+def create_seller_profile(request):
+    if request.method == 'POST':
+        form = SellerProfileForm(request.POST)
+        if form.is_valid():
+            seller = form.save(commit=False)
+            seller.user = request.user.userprofile
+            seller.save()
+            return redirect('property-create')
+    else:
+        form = SellerProfileForm()
+
+    return render(request, 'authentication/seller.html', {
+        'form': form,
+        'user_profile': request.user.userprofile,
+    })
+
