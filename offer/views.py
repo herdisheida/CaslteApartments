@@ -6,6 +6,7 @@ from offer.forms import OfferForm, TransactionForm
 from django.utils import timezone
 
 
+
 def display_submitted_offers(request):
     submitted_offers = Offer.objects.filter(
         buyer=request.user.userprofile,

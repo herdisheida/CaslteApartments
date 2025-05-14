@@ -1,4 +1,3 @@
-from django.contrib.gis.gdal.prototypes.ds import destroy_feature
 from django.core.validators import MinValueValidator
 from django.db import models
 from property.models import Property
