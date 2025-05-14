@@ -17,14 +17,6 @@
                 <label for="contingent-reason-{{ offer.id }}" class="form-label">Reason for contingency:</label>
                 <textarea name="contingent-reason" id="contingent-reason-{{ offer.id }}"
                          class="form-control" rows="3"></textarea>
-                <!-- Display error msg -->
-                {% if show_contingent and messages %}
-                    <div class="text-danger">
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
             </div>
 
             <!-- Reject Reason (only shown when Rejected is selected) -->
@@ -33,6 +25,14 @@
                 <textarea name="reject-reason" id="reject-reason-{{ offer.id }}"
                          class="form-control" rows="3"></textarea>
             </div>
+            <!-- Display error msg -->
+            {% if show_contingent and messages %}
+                <div class="text-danger">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
             <button type="submit" class="btn btn-success mt-3">Submit Response</button>
         </div>
     </form>
