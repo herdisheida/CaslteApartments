@@ -8,39 +8,10 @@
     </p>
     <h2 class="text-center mb-4 fw-semibold">Seller Info</h2>
 
-    <form method="POST" action="{% url 'become-seller' %}" class="seller-form">
+    <form method="POST" action="{% url 'become-seller' %}" class="seller-form" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Address fields row -->
-        <div class="row mb-3">
-            <div class="col-12 col-md-4 mb-3 mb-md-0">
-                <label for="street" class="form-label">Street</label>
-                <input type="text" id="street" name="street_name" class="form-control" />
-            </div>
-            <div class="col-12 col-md-4 mb-3 mb-md-0">
-                <label for="city" class="form-label">City</label>
-                <input type="text" id="city" name="city" class="form-control" />
-            </div>
-            <div class="col-12 col-md-4">
-                <label for="postal-code" class="form-label">Postal Code</label>
-                <input type="text" id="postal-code" name="postal_code" class="form-control" />
-            </div>
-        </div>
-
-        <!-- Bio and type fields row -->
-        <div class="row mb-3">
-            <div class="col-12 col-md-8 mb-3 mb-md-0">
-                <label for="bio" class="form-label">Bio</label>
-                <textarea id="bio" name="bio" class="form-control" rows="3" ></textarea>
-            </div>
-            <div class="col-12 col-md-4">
-                <label for="type" class="form-label">Type</label>
-                <select id="type" name="type" class="form-select">
-                    <option value="agency">Agency</option>
-                    <option value="individual">Individual</option>
-                </select>
-            </div>
-        </div>
+        {{ form.as_p }}
 
         <!-- Action buttons -->
         <div class="text-center mt-4">

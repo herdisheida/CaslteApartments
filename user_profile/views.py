@@ -66,15 +66,18 @@ def profile(request):
 #
 
 def create_seller_profile(request):
-    if request.method == 'post':
+    if request.method == 'POST':
         form = SellerProfileForm(request.POST)
         if form.is_valid():
             seller = form.save(commit=False)
-            seller.user = request.user
+            seller.user = request.user.userprofile
             seller.save()
             return redirect('property-create')
     else:
         form = SellerProfileForm()
 
-    return render(request, 'authentication/seller.html')
+    return render(request, 'authentication/seller.html', {
+        'form': form,
+        'user_profile': request.user.userprofile,
+    })
 
