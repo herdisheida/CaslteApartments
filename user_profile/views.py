@@ -51,9 +51,13 @@ def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=user_profile)
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
+            profile_instance = form.save(commit=False)
+            profile_instance.user = request.user
+
+            if not user_profile.name:
+                profile_instance.name = request.user.username # default profile-name is user-username
+
+            profile_instance.save()
             return redirect('profile')
 
     return render(request, 'profile/profile.html', {
