@@ -36,7 +36,14 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save() # save user and get user
+
+            # create UserProfile and connect it to the new user
+            UserProfile.objects.create(
+                user=user,
+                name=user.username  # Set name to username
+            )
+
             return redirect('login')
     else:
         form = UserCreationForm()
@@ -58,11 +65,6 @@ def profile(request):
 
     return render(request, 'profile/profile.html', {'form': form})
 
-
-#
-# def seller_index(request):
-#     return render(request, 'authentication/seller.html')
-#
 
 def create_seller_profile(request):
     if request.method == 'POST':

@@ -50,4 +50,4 @@ class Transaction(models.Model):
         ordering = ['-creation_date']
 
     def __str__(self):
-        return f"TX-{self.id} | {self.offer.property.street_name} → {self.offer.seller} (${self.offer.price})"
+        return f"(id: {self.id}) | {self.offer.property.street_name} → {self.offer.seller} (${self.offer.price})"
