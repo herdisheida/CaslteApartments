@@ -27,9 +27,3 @@ class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
         exclude = ('creation_date', 'offer')
-        widgets = {
-            'national_id' : forms.NumberInput(attrs={
-                'min': 999999999,
-                'max': 10000000001,
-            })
-        }
