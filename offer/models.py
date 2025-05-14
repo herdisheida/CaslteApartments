@@ -32,7 +32,7 @@ class Offer(models.Model):
        ordering = ['-creation_date']
 
    def __str__(self):
-       return f"{self.state} ({self.id}) - Property: {self.property.street_name} - Seller: {self.seller.user.name} - Buyer: {self.buyer.name}"
+       return f"{self.state} ({self.id}) | Property: {self.property.street_name} → Seller: {self.seller.user.name} → Buyer: {self.buyer.name}"
 
 
 
@@ -43,6 +43,7 @@ class Transaction(models.Model):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
+    national_id = models.IntegerField() # isl. kennitala
 
     class Meta:
         ordering = ['-creation_date']
