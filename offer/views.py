@@ -8,7 +8,6 @@ from django.utils import timezone
 
 
 def display_submitted_offers(request):
-    now = timezone.now()
     submitted_offers = Offer.objects.filter(
         buyer=request.user.userprofile,
     )
@@ -18,7 +17,6 @@ def display_submitted_offers(request):
     })
 
 def display_received_offers(request):
-    now = timezone.now()
     received_offers = Offer.objects.filter(
         seller=request.user.userprofile.sellerprofile,
     )
