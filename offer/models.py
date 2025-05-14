@@ -10,11 +10,13 @@ class States(models.TextChoices):
    ACCEPTED = 'accepted', 'Accepted'
    REJECTED = 'rejected', 'Rejected'
    CONTINGENT = 'contingent', 'Contingent'
+   FINALIZED = 'finalized', 'Finalized'
+
 
 
 class Offer(models.Model):
    price = models.DecimalField(decimal_places=2, max_digits=20)
-   creation_date = models.DateTimeField(auto_now_add=True)
+   creation_date = models.DateField(auto_now_add=True)
    expiration_date = models.DateField()
    state = models.CharField(
        max_length=10,

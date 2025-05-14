@@ -35,18 +35,18 @@ def payment(request):
 
 def submit_offer_prop(request, property_id):
     property_obj = get_object_or_404(Property, id=property_id)
-    seller = property_obj.seller
-    buyer_profile = request.user.userprofile
+    seller_obj = property_obj.seller
+    buyer_profile_obj = request.user.userprofile
 
     if request.method == 'POST':
         form = OfferForm(request.POST)
         if form.is_valid():
             offer = form.save(commit=False)
-            offer.seller = seller
-            offer.buyer = buyer_profile
+            offer.seller = seller_obj
+            offer.buyer = buyer_profile_obj
             offer.property = property_obj
             offer.save()
-            return redirect('submitted-offer-indexu')
+            return redirect('submitted-offer-index')
     else:
         form = OfferForm()
 

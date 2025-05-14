@@ -30,8 +30,10 @@
 
     <div class="offer-right mt-5">
         <p><strong>offer amount:</strong> {{ offer.price }}$</p>
-        <p><strong>Listing Date:</strong> {{ offer.creation_date }} - {{ offer.expiration_date }}</p>
-
+        <p class="offer-dates">
+            <strong>Offer created:</strong> {{ offer.creation_date|date:"F jS, Y" }}<br>
+            <strong>Expiration date:</strong> {{ offer.expiration_date }}
+        </p>
         {% include 'offer/_update_reason.html' %} 
         
         {% if offer.state == 'accepted' or offer.state == 'contingent' %}
