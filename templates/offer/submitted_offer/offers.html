@@ -8,7 +8,9 @@
         </div>
 
         {% for offer in offers %}
-            {% include 'offer/submitted_offer/_single_offer.html' %}
+            {% if offer.expiration_date > now %}
+                {% include 'offer/submitted_offer/_single_offer.html' %}
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}
