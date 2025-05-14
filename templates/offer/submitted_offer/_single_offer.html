@@ -27,8 +27,8 @@
     <div class="offer-right mt-5">
         <p><strong>offer amount:</strong> {{ offer.price }}$</p>
         <p class="offer-dates">
-            <strong>Offer created:</strong> {{ offer.creation_date|date:"F jS, Y" }}<br>
-            <strong>Expiration date:</strong> {{ offer.expiration_date }}
+            <strong>offer created:</strong> {{ offer.creation_date|date:"F jS, Y" }}<br>
+            <strong>expiration date:</strong> {{ offer.expiration_date }}
         </p>
 
         {% include 'offer/_update_reason.html' %}
