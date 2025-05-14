@@ -1,7 +1,4 @@
-import os.path
-
 from django.contrib.auth.models import User
-from django.core.files.storage import default_storage
 from django.db import models
 from django.utils.text import slugify
 
@@ -41,7 +38,7 @@ class SellerProfile(models.Model):
     city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
     bio = models.TextField(max_length=600)
-    logo = models.ImageField(default="../static/images/default_logo.png", upload_to=profile_pic_path)
+    logo = models.ImageField(upload_to=profile_pic_path)
 
     def __str__(self):
         return f"{self.user.name} ({self.pk})"

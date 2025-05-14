@@ -10,7 +10,7 @@ class ProfileForm(ModelForm):
 class SellerProfileForm(forms.ModelForm):
     class Meta:
         model = SellerProfile
-        exclude = ('user',)
+        exclude = ['user']
         widgets = {
             'bio': forms.Textarea(attrs={'placeholder': 'write your bio here...'}),
         }
