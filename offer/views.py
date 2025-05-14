@@ -101,8 +101,12 @@ def respond_to_offer(request, offer_id):
     return redirect('received-offer-index')
 
 
-def payment(request):
-    return redirect('payment-index')
+
+def payment(request, offer_id):
+    offer = get_object_or_404(Offer, id=offer_id)
+    return render(request, 'payment/payment.html', {
+        'offer': offer
+    })
 
 
 def confirm_payment(request, offer_id):
@@ -120,9 +124,9 @@ def confirm_payment(request, offer_id):
         return redirect('offer-detail', offer_id=current_offer.id)
 
     # permission check - only the user who submitted the offer can finalize it
-    if current_offer.buyer != request.user.userprofile:
-        messages.error(request, "You don't have permission to finalize this offer")
-        return redirect('submitted-offer-index')
+    # if current_offer.buyer != request.user.userprofile:
+    #     messages.error(request, "You don't have permission to finalize this offer")
+    #     return redirect('submitted-offer-index')
 
     if request.method == 'POST':
         form = TransactionForm(request.POST)

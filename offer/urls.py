@@ -13,7 +13,8 @@ urlpatterns = [
     path('<int:offer_id>/update/', views.respond_to_offer, name='update-offer-state'),
 
     # finalize offer (by user)
-    path('payment/', views.payment, name='payment-index'),
+    path('<int:offer_id>/payment/', views.payment, name='payment-index'),
+
     path('<int:offer_id>/payment/', views.confirm_payment, name='finalize-payment'),
 
 ]

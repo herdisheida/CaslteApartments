@@ -1,3 +1,4 @@
+from django.contrib.gis.gdal.prototypes.ds import destroy_feature
 from django.core.validators import MinValueValidator
 from django.db import models
 from property.models import Property
@@ -41,6 +42,7 @@ class Transaction(models.Model):
     street_name = models.CharField(max_length=100)
     house_nr = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
+    country = models.CharField()
     postal_code = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
     national_id = models.IntegerField() # isl. kennitala
