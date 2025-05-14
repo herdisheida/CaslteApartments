@@ -115,14 +115,15 @@ def payment(request, offer_id):
                 transaction.offer = current_offer
                 transaction.save()
 
-                # current_offer.state = States.FINALIZED
-                # current_offer.save()
-                #
-                # current_offer.property.is_sold = True
-                # current_offer.property.save()
+                current_offer.state = States.FINALIZED
+                current_offer.save()
+
+                current_offer.property.is_sold = True
+                current_offer.property.save()
 
                 messages.success(request, "Offer finalized successfully!")
                 # return redirect('transaction-detail', transaction_id=transaction.id)
+                # TODO: go to review page
                 return redirect('property-index')
 
             except Exception as e:

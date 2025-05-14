@@ -44,7 +44,7 @@ class Transaction(models.Model):
     country = models.CharField(max_length=200)
     postal_code = models.IntegerField()
     creation_date = models.DateField(auto_now_add=True)
-    national_id = models.IntegerField() # isl. kennitala
+    national_id = models.CharField() # isl. kennitala
 
     class Meta:
         ordering = ['-creation_date']
