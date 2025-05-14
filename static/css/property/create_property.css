@@ -29,14 +29,8 @@
 }
 
 .preview-image {
-    width: 10rem;
-    height: 5rem;
-    object-fit: cover;
-    border-radius: 4px;
-}
-.preview-image {
-    width: 120px;
-    height: 90px;
+    width: 8rem;
+    height: 4rem;
     object-fit: cover;
     border-radius: 4px;
     margin: 5px;
