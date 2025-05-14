@@ -16,10 +16,6 @@
             </div>
         </div>
 
-        <div class="status">
-            <span class="status-dot {{ offer.state }}"></span>{{ offer.state }}
-        </div>
-
         <p><strong>Buyer:</strong> {{ offer.buyer.name }}</p>
         <a href="{% url 'property-by-id' id=offer.property.id %}"
            class="btn btn-primary w-50">

@@ -1,6 +1,11 @@
-<!-- Reason for updated offer state -->
+<!-- Offer state and the Reason for that state -->
+<div class="status mb-3">
+    <span class="status-dot {{ offer.state }}"></span>{{ offer.state }}
+</div>
 {% if offer.state == 'accepted' %}
-    <div class="alert alert-success">✅ Offer accepted successfully</div>
+    <div class="alert alert-success">
+        ✅ Offer accepted successfully
+    </div>
 {% elif offer.state == 'contingent' %}
     <div class="alert alert-warning">
         ⚠️ Offer accepted with contingencies
