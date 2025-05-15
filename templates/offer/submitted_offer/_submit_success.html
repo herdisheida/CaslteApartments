@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <div class="alert alert-success p-4 rounded shadow text-center mb-5">
-        <h2 class="mb-3">Success!</h2>
-        <p class="lead">Your purchase offer has been submitted successfully.</p>
-        <a href="{% url 'submitted-offer-index' %}" class="btn btn-primary mt-3">see offer</a>
+    <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <div class="alert alert-success p-4 rounded shadow text-center mb-5">
+            <h2 class="mb-3">Success!</h2>
+            <p class="lead">Your purchase offer has been submitted successfully.</p>
+            <a href="{% url 'submitted-offer-index' %}" class="btn btn-primary mt-3">see offer</a>
+        </div>
     </div>
-</div>
 {% endblock %}

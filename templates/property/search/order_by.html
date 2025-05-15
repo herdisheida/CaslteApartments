@@ -1,68 +1,68 @@
 <div class="popup-box" id="order-by-popup">
-  <div class="pop-up-content">
-    <div class="sort-section-order">
+    <div class="pop-up-content">
+        <div class="sort-section-order">
 
-      <!-- Price Sorting -->
-      <div class="sort-group-order">
-        <span class="sort-label-order">Price</span>
-        <div class="sort-arrows">
-          <!-- Ascending -->
-          <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=price_asc"
-             class="arrow-btn {% if current_sort == 'price_asc' %}active-arrow{% endif %}"
-             title="Sort ascending">
-            ↑
-          </a>
+            <!-- Price Sorting -->
+            <div class="sort-group-order">
+                <span class="sort-label-order">Price</span>
+                <div class="sort-arrows">
+                    <!-- Ascending -->
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=price_asc"
+                       class="arrow-btn {% if current_sort == 'price_asc' %}active-arrow{% endif %}"
+                       title="Sort ascending">
+                        ↑
+                    </a>
 
-          <!-- Descending -->
-          <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=price_desc"
-             class="arrow-btn {% if current_sort == 'price_desc' %}active-arrow{% endif %}"
-             title="Sort descending">
-            ↓
-          </a>
+                    <!-- Descending -->
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=price_desc"
+                       class="arrow-btn {% if current_sort == 'price_desc' %}active-arrow{% endif %}"
+                       title="Sort descending">
+                        ↓
+                    </a>
 
-          <!-- Clear sorting -->
-          <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
-             class="arrow-btn {% if not current_sort or 'price' not in current_sort %}active-arrow{% endif %}"
-             title="No sorting">
-            💰
-          </a>
+                    <!-- Clear sorting -->
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
+                       class="arrow-btn {% if not current_sort or 'price' not in current_sort %}active-arrow{% endif %}"
+                       title="No sorting">
+                        💰
+                    </a>
+                </div>
+            </div>
+
+            <!-- Street Name Sorting -->
+            <div class="sort-group-order">
+                <span class="sort-label-order">Street</span>
+                <div class="sort-arrows">
+                    <!-- A-Z -->
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=street_asc"
+                       class="arrow-btn {% if current_sort == 'street_asc' %}active-arrow{% endif %}"
+                       title="Sort A-Z">
+                        ↑
+                    </a>
+
+                    <!-- Z-A -->
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=street_desc"
+                       class="arrow-btn {% if current_sort == 'street_desc' %}active-arrow{% endif %}"
+                       title="Sort Z-A">
+                        ↓
+                    </a>
+
+                    <!-- Clear sorting -->
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
+                       class="arrow-btn {% if not current_sort or 'street' not in current_sort %}active-arrow{% endif %}"
+                       title="No sorting">
+                        🏠
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- Street Name Sorting -->
-      <div class="sort-group-order">
-        <span class="sort-label-order">Street</span>
-        <div class="sort-arrows">
-          <!-- A-Z -->
-          <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=street_asc"
-             class="arrow-btn {% if current_sort == 'street_asc' %}active-arrow{% endif %}"
-             title="Sort A-Z">
-            ↑
-          </a>
-
-          <!-- Z-A -->
-          <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}sort=street_desc"
-             class="arrow-btn {% if current_sort == 'street_desc' %}active-arrow{% endif %}"
-             title="Sort Z-A">
-            ↓
-          </a>
-
-          <!-- Clear sorting -->
-          <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
-             class="arrow-btn {% if not current_sort or 'street' not in current_sort %}active-arrow{% endif %}"
-             title="No sorting">
-            🏠
-          </a>
+        <!-- Reset all sorting -->
+        <div class="btn-action-container">
+            <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
+               class="action-btn cancel">
+                Reset All
+            </a>
         </div>
-      </div>
     </div>
-
-    <!-- Reset all sorting -->
-    <div class="btn-action-container">
-      <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
-         class="action-btn cancel">
-        Reset All
-      </a>
-    </div>
-  </div>
 </div>
