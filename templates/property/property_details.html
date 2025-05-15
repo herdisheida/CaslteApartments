@@ -32,53 +32,55 @@
         <div class="mt-3">
             <p class="mb-3">{{ property.description }}</p>
         </div>
-    
-        <!-- Seller info and SubmitOffer btn -->
-        <div class="d-flex gap-3" id="seller-info-on-property-container">
-            <!-- Seller info -->
-            <div class="seller-profile-pic-container">
-                <img id="seller-profile-pic-in-property" src="{{ property.seller.user.image.url }}" alt="seller-profile-thumbnail">
-                <a href="{% url 'seller-by-property' property.id %}" class="custom-offer-button">Seller: {{ property.seller.user.name }}</a>
-            </div>
-        
-            <!-- Submit-Btn dynamically changes depending on OfferState, User etc -->
-            <div>
-                {% if property.seller != user.userprofile.sellerprofile %}
-                    {% if not property.is_sold %}
-                            <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Resubmit an Offer</a>
-                        {% else %}
-                            <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Submit an Offer</a>
-                        {% endif %}
-                    {% endif %}
-            </div>
-        </div>
 
         <!-- the details of the property -->
-        <div class="mt-4 row text-center">
+        <div class="mt-4 mb-5 row text-center">
             <div class="col">Built {{ property.year_built }}</div>
             <div class="col">{{ property.size }} m2</div>
             <div class="col">{{ property.bedrooms }} Bedroom(s)</div>
             <div class="col">{{ property.bathrooms }} Bathroom(s)</div>
             <div class="col">{{ property.toilets }} Toilet(s)</div>
         </div>
+    
+        <!-- Seller info and SubmitOffer btn -->
+        <div class="link-btn-in-property-details" id="seller-info-on-property-container">
+            <!-- Seller info -->
+            <div class="seller-profile-pic-container mb-3">
+                <img id="seller-profile-pic-in-property" src="{{ property.seller.user.image.url }}" alt="seller-profile-thumbnail">
+                <a href="{% url 'seller-by-property' property.id %}" class="custom-offer-button mt-3">Seller: {{ property.seller.user.name }}</a>
+            </div>
 
 
-         <!-- Show Previous Offer details -->
-        <div class="previous-offer-status w-50 rounded border border-dark mt-5">
-            {% if user_offer %}
-                <h4 class="mt-3">Previous Offer</h4>
-                <div class="container m-3">
-                    <p><strong>Offer Amount:</strong> ${{ user_offer.price }}</p>
-                    <p><strong>Status:</strong>
-                        <span class="offer-status-{{ user_offer.state|lower }}">
-                            {{ user_offer.state }}
-                        </span>
-                    </p>
-                    <p><strong>Creation Date:</strong> {{ user_offer.creation_date }}</p>
+            <!-- Dynamic Submit/Resubmit btn -->
+            <div class="link-btn-in-property-details">
+                 <!-- Show Previous Offer details if there are any -->
+                <div class="previous-offer-status rounded border border-dark">
+                    {% if user_offer %}
+                        <h3 class="m-3">Previous Offer</h3>
+                        <div class="container m-3">
+                            <p><strong>Offer Amount:</strong> ${{ user_offer.price }}</p>
+                            <p><strong>Status:
+                                <span class="offer-status-{{ user_offer.state|lower }}">
+                                    {{ user_offer.state }}
+                                </span>
+                            </strong></p>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-        </div>
 
+                <!-- Submit-Btn dynamically changes depending on Offer.state and User -->
+                <div>
+                    {% if property.seller != user.userprofile.sellerprofile %}
+                        {% if not property.is_sold %}
+                                <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Resubmit an Offer</a>
+                            {% else %}
+                                <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Submit an Offer</a>
+                            {% endif %}
+                        {% endif %}
+                </div>
+
+            </div>
+        </div>
     </div>
 
 {% endblock %}

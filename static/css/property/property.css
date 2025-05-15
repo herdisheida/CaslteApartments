@@ -89,10 +89,9 @@
 
 /* previous offer in offer details */
 .previous-offer-status {
-    margin-top: 1rem;
     padding: 1rem;
     background-color: #f8f9fa;
-    border-radius: 5px;
+    width: 20rem;
 }
 
 .offer-status-pending {
@@ -110,3 +109,7 @@
 .offer-status-countered {
     color: #17a2b8; /* Teal for countered */
 }
+
+
+
+
