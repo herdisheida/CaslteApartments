@@ -1,86 +1,100 @@
-<form method="GET" action="{% url 'property-index' %}">
-    <div class="popup-box" id="filter-popup">
-        <div class="pop-up-content">
-
-            <!-- Postal Code Filter -->
-            <div class="filter-postal-code-container">
-                <label for="postal_code">Postal Code</label>
-                <select name="postal_code" id="postal_code" class="form-select">
-                    <option value="all">All Postal Codes</option>
-                    {% for code in unique_postal_codes %}
-                        <option value="{{ code }}" {% if request.GET.postal_code == code|stringformat:"s" %}selected{% endif %}>
-                            {{ code }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <!-- Property Type Filter -->
-            <div class="filter-type-container">
-                <label for="building_type">Type</label>
-                <select name="building_type" id="building_type" class="form-select">
-                    <option value="all">All Types</option>
-                    {% for t in unique_types %}
-                        <option value="{{ t }}" {% if request.GET.building_type == t %}selected{% endif %}>
-                            {{ t|title }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <!-- Price Range -->
-            <div class="filter-price-range-container">
-                <label class="form-label">Price Range ($)</label>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label for="min_price" class="form-label">Minimum</label>
-                        <input type="number"
-                               id="min_price"
-                               name="min_price"
-                               class="form-control"
-                               value="{{ request.GET.min_price }}"
-                               min="0">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="max_price" class="form-label">Maximum</label>
-                        <input type="number"
-                               id="max_price"
-                               name="max_price"
-                               class="form-control"
-                               value="{{ request.GET.max_price }}"
-                               min="0">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Availability -->
-            <div class="filter-availability-container">
-                <label>Availability</label>
-                <div class="form-check">
-                    <input class="form-check-input"
-                           type="checkbox"
-                           id="for-sale"
-                           name="availability"
-                           value="for-sale"
-                           {% if "for-sale" in request.GET.getlist.availability %}checked{% endif %}>
-                    <label class="form-check-label" for="for-sale">For Sale</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input"
-                           type="checkbox"
-                           id="is-sold"
-                           name="availability"
-                           value="is-sold"
-                           {% if "is-sold" in request.GET.getlist.availability %}checked{% endif %}>
-                    <label class="form-check-label" for="is-sold">Sold</label>
-                </div>
-            </div>
-
-            <!-- Form Buttons -->
-            <div class="btn-action-container">
-                <a href="{% url 'property-index' %}" class="action-btn cancel">Reset</a>
-            <button type="submit" class="action-btn confirm">Apply Filters</button>
-            </div>
-        </div>
-    </div>
-</form>
+{#<form method="GET" action="{% url 'property-index' %}">#}
+{#    <!-- 🔍 SEARCH BAR -->#}
+{#    <div class="search-section">#}
+{#        <label class="search-container">#}
+{#            <input type="text"#}
+{#                   name="search"#}
+{#                   placeholder="Search by street or city..."#}
+{#                   value="{{ request.GET.search|default:'' }}"#}
+{#                   class="search-input">#}
+{#            <button type="submit" class="search-btn">🔎</button>#}
+{#        </label>#}
+{#    </div>#}
+{##}
+{#    <!-- ⬇️ FILTERS -->#}
+{#    <div class="popup-box" id="filter-popup">#}
+{#        <div class="pop-up-content">#}
+{##}
+{#            <!-- Postal Code Filter -->#}
+{#            <div class="filter-postal-code-container">#}
+{#                <label for="postal_code">Postal Code</label>#}
+{#                <select name="postal_code" id="postal_code" class="form-select">#}
+{#                    <option value="all">All Postal Codes</option>#}
+{#                    {% for code in unique_postal_codes %}#}
+{#                        <option value="{{ code }}" {% if request.GET.postal_code == code|stringformat:"s" %}selected{% endif %}>#}
+{#                            {{ code }}#}
+{#                        </option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#            </div>#}
+{##}
+{#            <!-- Property Type Filter -->#}
+{#            <div class="filter-type-container">#}
+{#                <label for="building_type">Type</label>#}
+{#                <select name="building_type" id="building_type" class="form-select">#}
+{#                    <option value="all">All Types</option>#}
+{#                    {% for t in unique_types %}#}
+{#                        <option value="{{ t }}" {% if request.GET.building_type == t %}selected{% endif %}>#}
+{#                            {{ t|title }}#}
+{#                        </option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#            </div>#}
+{##}
+{#            <!-- Price Range -->#}
+{#            <div class="filter-price-range-container">#}
+{#                <label class="form-label">Price Range ($)</label>#}
+{#                <div class="row g-3">#}
+{#                    <div class="col-md-6">#}
+{#                        <label for="min_price" class="form-label">Minimum</label>#}
+{#                        <input type="number"#}
+{#                               id="min_price"#}
+{#                               name="min_price"#}
+{#                               class="form-control"#}
+{#                               value="{{ request.GET.min_price }}"#}
+{#                               min="0">#}
+{#                    </div>#}
+{#                    <div class="col-md-6">#}
+{#                        <label for="max_price" class="form-label">Maximum</label>#}
+{#                        <input type="number"#}
+{#                               id="max_price"#}
+{#                               name="max_price"#}
+{#                               class="form-control"#}
+{#                               value="{{ request.GET.max_price }}"#}
+{#                               min="0">#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- Availability -->#}
+{#            <div class="filter-availability-container">#}
+{#                <label>Availability</label>#}
+{#                <div class="form-check">#}
+{#                    <input class="form-check-input"#}
+{#                           type="checkbox"#}
+{#                           id="for-sale"#}
+{#                           name="availability"#}
+{#                           value="for-sale"#}
+{#                           {% if "for-sale" in request.GET.getlist.availability %}checked{% endif %}>#}
+{#                    <label class="form-check-label" for="for-sale">For Sale</label>#}
+{#                </div>#}
+{#                <div class="form-check">#}
+{#                    <input class="form-check-input"#}
+{#                           type="checkbox"#}
+{#                           id="is-sold"#}
+{#                           name="availability"#}
+{#                           value="is-sold"#}
+{#                           {% if "is-sold" in request.GET.getlist.availability %}checked{% endif %}>#}
+{#                    <label class="form-check-label" for="is-sold">Sold</label>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- Buttons -->#}
+{#            <div class="btn-action-container">#}
+{#                <a href="{% url 'property-index' %}" class="action-btn cancel">Reset</a>#}
+{#                <button type="submit" class="action-btn confirm">Apply Filters</button>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{#</form>#}

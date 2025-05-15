@@ -12,7 +12,7 @@ def index(request):
     search_query = request.GET.get("search")
     if search_query:
         properties = properties.filter(
-            Q(street_name__icontains=search_query) | Q(city__icontains=search_query)
+            Q(street_name__icontains=search_query)
         )
 
     # FILTER
@@ -63,6 +63,7 @@ def index(request):
         properties = properties.order_by("-street_name")
 
     context = {
+
         "properties": properties,
         "unique_postal_codes": unique_postal_codes,
         "unique_types": unique_types,
