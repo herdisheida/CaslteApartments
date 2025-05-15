@@ -47,7 +47,8 @@ def submit_offer(request, property_id):
             offer.buyer = buyer_profile_obj
             offer.property = property_obj
             offer.save()
-            return redirect("submitted-offer-index")
+
+            return redirect("submit-offer-success")
     else:
         form = OfferForm()
 
@@ -55,6 +56,8 @@ def submit_offer(request, property_id):
         request, "offer/submit_offer.html", {"form": form, "property": property_obj}
     )
 
+def submit_offer_success(request):
+    return render(request, "offer/submitted_offer/_submit_success.html")
 
 def respond_to_offer(request, offer_id):
     """Sellers responding to submitted offers"""

@@ -6,6 +6,7 @@ urlpatterns = [
     path("display-received", views.display_received_offers, name="received-offer-index"),
     # submit offer (by user)
     path("<int:property_id>/submit-offer/", views.submit_offer, name="submit-offer"),
+    path('submit-offer-success/', views.submit_offer_success, name="submit-offer-success"),
     # accept offer (by seller)
     path("<int:offer_id>/update/", views.respond_to_offer, name="update-offer-state"),
     # finalize offer (by user)
