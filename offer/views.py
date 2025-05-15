@@ -138,7 +138,7 @@ def payment(request, offer_id):
                 current_offer.property.is_sold = True
                 current_offer.property.save()
 
-                return redirect("submitted-offer-index")
+                return redirect("payment-success")
 
             except Exception as e:
                 messages.error(request, f"Error creating transaction: {str(e)}")
@@ -148,13 +148,5 @@ def payment(request, offer_id):
         request, "payment/payment.html", {"form": form, "offer": current_offer}
     )
 
-
-
-
-def review_payment(request):
-
-    # TODO HELP
-    return render(request, "payment/_review_payment.html", context={})
-    #   "form": form, # can access the info from the payment here
-      #  "payment": payment
-
+def payment_success(request):
+    return render(request, 'payment/_success.html')
