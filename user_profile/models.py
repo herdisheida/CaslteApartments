@@ -12,9 +12,8 @@ def profile_pic_path(instance, filename):
     user_profile = instance if isinstance(instance, UserProfile) else instance.user
     subfolder = "logo" if hasattr(instance, "logo") else "profile_pic"
 
-    user_name = slugify(user_profile.name)
     user_id = slugify(user_profile.id)
-    return f"profile_pics/{user_name}_{user_id}/{subfolder}/{filename}"
+    return f"profile_pics/user_{user_id}/{subfolder}/{filename}"
 
 
 class UserProfile(models.Model):
