@@ -47,6 +47,19 @@
                     {% if not property.is_sold %}
                         {% if property.id in user_submitted_offer_ids %}
                             <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Resubmit an Offer</a>
+
+                             <!-- Show previous offer details -->
+                            <div class="previous-offer-status">
+                                {% if user_offer %}
+                                    <p><strong>Previous Offer Amount:</strong> ${{ user_offer.price }}</p>
+                                    <p><strong>State:</strong>
+                                        <span class="offer-status-{{ user_offer.state|lower }}">
+                                            {{ user_offer.state }}
+                                        </span>
+                                    </p>
+                                {% endif %}
+                            </div>
+
                         {% else %}
                             <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Submit an Offer</a>
                         {% endif %}

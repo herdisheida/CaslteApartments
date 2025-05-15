@@ -83,3 +83,30 @@
 #property-details-container {
     width: 80%;
 }
+
+
+
+
+/* previous offer in offer details */
+.previous-offer-status {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.offer-status-pending {
+    color: #ffc107; /* Yellow for pending */
+}
+
+.offer-status-accepted {
+    color: #28a745; /* Green for accepted */
+}
+
+.offer-status-rejected {
+    color: #dc3545; /* Red for rejected */
+}
+
+.offer-status-countered {
+    color: #17a2b8; /* Teal for countered */
+}

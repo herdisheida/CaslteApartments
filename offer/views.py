@@ -101,6 +101,11 @@ def respond_to_offer(request, offer_id):
                     )
                 offer.state = States.CONTINGENT
                 offer.contingent_msg = contingent_msg
+
+                # property is considered sold
+                offer.property.is_sold = True
+                offer.property.save()
+
                 messages.success(request, "Offer marked as contingent")
 
             offer.save()
