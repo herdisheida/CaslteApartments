@@ -62,6 +62,9 @@ def index(request):
     elif sort == "street_desc":
         properties = properties.order_by("-street_name")
 
+    for p in properties:
+        p.total_rooms = (p.bedrooms or 0) + (p.bathrooms or 0) + (p.toilets or 0)
+
     context = {
 
         "properties": properties,
@@ -71,6 +74,8 @@ def index(request):
         "search_query": search_query,
     }
     return render(request, "property/properties.html", context)
+
+
 
 
 def get_property_by_id(request, id):
@@ -148,3 +153,4 @@ def seller_profile(request, seller_id):
 
 def submit_offer(request):
     return render(request, "offer/submit_offer.html")
+

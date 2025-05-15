@@ -17,6 +17,18 @@
         </div>
         <small class="text-muted d-block mb-2">{{ property.city }}</small>
 
+        <!-- ✅ New Row for Size and Rooms -->
+        <div class="d-flex justify-content-start gap-3 mb-2 text-muted small">
+            <div>
+                <i class="bi bi-arrows-angle-expand"></i>
+                {{ property.size }} m²
+            </div>
+            <div>
+                <i class="bi bi-door-open"></i>
+                {{ property.total_rooms }} rooms
+            </div>
+        </div>
+
         {% if is_detail %}
             <p>{{ property.description }}</p>
         {% else %}
