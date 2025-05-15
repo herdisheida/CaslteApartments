@@ -24,7 +24,7 @@
           <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
              class="arrow-btn {% if not current_sort or 'price' not in current_sort %}active-arrow{% endif %}"
              title="No sorting">
-            ↔
+            💰
           </a>
         </div>
       </div>
@@ -51,7 +51,7 @@
           <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}"
              class="arrow-btn {% if not current_sort or 'street' not in current_sort %}active-arrow{% endif %}"
              title="No sorting">
-            ↔
+            🏠
           </a>
         </div>
       </div>
