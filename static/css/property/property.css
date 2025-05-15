@@ -132,31 +132,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive adjustments */
-@media (max-width: 800px) {
-    .seller-offer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .previous-offer {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .seller-button {
-        grid-row: 3;
-    }
-
-    .offer-button {
-        grid-row: 4;
-    }
-
-    .seller-img {
-        width: 6rem;
-        height: 6rem;
-    }
-}
-
 /* Status Badges */
 .status-badge {
     padding: 0.25rem 0.5rem;
