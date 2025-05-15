@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block content %}
-    <div class="container my-5">
+    <div class="w-100 cover-img-container">
+        <img src="{{ seller.cover_img.url }}" alt="seller-cover-img" class="cover-img">
+    </div>
+
+    <div class="container my-3">
         <!-- Profile Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Seller Profile</h2>
@@ -10,9 +14,9 @@
     
         <!-- Seller Info Section -->
         <div class="row align-items-start mb-5">
-            <!-- Profile Picture + Name + username (left) -->
+            <!-- Cover Image + Name + username (left) -->
             <div class="col-md-3 text-center">
-                <img id="seller-profile-pic" src="{% if seller.user.image %}{{ seller.user.image.url }}{% else %}{% static 'images/default_profile_pic.png' %}{% endif %}"
+                <img id="seller-profile-pic" src="{{ seller.user.image.url }}"
                      alt="Profile Picture" class="rounded-circle mb-3 border">
                 <h5 class="fw-bold mb-0">
                     {{ seller.user.name}}
@@ -35,7 +39,7 @@
     
             <!-- Seller Logo (right) -->
             <div class="col-md-3 text-center">
-                <img id="seller-logo-img" src="{% if seller.logo %}{{ seller.logo.url }}{% else %}{% static 'images/default_logo.png' %}{% endif %}"
+                <img id="seller-logo-img" src="{{ seller.logo.url }}"
                      alt="Seller Logo">
             </div>
         </div>
