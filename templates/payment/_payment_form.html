@@ -109,7 +109,10 @@
             </div>
 
             <div class="col-12">
-              <button id="continue-to-review-page" class="btn btn-primary w-50 py-3" type="button">continue payment</button>
+                <a id="back-to-submitted-offer-display" href="{% url 'submitted-offer-index' %}">
+                    <button class="btn btn-secondary py-3" type="button">cancel</button>
+                </a>
+                <button id="continue-to-review-page" class="btn btn-primary py-3" type="button">continue payment</button>
             </div>
         </div>
     </div>
