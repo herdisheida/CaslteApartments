@@ -44,57 +44,51 @@
 
 
         <!-- INTERACTIVE buttons (Seller info and submit offer) -->
+        <div class="seller-offer-container">
+            <!-- Grid Container with conditional class -->
+            <div class="seller-offer-grid {% if not user_offer %}no-previous-offer{% endif %}">
+                <!-- Seller Profile Pic -->
+                <div class="seller-profile-pic">
+                    <img src="{{ property.seller.user.image.url }}" alt="Seller profile picture" class="seller-img">
+                </div>
 
-<!-- Seller info and Offer Section -->
-<div class="seller-offer-container">
-    <!-- Grid Container with conditional class -->
-    <div class="seller-offer-grid {% if not user_offer %}no-previous-offer{% endif %}">
-        <!-- Seller Profile Pic -->
-        <div class="seller-profile-pic">
-            <img src="{{ property.seller.user.image.url }}" alt="Seller profile picture" class="seller-img">
-        </div>
+                <!-- Previous Offer (only shown if exists) -->
+                {% if user_offer %}
+                <div class="previous-offer">
+                    <div class="offer-details">
+                        <h4>Previous Offer</h4>
+                        <p> - most recent offer</p>
+                        <p><strong>Amount:</strong> ${{ user_offer.price }}</p>
+                        <p>
+                            <strong>Status:</strong>
+                            <span class="status-badge status-{{ user_offer.state|lower }}">
+                                {{ user_offer.state }}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
 
-        <!-- Previous Offer (only shown if exists) -->
-        {% if user_offer %}
-        <div class="previous-offer">
-            <div class="offer-details">
-                <h4>Previous Offer</h4>
-                <p> - most recent offer</p>
-                <p><strong>Amount:</strong> ${{ user_offer.price }}</p>
-                <p>
-                    <strong>Status:</strong>
-                    <span class="status-badge status-{{ user_offer.state|lower }}">
-                        {{ user_offer.state }}
-                    </span>
-                </p>
+                <!-- Seller Button -->
+                <div class="seller-button">
+                    <a href="{% url 'seller-by-property' property.id %}" class="custom-purple-button">
+                        Seller: {{ property.seller.user.name }}
+                    </a>
+                </div>
+
+                <!-- Submit Offer Button (Always shown if conditions are met) -->
+                {% if property.seller != user.userprofile.sellerprofile and not property.is_sold %}
+                <div class="offer-button">
+                    <a href="{% url 'submit-offer' property.id %}" class="custom-purple-button">
+                        {% if property.id in user_submitted_offer_ids %}
+                            Resubmit Offer
+                        {% else %}
+                            Submit Offer
+                        {% endif %}
+                    </a>
+                </div>
+                {% endif %}
             </div>
         </div>
-        {% endif %}
-
-        <!-- Seller Button -->
-        <div class="seller-button">
-            <a href="{% url 'seller-by-property' property.id %}" class="custom-purple-button">
-                Seller: {{ property.seller.user.name }}
-            </a>
-        </div>
-
-        <!-- Submit Offer Button -->
-        {% if property.seller != user.userprofile.sellerprofile and not property.is_sold %}
-        <div class="offer-button">
-            <a href="{% url 'submit-offer' property.id %}" class="custom-purple-button">
-                {% if property.id in user_submitted_offer_ids %}
-                    Resubmit Offer
-                {% else %}
-                    Submit Offer
-                {% endif %}
-            </a>
-        {% endif %}
     </div>
-</div>
-
-
-
-
-    </div>
-
 {% endblock %}

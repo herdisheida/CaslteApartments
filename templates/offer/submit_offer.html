@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
 <div class="offer-form-container">
     <h2>Purchase Offer</h2>
 
-    <form method="post">
+    <form method="post" action="{% url 'submit-offer' property_id=property.id %}">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="button-row">
