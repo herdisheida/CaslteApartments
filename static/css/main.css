@@ -46,7 +46,28 @@ a {
 }
 
 
-/* links are not underlined */
-a {
+
+/* Purple Button Styling */
+.custom-purple-button {
+    background-color: #3b2e57;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
     text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.custom-purple-button:hover {
+    background-color: #2b2043;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.custom-purple-button:hover a {
+    text-decoration: none; /* links on btn are not underlined */
 }
