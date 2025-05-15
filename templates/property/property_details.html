@@ -55,8 +55,8 @@
         </div>
 
         <!-- Previous Offer (Top Right) -->
-        <div class="previous-offer">
-            {% if user_offer %}
+        {% if user_offer %}
+            <div class="previous-offer">
                 <div class="offer-details">
                     <h4>Previous Offer</h4>
                     <p><strong>Amount:</strong> ${{ user_offer.price }}</p>
@@ -66,38 +66,36 @@
                             {{ user_offer.state }}
                         </span>
                     </p>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
 
         <!-- Seller Button (Bottom Left) -->
         <div class="custom-purple-button">
-            <a href="{% url 'seller-by-property' property.id %}" class="btn seller-btn">
+            <a href="{% url 'seller-by-property' property.id %}">
                 Seller: {{ property.seller.user.name }}
             </a>
         </div>
 
         <!-- Submit Offer Button (Bottom Right) -->
-        <div class="custom-purple-button">
-            {% if property.seller != user.userprofile.sellerprofile and not property.is_sold %}
-                <a href="{% url 'submit-offer' property.id %}" class="btn offer-btn">
+        {% if property.seller != user.userprofile.sellerprofile and not property.is_sold %}
+            <div class="custom-purple-button">
+
+                <a href="{% url 'submit-offer' property.id %}">
                     {% if property.id in user_submitted_offer_ids %}
                         Resubmit Offer
                     {% else %}
                         Submit Offer
                     {% endif %}
                 </a>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 </div>
 
 
 
 
-
-
-        </div>
     </div>
 
 {% endblock %}
