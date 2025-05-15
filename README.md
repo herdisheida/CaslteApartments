@@ -1,4 +1,8 @@
 # 🏰 Castle Apartments
+*Herdís Heiða Jing Guðjohnsen*
+*Sindri Snæra Snorrasson*
+*Júlía Gunnlaugsdóttir*
+
 
 <!-- PROJECT LOGO -->
 <div align="center">
@@ -29,7 +33,6 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
   </ol>
@@ -63,13 +66,7 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
 - A seller can respond (reject and accept|contingent-accept) to a submitted offer by a buyer
 - A seller can add a comment to their accept response if they find a submitted offer unsatisfactory
 
-
-## Getting Started
-- Python 3.13+
-- PostgreSQL 17+
-- pip
-
-### Prerequisites
+## Prerequisites
 Install dependencies listed in requirements.txt
    ```sh
    pip install -r requirements.txt
