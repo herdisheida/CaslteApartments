@@ -9,7 +9,7 @@
         <!-- Display Profile Picture (user can update that field) -->
         {% if user.is_authenticated %}
             <div class="profile-pic-in-profile">
-                <img src="{{ user.userprofile.image.url }}" alt="{{ user.username }}-profile-pic">
+                <img class="border border-dark" src="{{ user.userprofile.image.url }}" alt="{{ user.username }}-profile-pic">
             </div>
         {% endif %}
         <!-- Display User's Name -->
