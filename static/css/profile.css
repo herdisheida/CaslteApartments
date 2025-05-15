@@ -36,7 +36,7 @@
 
 /* Profile on Profile-page */
 .profile-container {
-    width: 30rem;
+    width: 31rem;
     height: 30rem;
     margin: 6rem auto;
     border-radius: 12px;
@@ -47,7 +47,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .profile-pic-in-profile img {
     border-radius: 50%;
     width: 15rem;
@@ -55,7 +54,7 @@
     object-fit: cover;
 }
 
-/*.form-group {*/
-/*    margin-bottom: 1rem;*/
-/*    text-align: left;*/
-/*}*/
+.profile-container form {
+    display: flex;
+    flex-direction: column;
+}
