@@ -105,7 +105,6 @@ def respond_to_offer(request, offer_id):
                 # property is considered sold
                 offer.property.is_sold = True
                 offer.property.save()
-
                 messages.success(request, "Offer marked as contingent")
 
             offer.save()
