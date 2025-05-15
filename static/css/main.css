@@ -9,30 +9,11 @@
     color: white;
     font-family: "Lucida Console", monospace;
 }
+
 .nav-menu-link:hover {
     color: black;
     font-weight: 1000;
 }
-
-
-
-/* Profile picture styling */
-/*.profile-pic-container {*/
-/*    border-radius: 50%;*/
-/*    width: 4rem;*/
-/*    height: 4rem;*/
-/*    overflow: hidden;*/
-/*}*/
-/*.profile-pic-container:hover {*/
-/*    opacity: 0.5;*/
-/*}*/
-
-/*#profile-pic-small {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    object-fit: cover;*/
-/*}*/
-
 
 .profile-pic-in-navbar {
     height: 50px;
@@ -47,13 +28,10 @@
 #footer-container {
     background-color: #4D4C77;
     padding: 1rem;
-
     display: flex;
     justify-content: space-between;
 }
-a {
-    color: white;
-}
+
 
 #app-logo {
     height: 3rem;
@@ -62,5 +40,36 @@ a {
 .footer-contact-info {
     display: flex;
     align-items: flex-end;
-    font-size: 0.9rem;
+    font-size: 1rem;
+}
+
+.footer-item a {
+    color: white;
+}
+
+
+/* Purple Button Styling */
+.custom-purple-button {
+    background-color: #3b2e57;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.custom-purple-button:hover {
+    background-color: #2b2043;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+a {
+    text-decoration: none; /* links on btn are not underlined */
 }

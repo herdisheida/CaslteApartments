@@ -47,7 +47,8 @@ def submit_offer(request, property_id):
             offer.buyer = buyer_profile_obj
             offer.property = property_obj
             offer.save()
-            return redirect("submitted-offer-index")
+
+            return redirect("submit-offer-success")
     else:
         form = OfferForm()
 
@@ -55,6 +56,8 @@ def submit_offer(request, property_id):
         request, "offer/submit_offer.html", {"form": form, "property": property_obj}
     )
 
+def submit_offer_success(request):
+    return render(request, "offer/submitted_offer/_submit_success.html")
 
 def respond_to_offer(request, offer_id):
     """Sellers responding to submitted offers"""
@@ -76,6 +79,10 @@ def respond_to_offer(request, offer_id):
             if new_state == "accept":
                 offer.state = States.ACCEPTED
                 offer.contingent_msg = None
+
+                # property is considered sold
+                offer.property.is_sold = True
+                offer.property.save()
                 messages.success(request, "Offer accepted successfully")
 
             elif new_state == "reject":
@@ -97,6 +104,10 @@ def respond_to_offer(request, offer_id):
                     )
                 offer.state = States.CONTINGENT
                 offer.contingent_msg = contingent_msg
+
+                # property is considered sold
+                offer.property.is_sold = True
+                offer.property.save()
                 messages.success(request, "Offer marked as contingent")
 
             offer.save()
@@ -135,9 +146,6 @@ def payment(request, offer_id):
                 current_offer.state = States.FINALIZED
                 current_offer.save()
 
-                current_offer.property.is_sold = True
-                current_offer.property.save()
-
                 return redirect("payment-success")
 
             except Exception as e:
@@ -149,4 +157,4 @@ def payment(request, offer_id):
     )
 
 def payment_success(request):
-    return render(request, 'payment/_success.html')
+    return render(request, "payment/_payment_success.html")

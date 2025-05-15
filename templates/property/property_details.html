@@ -32,36 +32,63 @@
         <div class="mt-3">
             <p class="mb-3">{{ property.description }}</p>
         </div>
-    
-        <!-- Seller info and SubmitOffer btn -->
-        <div class="d-flex gap-3" id="seller-info-on-property-container">
-            <!-- Seller info -->
-            <div class="seller-profile-pic-container">
-                <img id="seller-profile-pic-in-property" src="{{ property.seller.user.image.url }}" alt="seller-profile-thumbnail">
-                <a href="{% url 'seller-by-property' property.id %}" class="custom-offer-button">Seller: {{ property.seller.user.name }}</a>
-            </div>
-        
-            <!-- Submit-Btn dynamically changes depending on OfferState, User etc -->
-            <div>
-                {% if property.seller != user.userprofile.sellerprofile %}
-                    {% if not property.is_sold %}
-                        {% if property.id in user_submitted_offer_ids %}
-                            <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Resubmit an Offer</a>
-                        {% else %}
-                            <a href="{% url 'submit-offer' property.id %}" class="custom-offer-button">Submit an Offer</a>
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
-            </div>
-        </div>
-    
+
         <!-- the details of the property -->
-        <div class="mt-4 row text-center">
+        <div class="mt-4 mb-5 row text-center">
             <div class="col">Built {{ property.year_built }}</div>
             <div class="col">{{ property.size }} m2</div>
             <div class="col">{{ property.bedrooms }} Bedroom(s)</div>
             <div class="col">{{ property.bathrooms }} Bathroom(s)</div>
             <div class="col">{{ property.toilets }} Toilet(s)</div>
+        </div>
+
+
+        <!-- INTERACTIVE buttons (Seller info and submit offer) -->
+        <div class="seller-offer-container">
+            <!-- Grid Container with conditional class -->
+            <div class="seller-offer-grid {% if not user_offer %}no-previous-offer{% endif %}">
+                <!-- Seller Profile Pic -->
+                <div class="seller-profile-pic">
+                    <img src="{{ property.seller.user.image.url }}" alt="Seller profile picture" class="seller-img">
+                </div>
+
+                <!-- Previous Offer (only shown if exists) -->
+                {% if user_offer %}
+                <div class="previous-offer">
+                    <div class="offer-details">
+                        <h4>Previous Offer</h4>
+                        <p> - most recent offer</p>
+                        <p><strong>Amount:</strong> ${{ user_offer.price }}</p>
+                        <p>
+                            <strong>Status:</strong>
+                            <span class="status-badge status-{{ user_offer.state|lower }}">
+                                {{ user_offer.state }}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Seller Button -->
+                <div class="seller-button">
+                    <a href="{% url 'seller-by-property' property.id %}" class="custom-purple-button">
+                        Seller: {{ property.seller.user.name }}
+                    </a>
+                </div>
+
+                <!-- Submit Offer Button (Always shown if conditions are met) -->
+                {% if property.seller != user.userprofile.sellerprofile and not property.is_sold %}
+                <div class="offer-button">
+                    <a href="{% url 'submit-offer' property.id %}" class="custom-purple-button">
+                        {% if property.id in user_submitted_offer_ids %}
+                            Resubmit Offer
+                        {% else %}
+                            Submit Offer
+                        {% endif %}
+                    </a>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}

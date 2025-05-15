@@ -42,11 +42,13 @@ def edit_profile(request):
     return render(request, "profile/edit_profile.html", {"form": form})
 
 def create_seller_profile(request):
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+
     if request.method == "POST":
-        form = SellerProfileForm(request.POST)
+        form = SellerProfileForm(request.POST, request.FILES)
         if form.is_valid():
             seller = form.save(commit=False)
-            seller.user = request.user.userprofile
+            seller.user = user_profile
             seller.save()
             return redirect("property-create")
     else:
@@ -57,6 +59,6 @@ def create_seller_profile(request):
         "authentication/seller.html",
         {
             "form": form,
-            "user_profile": request.user.userprofile,
+            "user_profile": user_profile,
         },
     )

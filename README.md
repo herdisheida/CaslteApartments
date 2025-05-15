@@ -58,44 +58,19 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
   - Receive real-time updates on offer status
 
 ### Extra requirements:
-- You can become a seller
-- You can accept or reject an offer as a seller
-- You can create a property as a seller and put it up for listing
-- You can add a contingent comment to a offer when you find the offer unsatisfactory
+- A normal user (buyer) can become a seller
+- A seller can create a property and set it up for listing
+- A seller can respond (reject and accept|contingent-accept) to a submitted offer by a buyer
+- A seller can add a comment to their accept response if they find a submitted offer unsatisfactory
 
 
 ## Getting Started
-- Python 3.9+
-- PostgreSQL 12+
+- Python 3.13+
+- PostgreSQL 17+
 - pip
 
 ### Prerequisites
 Install dependencies listed in requirements.txt
    ```sh
    pip install -r requirements.txt
-   ```
-
-### Installation
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/herdisheida/castle_apartments.git
-   cd castle_apartments
-   ```
-2. Set up the virtual environment
-   ```sh
-   python -m venv venv
-   source venv/bin/activate # On mac
-   ```
-3. Install the dependencies
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. Running the application
-   a) Run the development server:
-   ```sh
-   python manage.py runserver
-   ```
-   b) Access the application at:
-   ```sh
-   http://localhost:8000
    ```

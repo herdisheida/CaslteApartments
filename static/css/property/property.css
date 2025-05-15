@@ -30,22 +30,6 @@
     background-color: white;
 }
 
-.btn-confirm {
-    background-color: #3b2e58;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.btn-confirm:hover {
-    background-color: #5e3b8a;
-}
-
-
 #see-more-btn, .btn-sm {
     background-color: #372549;
     width: 130px;
@@ -57,29 +41,107 @@
     font-size: 13px;
 }
 
-#link-to-seller-btn {
-    background-color: #3b2e58;
-    color: white;
-    border: none;
+
+
+/* SELLER INFO and OFFER SECTION */
+/* Container Styles */
+.seller-offer-container {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-#link-to-seller-btn:hover {
-    background-color: #5e3b8a;
+
+/* Grid Layout - Default (with offer) */
+.seller-offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Grid Layout - When no offer exists */
+.seller-offer-grid.no-previous-offer {
+    grid-template-columns: 1fr 1fr; /* Keep two columns */
+    grid-template-areas:
+        "seller-pic empty-space"
+        "seller-btn offer-btn";
+}
+
+.seller-offer-grid.no-previous-offer .seller-profile-pic {
+    grid-area: seller-pic;
+}
+
+.seller-offer-grid.no-previous-offer .seller-button {
+    grid-area: seller-btn;
+}
+
+.seller-offer-grid.no-previous-offer .offer-button {
+    grid-area: offer-btn;
 }
 
 
-/* SELLER info on property details page*/
-#seller-profile-pic-in-property {
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
+.previous-offer {
+    padding: 1.25rem;
+    background: white;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
+/* Image Styling */
+.seller-img {
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
-}
-.d-flex {
-    display: flex;
-    align-items: center
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#property-details-container {
-    width: 80%;
+
+/* Individual Grid Items */
+.seller-profile-pic {
+    text-align: center;
+}
+
+/* Image Styling */
+.seller-img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-accepted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-contingent {
+    background-color: #d1ecf1;
+    color: #0c5460;
 }

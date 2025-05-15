@@ -12,7 +12,7 @@ def index(request):
     search_query = request.GET.get("search")
     if search_query:
         properties = properties.filter(
-            Q(street_name__icontains=search_query) | Q(city__icontains=search_query)
+            Q(street_name__icontains=search_query)
         )
 
     # FILTER
@@ -62,7 +62,11 @@ def index(request):
     elif sort == "street_desc":
         properties = properties.order_by("-street_name")
 
+    for p in properties:
+        p.total_rooms = (p.bedrooms or 0) + (p.bathrooms or 0) + (p.toilets or 0)
+
     context = {
+
         "properties": properties,
         "unique_postal_codes": unique_postal_codes,
         "unique_types": unique_types,
@@ -72,17 +76,28 @@ def index(request):
     return render(request, "property/properties.html", context)
 
 
+
+
 def get_property_by_id(request, id):
     property_obj = get_object_or_404(Property, pk=id)
 
     # Get user's submitted offers
+    user_offer = None
     user_submitted_offer_ids = []
     if request.user.is_authenticated:
         try:
             user_profile = request.user.userprofile
+
             user_submitted_offer_ids = Offer.objects.filter(
                 buyer=user_profile
             ).values_list("property_id", flat=True)
+
+            # Get the specific offer for this property if it exists
+            user_offer = Offer.objects.filter(
+                buyer=user_profile,
+                property=property_obj
+            ).first()  # get the most recent offer
+
         except Exception as e:
             print(f"An error occurred: {e}")
             user_submitted_offer_ids = []  # Default to an empty list if error occurs
@@ -93,6 +108,7 @@ def get_property_by_id(request, id):
         {
             "property": property_obj,
             "user_submitted_offer_ids": user_submitted_offer_ids,
+            "user_offer": user_offer,
         },
     )
 
@@ -147,3 +163,4 @@ def seller_profile(request, seller_id):
 
 def submit_offer(request):
     return render(request, "offer/submit_offer.html")
+

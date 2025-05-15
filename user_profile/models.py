@@ -5,14 +5,20 @@ from django.db import models
 
 def profile_pic_path(instance, filename):
     """
-    Generates upload paths for:
-    - UserProfile.image = SellerProfile.cover_img -> profile_pics/{user_id}/profile_img/{filename}
-    - SellerProfile.logo -> profile_pics/{user_id}/logo/{filename}
+    Upload paths for:
+    - UserProfile.image → `profile_pics/user_<ID>/profile_pic/<filename>`
+    - SellerProfile.cover_img → `profile_pics/user_<ID>/cover_img/<filename>`
+    - SellerProfile.logo → `profile_pics/user_<ID>/logo/<filename>`
     """
     user_profile = instance if isinstance(instance, UserProfile) else instance.user
-    subfolder = "logo" if hasattr(instance, "logo") else "profile_pic"
+    user_id = user_profile.id
 
-    user_id = slugify(user_profile.id)
+    if hasattr(instance, 'logo'):
+        subfolder = "logo"
+    elif hasattr(instance, 'cover_img'):
+        subfolder = "cover_img"
+    else:
+        subfolder = "profile_pic"
     return f"profile_pics/user_{user_id}/{subfolder}/{filename}"
 
 
@@ -34,6 +40,7 @@ class SellerType(models.TextChoices):
 
 class SellerProfile(models.Model):
     user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    cover_img = models.ImageField(upload_to=profile_pic_path)
     type = models.CharField(choices=SellerType.choices, default=SellerType.INDIVIDUAL)
     street_name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)

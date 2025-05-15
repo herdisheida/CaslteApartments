@@ -96,23 +96,3 @@
   pointer-events: none;
 }
 
-.custom-offer-button {
-    background-color: #3b2e57;
-    color: white;
-    padding: 0.6rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 700;
-    font-family: monospace;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    border: none;
-}
-
-.custom-offer-button:hover {
-    background-color: #2b2043;
-    color: white;
-    transform: translateY(-1px);
-}
