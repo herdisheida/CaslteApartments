@@ -1,0 +1,116 @@
+<div id="form-purchase" class="form-purchase-info-container">
+    <h2 class="mb-5">Finalize Purchase</h2>
+    <div class="container personal-info-container">
+        <h4 class="mb-1">Contact Information:</h4>
+        <div class="row g-3">
+            <!-- Street Name -->
+            <div class="col-6">
+                <label id="street-name" for="{{ form.street_name.id_for_label }}" class="form-label">{{ form.street_name.label }}</label>
+                {{ form.street_name }}
+            </div>
+
+            <!-- House Number -->
+            <div class="col-4">
+                <label id="house-nr" for="{{ form.house_nr.id_for_label }}" class="form-label">{{ form.house_nr.label }}</label>
+                {{ form.house_nr }}
+            </div>
+
+            <!-- City -->
+            <div class="col-md-6">
+                <label id="city" for="{{ form.city.id_for_label }}" class="form-label">{{ form.city.label }}</label>
+                {{ form.city }}
+            </div>
+
+            <!-- Postal Code -->
+            <div class="col-md-6">
+                <label id="postal-code" for="{{ form.postal_code.id_for_label }}" class="form-label">{{ form.postal_code.label }}</label>
+                {{ form.postal_code }}
+            </div>
+
+            <!-- Country -->
+            <div class="col-md-6">
+                <label id="country" class="form-label">Country</label>
+                {% include 'payment/_country_picker.html' %}
+            </div>
+
+            <!-- National ID -->
+            <div class="col-md-6">
+                <label id="national-id" class="national-id" for="{{ form.national_id.id_for_label }}" class="form-label">{{ form.national_id.label }}</label>
+                {{ form.national_id }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container payment-info-container">
+        <h4 class="mb-3 mt-5">Payment Step:</h4>
+
+        <div class="row g-3">
+            <!-- Payment Method Dropdown -->
+            <div class="col-md-12">
+                <label for="payment-method" class="form-label">Payment Method</label>
+                <select class="form-select" id="payment-method" name="payment_method">
+                    <option value="">Select payment method</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="bank">Bank Transfer</option>
+                    <option value="mortgage">Mortgage</option>
+                </select>
+            </div>
+
+            <!-- Card Payment Fields -->
+            <div id="card-fields" class="payment-section d-none">
+                <div class="col-md-12">
+                    <label for="card-name" class="form-label">Name on Card</label>
+                    <input type="text" class="form-control" id="card-name" name="card_name">
+                </div>
+
+            <div class="col-md-12">
+                <label for="card-number" class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="card-number" name="card_number" maxlength="19">
+            </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">Expiration Date</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="card-month" placeholder="MM" maxlength="2">
+                            <span class="input-group-text">/</span>
+                            <input type="text" class="form-control" id="card-year" placeholder="YY" maxlength="2">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="card-cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" id="card-cvv" name="cvv" maxlength="3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bank Transfer Fields -->
+            <div id="bank-fields" class="payment-section d-none">
+                <div class="col-md-12">
+                  <label for="bank-number" class="form-label">Account Number</label>
+                  <input type="text" class="form-control" id="bank-number">
+                </div>
+
+                <div class="col-md-12">
+                    <label for="bank-reference-number" class="form-label">Reference Number</label>
+                    <input type="text" class="form-control" id="bank-reference-number">
+                </div>
+            </div>
+
+            <!-- Mortgage Fields -->
+            <div id="mortgage-fields" class="payment-section d-none">
+                <div class="col-md-12">
+                    <label for="mortgage-provider" class="form-label">Mortgage Provider</label>
+                    <input type="text" class="form-control" id="mortgage-provider">
+                </div>
+            </div>
+
+            <div class="col-12">
+              <button id="continue-to-review-page" class="btn btn-primary w-50 py-3" type="button">continue payment</button>
+            </div>
+        </div>
+    </div>
+</div>
