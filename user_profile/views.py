@@ -60,3 +60,5 @@ def create_seller_profile(request):
             "user_profile": request.user.userprofile,
         },
     )
+
+
