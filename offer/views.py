@@ -117,8 +117,12 @@ def respond_to_offer(request, offer_id):
 def payment(request, offer_id):
     """Buyers (all users) can finalize their purchase offers after sellers accept them"""
     clear_messages(request)
-
     current_offer = get_object_or_404(Offer, id=offer_id)
+
+    # user who finalizes has to be the same as the one who submitted
+    if current_offer.buyer != request.user.userprofile:
+        messages.error(request, "You don't have permission to update this offer")
+        return redirect("submitted-offer-index")
 
     if request.method == "POST":
         form = TransactionForm(request.POST)
