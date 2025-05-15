@@ -8,6 +8,9 @@ urlpatterns = [
     path("<int:property_id>/submit-offer/", views.submit_offer, name="submit-offer"),
     # accept offer (by seller)
     path("<int:offer_id>/update/", views.respond_to_offer, name="update-offer-state"),
+
     # finalize offer (by user)
     path("<int:offer_id>/payment/", views.payment, name="payment-index"),
+    # review step
+    path("<int:offer_id>/payment/review", views.review_payment, name="review-payment"),
 ]

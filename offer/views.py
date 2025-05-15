@@ -147,3 +147,15 @@ def payment(request, offer_id):
     return render(
         request, "payment/payment.html", {"form": form, "offer": current_offer}
     )
+
+
+
+
+def review_payment(request, offer_id):
+
+    # TODO HELP
+    return render(request, "payment/review_payment.html", {
+        "offer": offer_id
+    #   "form": form, # can access the info from the payment here
+      #  "payment": payment
+    })

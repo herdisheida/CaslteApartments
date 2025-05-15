@@ -6,7 +6,7 @@
             <form method="post" enctype="multipart/form-data" action="{% url 'edit-profile' %}">
                 {% csrf_token %}
 
-                <div class="form-group ali">
+                <div class="form-group">
                     {{ form.name.label_tag }}
                     {{ form.name }}
                 </div>
