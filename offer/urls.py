@@ -12,5 +12,5 @@ urlpatterns = [
     # finalize offer (by user)
     path("<int:offer_id>/payment/", views.payment, name="payment-index"),
     # review step
-    path("<int:offer_id>/payment/review", views.review_payment, name="review-payment"),
+    path("payment/review", views.review_payment, name="review-payment"),
 ]

@@ -4,18 +4,23 @@ const card = document.getElementById("card-fields");
 const bank = document.getElementById("bank-fields");
 const mortgage = document.getElementById("mortgage-fields");
 
-methodSelect.addEventListener("change", function () {
-  card.style.display = "none";
-  bank.style.display = "none";
-  mortgage.style.display = "none";
+// Payment method toggle with drop down menu
+document.addEventListener('DOMContentLoaded', () => {
+  const paymentMethod = document.getElementById('payment-method');
+  const toggleSections = (selectedValue) => {
+    document.querySelectorAll('.payment-section').forEach(section => {
+      section.classList.add('d-none');
+    });
+    if (selectedValue) {
+      document.getElementById(`${selectedValue}-fields`).classList.remove('d-none');
+    }
+  };
+  paymentMethod.addEventListener('change', (e) => toggleSections(e.target.value));
 
-  if (this.value === "card") {
-    card.style.display = "block";
-  } else if (this.value === "bank") {
-    bank.style.display = "block";
-  } else if (this.value === "mortgage") {
-    mortgage.style.display = "block";
-  }
+  // Format card number
+  document.getElementById('card-number')?.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\W/gi, '').replace(/(.{4})/g, '$1 ').trim();
+  });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
