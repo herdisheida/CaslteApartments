@@ -1,8 +1,6 @@
   // Get all elements
   const continueBtn = document.getElementById('continue-to-review-page');
   const backBtn = document.getElementById('back-to-form-btn');
-  const purchaseForm = document.getElementById('form-purchase');
-  const reviewSection = document.getElementById('preview-purchase');
 
 
 // Payment method toggle with drop down menu (mortgage, card, bank)
@@ -37,6 +35,72 @@ const toggleReview = () => {
 
 }
 
+const addPersonalInfoToPreview = () => {
+  const streetName = document.getElementById('id_street_name')?.value || '';
+  const houseNumber = document.getElementById('id_house_nr')?.value || '';
+  const city = document.getElementById('id_city')?.value || '';
+  const postalCode = document.getElementById('id_postal_code')?.value || '';
+  const country = document.querySelector('[id="id_country"]')?.value || '';
+  const nationalId = document.getElementById('id_national_id')?.value || '';
+
+  const container = document.querySelector('#preview-purchase .personal-info-container');
+
+  // Clear any previous content
+  container.innerHTML = `
+    <p><strong>Street Name</strong>: ${streetName}</p>
+    <p><strong>House Number</strong>: ${houseNumber}</p>
+    <p><strong>City</strong>: ${city}</p>
+    <p><strong>Postal Code</strong>: ${postalCode}</p>
+    <p><strong>National ID</strong>: ${nationalId}</p>
+    <p><strong>Country</strong>: ${country}</p>
+  `;
+};
+
+const addPaymentInfoToReview = () => {
+  const paymentMethod = document.getElementById('payment-method')?.value;
+  const paymentContainer = document.querySelector('#preview-purchase .payment-info-container');
+
+  let paymentHTML = `<p><strong>Payment Method:</strong> ${paymentMethod}</p>`;
+
+  if (paymentMethod === 'card') {
+    const cardName = document.getElementById('card-name')?.value || '';
+    const cardNumber = document.getElementById('card-number')?.value || '';
+    const cardMonth = document.getElementById('card-month')?.value || '';
+    const cardYear = document.getElementById('card-year')?.value || '';
+    const cardCVV = document.getElementById('card-cvv')?.value || '';
+
+    paymentHTML += `
+      <p><strong>Name on Card:</strong> ${cardName}</p>
+      <p><strong>Card Number:</strong> ${cardNumber}</p>
+      <p><strong>Expiry:</strong> ${cardMonth}/${cardYear}</p>
+      <p><strong>CVV:</strong> ${cardCVV}</p>
+    `;
+  }
+
+  else if (paymentMethod === 'bank') {
+    const bankNumber = document.getElementById('bank-number')?.value || '';
+    const referenceNumber = document.getElementById('bank-reference-number')?.value || '';
+
+    paymentHTML += `
+      <p><strong>Account Number:</strong> ${bankNumber}</p>
+      <p><strong>Reference Number:</strong> ${referenceNumber}</p>
+    `;
+  }
+
+  else if (paymentMethod === 'mortgage') {
+    const mortgageBankNumber = document.getElementById('mortgage-provider')?.value || '';
+
+    paymentHTML += `
+      <p><strong>Bank Number:</strong> ${mortgageBankNumber}</p>
+    `;
+  }
+
+  // Inject the HTML into the payment section of the review
+  paymentContainer.innerHTML = paymentHTML;
+};
+
+
+
 
 // Validate - personal info
 const validatePersonalInfo = () => {
@@ -57,7 +121,7 @@ const validatePersonalInfo = () => {
     return true;
   };
 
-  // Get form elements (assuming these IDs match your Django form)
+  // Get form elements
   const streetName = document.getElementById('id_street_name');
   const houseNumber = document.getElementById('id_house_nr');
   const city = document.getElementById('id_city');
@@ -81,7 +145,7 @@ const validatePersonalInfo = () => {
 
 
 // Validate - payment form
-const validPaymentForm = (form) => {
+const validPaymentForm = () => {
   const paymentMethod = document.getElementById('payment-method')?.value;
   if (!paymentMethod) {
     alert('Please select a payment method');
@@ -160,17 +224,45 @@ const validPaymentForm = (form) => {
       break;
 
     case 'mortgage':
-      if (!validateField('mortgage-bank-number', 'Please enter bank number')) return false;
-      if (!validateField('mortgage-loan-reference-number', 'Please enter loan reference')) return false;
+      if (!validateField('mortgage-provider', 'Please enter mortgage provider')) return false;
       break;
   }
   return true;
 };
 
 continueBtn.addEventListener('click', () => {
-  if (validatePersonalInfo(purchaseForm) && validPaymentForm(purchaseForm)) {
+  if (validatePersonalInfo() && validPaymentForm()) {
+    // hide form and show review
     toggleReview()
+
+    // update review content
+    addPersonalInfoToPreview()
+    addPaymentInfoToReview()
   }
 });
-backBtn.addEventListener('click', toggleReview);
+backBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // prevent page from reloading and submitting form automatically
+  toggleReview();
+});
 
+
+// final form submission
+document.getElementById('confirm-payment-btn')?.addEventListener('click', () => {
+  // Disable payment fields before submission
+  const selectedMethod = document.getElementById('payment-method').value;
+
+  // Define all payment sections
+  const sections = ['card-fields', 'bank-fields', 'mortgage-fields'];
+
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (sectionId !== `${selectedMethod}-fields`) {
+      section.querySelectorAll('input, select, textarea').forEach(field => {
+        field.disabled = true;
+      });
+    }
+  });
+
+  // Submit the form
+  document.getElementById('purchase-form').submit();
+});

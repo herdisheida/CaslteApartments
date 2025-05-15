@@ -50,7 +50,7 @@
             <!-- Payment Method Dropdown -->
             <div class="col-md-12">
                 <label for="payment-method" class="form-label">Payment Method</label>
-                <select class="form-select" id="payment-method" name="payment_method" required>
+                <select class="form-select" id="payment-method" name="payment_method">
                     <option value="">Select payment method</option>
                     <option value="card">Credit/Debit Card</option>
                     <option value="bank">Bank Transfer</option>
@@ -62,27 +62,27 @@
             <div id="card-fields" class="payment-section d-none">
                 <div class="col-md-12">
                     <label for="card-name" class="form-label">Name on Card</label>
-                    <input type="text" class="form-control" id="card-name" name="card_name" required>
+                    <input type="text" class="form-control" id="card-name" name="card_name">
                 </div>
 
             <div class="col-md-12">
                 <label for="card-number" class="form-label">Card Number</label>
-                <input type="text" class="form-control" id="card-number" name="card_number" maxlength="19" required>
+                <input type="text" class="form-control" id="card-number" name="card_number" maxlength="19">
             </div>
 
                 <div class="row">
                     <div class="col-md-6">
                         <label class="form-label">Expiration Date</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="card-month" placeholder="MM" maxlength="2" required>
+                            <input type="text" class="form-control" id="card-month" placeholder="MM" maxlength="2">
                             <span class="input-group-text">/</span>
-                            <input type="text" class="form-control" id="card-year" placeholder="YY" maxlength="2" required>
+                            <input type="text" class="form-control" id="card-year" placeholder="YY" maxlength="2">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <label for="card-cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="card-cvv" name="cvv" maxlength="3" required>
+                        <input type="text" class="form-control" id="card-cvv" name="cvv" maxlength="3">
                     </div>
                 </div>
             </div>
@@ -91,25 +91,20 @@
             <div id="bank-fields" class="payment-section d-none">
                 <div class="col-md-12">
                   <label for="bank-number" class="form-label">Account Number</label>
-                  <input type="text" class="form-control" id="bank-number" required>
+                  <input type="text" class="form-control" id="bank-number">
                 </div>
 
                 <div class="col-md-12">
                     <label for="bank-reference-number" class="form-label">Reference Number</label>
-                    <input type="text" class="form-control" id="bank-reference-number" required>
+                    <input type="text" class="form-control" id="bank-reference-number">
                 </div>
             </div>
 
             <!-- Mortgage Fields -->
             <div id="mortgage-fields" class="payment-section d-none">
                 <div class="col-md-12">
-                    <label for="mortgage-bank-number" class="form-label">Bank Number</label>
-                    <input type="text" class="form-control" id="mortgage-bank-number" required>
-                </div>
-
-                <div class="col-md-12">
-                    <label for="mortgage-loan-reference-number" class="form-label">Loan Reference</label>
-                    <input type="text" class="form-control" id="mortgage-loan-reference-number" required>
+                    <label for="mortgage-provider" class="form-label">Mortgage Provider</label>
+                    <input type="text" class="form-control" id="mortgage-provider">
                 </div>
             </div>
 
