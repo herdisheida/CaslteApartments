@@ -76,6 +76,10 @@ def respond_to_offer(request, offer_id):
             if new_state == "accept":
                 offer.state = States.ACCEPTED
                 offer.contingent_msg = None
+
+                # property is considered sold
+                offer.property.is_sold = True
+                offer.property.save()
                 messages.success(request, "Offer accepted successfully")
 
             elif new_state == "reject":
@@ -134,9 +138,6 @@ def payment(request, offer_id):
 
                 current_offer.state = States.FINALIZED
                 current_offer.save()
-
-                current_offer.property.is_sold = True
-                current_offer.property.save()
 
                 return redirect("payment-success")
 

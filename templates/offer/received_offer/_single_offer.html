@@ -24,8 +24,10 @@
     </div>
 
     <div class="offer-right mt-5">
-        <p><strong>offer amount:</strong> {{ offer.price }}$</p>
-        <p class="offer-dates">
+        <p class="offer-listingprice-vs-offeramount">
+            <strong>listing price:</strong> {{ offer.property.price }}$<br>
+            <strong>offer amount:</strong> {{ offer.price }}$
+        </p>        <p class="offer-dates">
             <strong>offer created:</strong> {{ offer.creation_date|date:"F jS, Y" }}<br>
             <strong>expiration date:</strong> {{ offer.expiration_date }}
         </p>
