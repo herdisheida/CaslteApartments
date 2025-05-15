@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="post" enctype="multipart/form-data" class="p-4" id="create-property-container">
+    <form method="post" enctype="multipart/form-data" action="{% url 'property-create' %}" class="p-4" id="create-property-container">
         {% csrf_token %}
         <h2 class="fw-semibold mb-5">Create Property</h2>
         
