@@ -149,4 +149,4 @@ def payment(request, offer_id):
     )
 
 def payment_success(request):
-    return render(request, 'payment/_success.html')
+    return render(request, "payment/_payment_success.html")
