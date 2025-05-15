@@ -14,26 +14,6 @@
     font-weight: 1000;
 }
 
-
-
-/* Profile picture styling */
-/*.profile-pic-container {*/
-/*    border-radius: 50%;*/
-/*    width: 4rem;*/
-/*    height: 4rem;*/
-/*    overflow: hidden;*/
-/*}*/
-/*.profile-pic-container:hover {*/
-/*    opacity: 0.5;*/
-/*}*/
-
-/*#profile-pic-small {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    object-fit: cover;*/
-/*}*/
-
-
 .profile-pic-in-navbar {
     height: 50px;
     width: 50px;
@@ -63,4 +43,10 @@ a {
     display: flex;
     align-items: flex-end;
     font-size: 0.9rem;
+}
+
+
+/* links are not underlined */
+a {
+    text-decoration: none;
 }

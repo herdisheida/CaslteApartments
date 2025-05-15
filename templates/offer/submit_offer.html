@@ -9,8 +9,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <div class="button-row">
-            <a href="{% url 'property-by-id' id=property.id %}" class="offer-button">Cancel</a>
-            <button type="submit" class="offer-button">Submit</button>
+            <a href="{% url 'property-by-id' id=property.id %}" class="custom-purple-button">Cancel</a>
+            <button type="submit" class="custom-purple-button">Submit</button>
         </div>
     </form>
 </div>
