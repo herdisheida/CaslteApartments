@@ -9,6 +9,7 @@
     color: white;
     font-family: "Lucida Console", monospace;
 }
+
 .nav-menu-link:hover {
     color: black;
     font-weight: 1000;
@@ -27,13 +28,10 @@
 #footer-container {
     background-color: #4D4C77;
     padding: 1rem;
-
     display: flex;
     justify-content: space-between;
 }
-a {
-    color: white;
-}
+
 
 #app-logo {
     height: 3rem;
@@ -42,9 +40,12 @@ a {
 .footer-contact-info {
     display: flex;
     align-items: flex-end;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
+.footer-item a {
+    color: white;
+}
 
 
 /* Purple Button Styling */
@@ -68,6 +69,6 @@ a {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.custom-purple-button:hover a {
+a {
     text-decoration: none; /* links on btn are not underlined */
 }
