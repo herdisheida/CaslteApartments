@@ -30,22 +30,6 @@
     background-color: white;
 }
 
-.btn-confirm {
-    background-color: #3b2e58;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.btn-confirm:hover {
-    background-color: #5e3b8a;
-}
-
-
 #see-more-btn, .btn-sm {
     background-color: #372549;
     width: 130px;
@@ -57,59 +41,132 @@
     font-size: 13px;
 }
 
-#link-to-seller-btn {
-    background-color: #3b2e58;
-    color: white;
-    border: none;
-}
-#link-to-seller-btn:hover {
-    background-color: #5e3b8a;
-}
 
 
-/* SELLER info on property details page*/
-#seller-profile-pic-in-property {
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
-
-    border-radius: 50%;
-}
-.d-flex {
-    display: flex;
-    align-items: center
-}
-
-#property-details-container {
-    width: 80%;
-}
-
-
-
-
-/* previous offer in offer details */
-.previous-offer-status {
+/* SELLER INFO and OFFER SECTION */
+/* Container Styles */
+.seller-offer-container {
+    margin: 2rem 0;
     padding: 1rem;
-    background-color: #f8f9fa;
-    width: 20rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.offer-status-pending {
-    color: #ffc107; /* Yellow for pending */
+/* Grid Layout */
+.seller-offer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
 }
 
-.offer-status-accepted {
-    color: #28a745; /* Green for accepted */
+/* Individual Grid Items */
+.seller-profile-pic {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
 }
 
-.offer-status-rejected {
-    color: #dc3545; /* Red for rejected */
+.previous-offer {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    width: 90%;
 }
 
-.offer-status-countered {
-    color: #17a2b8; /* Teal for countered */
+.seller-button {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+}
+
+.offer-button {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+}
+
+/* Image Styling */
+.seller-img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.1);
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-accepted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-contingent {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* Offer Details */
+.offer-details {
+    padding: 0.5rem;
+}
+
+.offer-details p {
+    margin-bottom: 0.5rem;
 }
 
 
-
-
+.custom-purple-button {
+    background-color: #3b2e57;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border: none;
+    width: 18rem;
+    text-align: center;
+}
+.custom-purple-button:hover {
+    background-color: #2b2043;
+    color: white;
+    transform: translateY(-1px);
+}
