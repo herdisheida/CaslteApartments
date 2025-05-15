@@ -27,19 +27,19 @@ def register(request):
     return render(request, "authentication/register.html", {"form": form})
 
 
-def profile(request):
-    profile_instance = UserProfile.objects.filter(user=request.user).first()
+def display_profile(request):
+    return render(request, "profile/profile.html", context={})
 
+def edit_profile(request):
+    profile_instance, created = UserProfile.objects.get_or_create(user=request.user)
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES, instance=profile_instance)
         if form.is_valid():
             form.save()
-            return redirect("profile")
+            return redirect("display-profile")
     else:
         form = ProfileForm(instance=profile_instance)
-
-    return render(request, "profile/profile.html", {"form": form})
-
+    return render(request, "profile/edit_profile.html", {"form": form})
 
 def create_seller_profile(request):
     if request.method == "POST":
