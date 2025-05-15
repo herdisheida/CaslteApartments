@@ -1,9 +1,23 @@
-{% extends 'base.html' %}
+<div id="preview-purchase" class="preview-purchase-info-container d-none mt-4 p-4 border rounded">
 
-{% block content %}
-    <div>
+    <h2>Review Step</h2>
+    <p class="mb-3">Please review your information before submitting</p>
 
-        REVIEW PAYMENT
-
+    <h5>Payment Info</h5>
+    <div class="container">
+        <p><strong>Street Name</strong> {{ street_name }}</p>
+        <p><strong>City</strong> {{ city }}</p>
+        <p><strong>Postal Code</strong> {{ postal_code }}</p>
+        <p><strong>National ID</strong> {{ national_id }}</p>
+        <p><strong>Country</strong> {{ country }}</p>
     </div>
-{% endblock %}
+
+    <h5>Payment Info</h5>
+    <div class="container payment-section"></div>
+
+
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-danger w-25 py-3 m-3" onclick="toggleReview()">cancel</button>
+        <button type="submit" class="btn btn-primary w-25 py-3 m-3">submit payment</button>
+    </div>
+</div>
