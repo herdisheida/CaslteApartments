@@ -4,30 +4,28 @@
 {% block content %}
 <div class="d-flex justify-content-center">
     <div class="profile-container">
-        <!-- Display username (user cannot update that field) -->
-        <h3>{{ user.username }}'s Profile</h3>
-    
+        <!-- Display username -->
+        <h3 class="mb-3">{{ user.username }}'s Profile</h3>
         <!-- Display Profile Picture (user can update that field) -->
         {% if user.is_authenticated %}
-        <div class="profile-pic-in-profile" style="background-image: {% if user.userprofile.image %}url({{ user.userprofile.image.url }}){% else %}url({% static 'images/default_profile_pic.png' %}){% endif %}"></div>
-        {% endif %}
-
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <!-- Display name (user can update that field) -->
-            <div class="update-form-container">
-                {% for field in form %}
-                    <div class="form-group">
-                        {{ field.label_tag }}
-                        {{ field }}
-                        {% if field.errors %}
-                            <div class="text-danger small">{{ field.errors }}</div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+            <div class="profile-pic-in-profile">
+                <img class="border border-dark" src="{{ user.userprofile.image.url }}" alt="{{ user.username }}-profile-pic">
             </div>
-            <button type="submit" class="submit-btn">Save Changes</button>
-        </form>
+        {% endif %}
+        <!-- Display User's Name -->
+        <p class="mt-3"><strong>Name:</strong> {{ user.userprofile.name }}</p>
+
+        <a href="{% url 'edit-profile' %}">
+            <button class="btn btn-dark mt-3">edit</button>
+        </a>
     </div>
 </div>
 {% endblock %}
+
+<style>
+
+    .profile-form-fields {
+        display: none;
+    }
+
+</style>

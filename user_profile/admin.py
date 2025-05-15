@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from user_profile.models import UserProfile, SellerProfile
 
 # Register your models here.

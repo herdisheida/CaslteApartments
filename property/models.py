@@ -1,6 +1,5 @@
-from django.core.exceptions import ValidationError
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator, FileExtensionValidator, validate_image_file_extension
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 from user_profile.models import SellerProfile
 from django.utils.text import slugify

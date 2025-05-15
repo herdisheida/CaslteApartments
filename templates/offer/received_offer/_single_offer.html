@@ -11,7 +11,7 @@
 
             <div class="badge-wrapper">
                 <span class="badge bg-dark text-white">
-                    {% if not offer.is_sold %}For Sale{% else %}Sold{% endif %}
+                    {% if offer.property.is_sold %}Sold{% else %}For Sale{% endif %}
                 </span>
             </div>
         </div>
