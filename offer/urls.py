@@ -10,4 +10,5 @@ urlpatterns = [
     path("<int:offer_id>/update/", views.respond_to_offer, name="update-offer-state"),
     # finalize offer (by user)
     path("<int:offer_id>/payment/", views.payment, name="payment-index"),
+    path('payment/success/', views.payment_success, name='payment-success')
 ]
