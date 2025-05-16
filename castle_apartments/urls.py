@@ -29,7 +29,3 @@ urlpatterns = [
     path("user/", include("user_profile.urls")),
     path("admin/", admin.site.urls),
 ]
-
-if settings.DEBUG:  # TODO EYÐA ÞESSU ÞEgar við skilum inn
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
