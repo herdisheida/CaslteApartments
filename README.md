@@ -96,7 +96,7 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
    ```
 
 ### Usage
-You login with the existing account that we made for the video showcase :D or register with a new account by signing up :D
+You login with the existing account that we made from the video showcase :D or register with a new account by signing up :D
 - **Existing Account**:
   - username: michaeljackson
   - password: hehe1980.
