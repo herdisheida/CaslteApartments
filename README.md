@@ -1,7 +1,7 @@
 # 🏰 Castle Apartments
-*Herdís Heiða Jing Guðjohnsen*
-*Sindri Snæra Snorrasson*
-*Júlía Gunnlaugsdóttir*
+**Herdís Heiða Jing Guðjohnsen**<br>
+**Sindri Snæra Snorrasson**<br>
+**Júlía Gunnlaugsdóttir**
 
 
 <!-- PROJECT LOGO -->
