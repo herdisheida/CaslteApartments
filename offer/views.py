@@ -43,8 +43,12 @@ def submit_offer(request, property_id):
         form = OfferForm(request.POST)
         if form.is_valid():
             offer = form.save(commit=False)
+
+            # connect seller and offer
             offer.seller = seller_obj
+            # connect user and offer
             offer.buyer = buyer_profile_obj
+            # connect property to offer
             offer.property = property_obj
             offer.save()
 
@@ -62,7 +66,6 @@ def submit_offer_success(request):
 def respond_to_offer(request, offer_id):
     """Sellers responding to submitted offers"""
     clear_messages(request)
-
     offer = get_object_or_404(Offer, id=offer_id)
 
     # permission check - only the seller can update
@@ -79,7 +82,6 @@ def respond_to_offer(request, offer_id):
             if new_state == "accept":
                 offer.state = States.ACCEPTED
                 offer.contingent_msg = None
-
 
                 reject_other_offers_on_property(offer, offer_id)
                 messages.success(request, "Offer accepted successfully")

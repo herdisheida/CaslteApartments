@@ -47,9 +47,12 @@ def create_seller_profile(request):
     if request.method == "POST":
         form = SellerProfileForm(request.POST, request.FILES)
         if form.is_valid():
+
+            # connect user to the current user
             seller = form.save(commit=False)
             seller.user = user_profile
             seller.save()
+
             return redirect("property-create")
     else:
         form = SellerProfileForm()

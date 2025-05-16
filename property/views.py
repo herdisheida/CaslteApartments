@@ -8,7 +8,7 @@ from property.models import Property, PropertyImages
 def index(request):
     properties = Property.objects.all()
 
-    # SEARCH
+    # SEARCH BAR
     search_query = request.GET.get("search")
     if search_query:
         properties = properties.filter(
@@ -66,7 +66,6 @@ def index(request):
         p.total_rooms = (p.bedrooms or 0) + (p.bathrooms or 0) + (p.toilets or 0)
 
     context = {
-
         "properties": properties,
         "unique_postal_codes": unique_postal_codes,
         "unique_types": unique_types,
@@ -120,12 +119,14 @@ def get_seller_by_property_id(request, property_id):
 
     return render(
         request,
-        "profile/seller_profile.html",
-        {"seller": seller, "properties": properties},
+        "profile/seller_profile.html",{
+        "seller": seller,
+        "properties": properties},
     )
 
 
 def create_property(request):
+    # become seller first in order to create a property
     try:
         seller_profile = request.user.userprofile.sellerprofile
     except AttributeError:
