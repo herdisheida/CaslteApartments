@@ -63,7 +63,7 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
 
 
 ### 🎬 Getting Started
-You login with the existing account that we made for the video showcase :D or register with a new account by signing up :D
+You can log-in with the existing account that we made for the video showcase :D or register with a new account by signing up :D
 
 - **Existing Account**:
   - username: michaeljackson
