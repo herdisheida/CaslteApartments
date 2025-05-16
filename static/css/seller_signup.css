@@ -1,105 +1,105 @@
 .seller-container {
-  background-color: #dfdfdf;
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 700px;
-  margin: 3rem auto;
-  font-family: "Lucida Console", monospace;
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-  box-shadow: 1rem 2rem 2rem #acacac;
+    background-color: #dfdfdf;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 700px;
+    margin: 3rem auto;
+    font-family: "Lucida Console", monospace;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    box-shadow: 1rem 2rem 2rem #acacac;
 }
 
 .form-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #2c2c2c;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #2c2c2c;
 }
 
 .form-section {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .address-group,
 .bio-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .address-group input,
 .bio-group textarea,
 .type-group select {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background: #cfcfcf;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  color: #555;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #cfcfcf;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #555;
 }
 
 .bio-group textarea {
-  min-height: 6rem;
-  resize: vertical;
+    min-height: 6rem;
+    resize: vertical;
 }
 
 .type-group {
-  align-self: flex-start;
+    align-self: flex-start;
 }
 
 .type-group select {
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: none;
-  background: #cfcfcf;
-  border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    background: #cfcfcf;
+    border-radius: 0.5rem;
 }
 
 .form-actions {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
 }
 
 .btn {
-  padding: 0.75rem 2rem;
-  font-size: 1.125rem;
-  border: none;
-  border-radius: 0.625rem;
-  color: white;
-  cursor: pointer;
-  font-family: "Lucida Console", monospace;
-  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 2rem;
+    font-size: 1.125rem;
+    border: none;
+    border-radius: 0.625rem;
+    color: white;
+    cursor: pointer;
+    font-family: "Lucida Console", monospace;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 .cancel {
-  background-color: #7d6b89;
+    background-color: #7d6b89;
 }
 
 .confirm {
-  background-color: #3b2e58;
+    background-color: #3b2e58;
 }
 
 .cancel:hover {
-  background-color: #66577a;
+    background-color: #66577a;
 }
 
 .confirm:hover {
-  background-color: #2e2246;
+    background-color: #2e2246;
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
-  border: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    border: 0;
 }

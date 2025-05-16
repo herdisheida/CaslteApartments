@@ -8,9 +8,7 @@
         </div>
 
         {% for offer in offers %}
-            {% if offer.expiration_date > now.date %}
-                {% include 'offer/received_offer/_single_offer.html' %}
-            {% endif %}
+            {% include 'offer/received_offer/_single_offer.html' %}
         {% empty %}
             <div class="alert alert-info">No offers found</div>
         {% endfor %}

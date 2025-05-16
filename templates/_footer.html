@@ -1,11 +1,11 @@
 {% load static %}
 
 {% if user.is_authenticated %}
-<section>
-    <footer class="text-center footer-item" id="footer-container">
-        <img id="app-logo" src="{% static 'images/app_logo.png' %}" alt="logo picture"/>
-        <p class="footer-contact-info" id="footer-email"><a href="mailto:CastleApartments@email.com">CastleApartments@email.com</a></p>
-        <p class="footer-contact-info" id="footer-phone-num"><a href="tel:354-522-3200">+354-522-3200</a></p>
-    </footer>
-</section>
+    <section>
+        <footer class="text-center footer-item" id="footer-container">
+            <img id="app-logo" src="{% static 'images/app_logo.png' %}" alt="logo picture"/>
+            <p class="footer-contact-info" id="footer-email"><a href="mailto:CastleApartments@email.com">CastleApartments@email.com</a></p>
+            <p class="footer-contact-info" id="footer-phone-num"><a href="tel:354-522-3200">+354-522-3200</a></p>
+        </footer>
+    </section>
 {% endif %}

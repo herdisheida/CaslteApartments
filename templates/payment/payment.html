@@ -5,11 +5,9 @@
     <div class="m-5">
         <form method="post" action="{% url 'payment-index' offer_id=offer.id %}" enctype="multipart/form-data">
             {% csrf_token %}
-            
+
             {% include 'payment/_payment_form.html' %}
             {% include 'payment/_review_payment.html' %}
         </form>
     </div>
-    
-<script src="{% static 'js/payment_methods.js' %}"></script>
 {% endblock %}

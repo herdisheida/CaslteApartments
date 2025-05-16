@@ -7,7 +7,7 @@
         <div class="property-image-wrapper position-relative">
 
             <img class="img-fluid" src="{{ offer.property.preview_pic.url }}"
-                alt="Preview picture of {{ property.street_name }} {{ property.house_nr }} in offers">
+                 alt="Preview picture of {{ property.street_name }} {{ property.house_nr }} in offers">
 
             <div class="badge-wrapper">
                 <span class="badge bg-dark text-white">
@@ -28,13 +28,13 @@
             <strong>listing price:</strong> {{ offer.property.price }}$<br>
             <strong>offer amount:</strong> {{ offer.price }}$
         </p>        <p class="offer-dates">
-            <strong>offer created:</strong> {{ offer.creation_date|date:"F jS, Y" }}<br>
-            <strong>expiration date:</strong> {{ offer.expiration_date }}
-        </p>
+        <strong>offer created:</strong> {{ offer.creation_date|date:"F jS, Y" }}<br>
+        <strong>expiration date:</strong> {{ offer.expiration_date }}
+    </p>
 
         {% include 'offer/_update_reason.html' %}
         {% include 'offer/received_offer/_update_offer.html' %}
-    
+
     </div>
 </div>
 <script src="{% static 'js/offer_status_contingent.js' %}"></script>

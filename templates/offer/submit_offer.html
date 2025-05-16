@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="offer-form-container">
-    <h2>Purchase Offer</h2>
+    <div class="offer-form-container">
+        <h2>Purchase Offer</h2>
 
-    <form method="post" action="{% url 'submit-offer' property_id=property.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="button-row">
-            <a href="{% url 'property-by-id' id=property.id %}" class="custom-purple-button">Cancel</a>
-            <button type="submit" class="custom-purple-button">Submit</button>
-        </div>
-    </form>
-</div>
+        <form method="post" action="{% url 'submit-offer' property_id=property.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-row">
+                <a href="{% url 'property-by-id' id=property.id %}" class="custom-purple-button">Cancel</a>
+                <button type="submit" class="custom-purple-button">Submit</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

@@ -2,22 +2,22 @@
 {% load static %}
 
 {% block content %}
-<div class="seller-container mt-5 mx-auto p-5 shadow rounded" style="max-width: 1000px; background-color: #f7f7f7;">
-    <p class="text-center text-muted mb-3">
-        (You don't have a seller profile,<br>become a seller before creating a property)
-    </p>
-    <h2 class="text-center mb-4 fw-semibold">Seller Info</h2>
+    <div class="seller-container mt-5 mx-auto p-5 shadow rounded" style="max-width: 1000px; background-color: #f7f7f7;">
+        <p class="text-center text-muted mb-3">
+            (You don't have a seller profile,<br>become a seller before creating a property)
+        </p>
+        <h2 class="text-center mb-4 fw-semibold">Seller Info</h2>
 
-    <form method="post" enctype="multipart/form-data" action="{% url 'become-seller' %}" class="seller-form" id="seller-form">
-        {% csrf_token %}
+        <form method="post" enctype="multipart/form-data" action="{% url 'become-seller' %}" class="seller-form" id="seller-form">
+            {% csrf_token %}
 
-        {{ form.as_p }}
+            {{ form.as_p }}
 
-        <!-- Action buttons -->
-        <div class="text-center mt-4">
-            <a href="{% url 'property-index' %}" class="btn cancel me-3">cancel</a>
-            <button type="submit" class="btn confirm">become seller</button>
-        </div>
-    </form>
-</div>
+            <!-- Action buttons -->
+            <div class="text-center mt-4">
+                <a href="{% url 'property-index' %}" class="btn cancel me-3">cancel</a>
+                <button type="submit" class="btn confirm">become seller</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

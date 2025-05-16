@@ -4,7 +4,7 @@
     <form method="post" enctype="multipart/form-data" action="{% url 'property-create' %}" class="p-4" id="create-property-container">
         {% csrf_token %}
         <h2 class="fw-semibold mb-5">Create Property</h2>
-        
+
         <!-- Main Property Fields -->
         {{ form.as_p }}
 
@@ -22,5 +22,4 @@
 
         <button type="submit" class="custom-purple-button">Confirm</button>
     </form>
-
 {% endblock %}
