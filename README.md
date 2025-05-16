@@ -27,7 +27,7 @@
       <ul>
         <li><a href="#key-features">Key Features</a></li>
         <li><a href="#extra-requirements">Extra requirements</a></li>
-        <li><a href="#getting-started">Extra requirements</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
       </ul>
     </li>
   </ol>
@@ -43,7 +43,7 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
 - Interactive property showcases 
 - Seller dashboard
 
-### Key Features
+### 🔑 Key Features
 - **Seller Portal**:
   - Create property listings
   - Receive and evaluate purchase offers
@@ -55,14 +55,14 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
   - Submit competitive offers
   - Receive real-time updates on offer status
 
-### Extra requirements:
+### 👽 Extra requirements:
 - A normal user (buyer) can become a seller
 - A seller can create a property and set it up for listing
 - A seller can respond (reject and accept|contingent-accept) to a submitted offer by a buyer
 - A seller can add a comment to their accept response if they find a submitted offer unsatisfactory
 
 
-### Getting Started
+### 🎬 Getting Started
 You login with the existing account that we made for the video showcase :D or register with a new account by signing up :D
 
 - **Existing Account**:
