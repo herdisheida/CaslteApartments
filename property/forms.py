@@ -18,7 +18,13 @@ class PropertyForm(forms.ModelForm):
             "description": forms.Textarea(
                 attrs={"placeholder": "Write your description here...", "rows": 4}
             ),
-            "price": forms.NumberInput(attrs={"min": 0, "placeholder": "0.00"}),
+            "price": forms.NumberInput(
+                attrs={
+                    "min": 0,
+                    "max": 999999999999,
+                    "placeholder": "0.00"
+                }
+            ),
             "year_built": forms.NumberInput(
                 attrs={
                     "min": 1800,

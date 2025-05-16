@@ -107,7 +107,7 @@ def respond_to_offer(request, offer_id):
                 offer.state = States.CONTINGENT
                 offer.contingent_msg = contingent_msg
 
-                reject_other_offers_on_property(offer)
+                reject_other_offers_on_property(offer, offer_id)
                 messages.success(request, "Offer marked as contingent")
 
             offer.save()
@@ -132,7 +132,7 @@ def reject_other_offers_on_property(offer, offer_id):
     property_obj.save()
 
     # reject all other offers on this property
-    offer.objects.filter(property=property_obj).exclude(id=offer_id).update(
+    Offer.objects.filter(property=property_obj).exclude(id=offer_id).update(
         state=States.REJECTED,
         contingent_msg=None
     )
