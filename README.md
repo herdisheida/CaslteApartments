@@ -27,8 +27,14 @@
       <ul>
         <li><a href="#key-features">Key Features</a></li>
         <li><a href="#extra-requirements">Extra requirements</a></li>
-        <li><a href="#getting-started">Getting Started</a></li>
       </ul>
+      <li>
+        <a href="#getting-started">Getting Started</a>
+        <ul>
+          <li><a href="#Installation">Installation</a></li>
+          <li><a href="#Usage">Usage</a></li>
+        </ul>
+      </li>
     </li>
   </ol>
 </details>
@@ -62,9 +68,35 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
 - A seller can add a comment to their accept response if they find a submitted offer unsatisfactory
 
 
-### 🎬 Getting Started
-You login with the existing account that we made for the video showcase :D or register with a new account by signing up :D
+## 🎬 Getting Started
 
+
+### Installation
+
+1. Clone the repo (or download the zip file)
+   ```sh
+   git clone https://github.com/herdisheida/castle_apartments.git
+   ```
+ 2. Go to the root directory of the project
+   ```sh
+   cd <path-to>/castel_apartments
+   ```
+3. Make a virtual environent, and activate it
+   ```sh
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+4. Install dependencies
+   ```sh
+   pip install -r requirements.txt
+   ```
+5. Run the server
+   ```sh
+   python manage.py runserver
+   ```
+
+### Usage
+You login with the existing account that we made for the video showcase :D or register with a new account by signing up :D
 - **Existing Account**:
   - username: michaeljackson
   - password: hehe1980.
