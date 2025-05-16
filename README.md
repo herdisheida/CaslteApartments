@@ -30,7 +30,6 @@
         <li><a href="#getting-started">Extra requirements</a></li>
       </ul>
     </li>
-    <li>
   </ol>
 </details>
 
