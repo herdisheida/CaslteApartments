@@ -79,7 +79,7 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
    ```
  2. Go to the root directory of the project
    ```sh
-  cd <path-to>/castel_apartments
+   cd <path-to>/castle_apartments
    ```
 3. Make a virtual environent, and activate it
    ```sh
