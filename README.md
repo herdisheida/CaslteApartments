@@ -27,6 +27,7 @@
       <ul>
         <li><a href="#key-features">Key Features</a></li>
         <li><a href="#extra-requirements">Extra requirements</a></li>
+        <li><a href="#getting-started">Extra requirements</a></li>
       </ul>
     </li>
     <li>
@@ -60,3 +61,11 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
 - A seller can create a property and set it up for listing
 - A seller can respond (reject and accept|contingent-accept) to a submitted offer by a buyer
 - A seller can add a comment to their accept response if they find a submitted offer unsatisfactory
+
+
+### Getting Started
+You login with the existing account that we made for the video showcase :D or register with a new account by signing up :D
+
+- **Existing Account**:
+  - username: michaeljackson
+  - password: hehe1980.
