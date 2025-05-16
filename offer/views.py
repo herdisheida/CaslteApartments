@@ -80,15 +80,15 @@ def respond_to_offer(request, offer_id):
                 offer.state = States.ACCEPTED
                 offer.contingent_msg = None
 
-                # property is considered sold
-                offer.property.is_sold = True
-                offer.property.save()
+
+                reject_other_offers_on_property(offer, offer_id)
                 messages.success(request, "Offer accepted successfully")
 
             elif new_state == "reject":
                 offer.state = States.REJECTED
                 offer.contingent_msg = reject_msg if reject_msg else None
                 messages.success(request, "Offer rejected successfully")
+
 
             elif new_state == "contingent":
                 if not contingent_msg:
@@ -105,9 +105,7 @@ def respond_to_offer(request, offer_id):
                 offer.state = States.CONTINGENT
                 offer.contingent_msg = contingent_msg
 
-                # property is considered sold
-                offer.property.is_sold = True
-                offer.property.save()
+                reject_other_offers_on_property(offer)
                 messages.success(request, "Offer marked as contingent")
 
             offer.save()
@@ -124,6 +122,18 @@ def respond_to_offer(request, offer_id):
             return redirect("received-offer-index")
     return redirect("received-offer-index")
 
+
+def reject_other_offers_on_property(offer, offer_id):
+    # property is considered sold
+    property_obj = offer.property
+    property_obj.is_sold = True
+    property_obj.save()
+
+    # reject all other offers on this property
+    offer.objects.filter(property=property_obj).exclude(id=offer_id).update(
+        state=States.REJECTED,
+        contingent_msg=None
+    )
 
 def payment(request, offer_id):
     """Buyers (all users) can finalize their purchase offers after sellers accept them"""

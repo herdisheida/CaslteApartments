@@ -1,4 +1,4 @@
-{% if offer.state == 'pending' %}
+{% if offer.state == 'pending' and offer.expiration_date > now.date %}
     <form method="post" action="{% url 'update-offer-state' offer.id %}">
         {% csrf_token %}
 
