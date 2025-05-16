@@ -60,9 +60,3 @@ Castle Apartments is an innovative real estate company looking to disrupt the ma
 - A seller can create a property and set it up for listing
 - A seller can respond (reject and accept|contingent-accept) to a submitted offer by a buyer
 - A seller can add a comment to their accept response if they find a submitted offer unsatisfactory
-
-## Prerequisites
-Install dependencies listed in requirements.txt
-   ```sh
-   pip install -r requirements.txt
-   ```
