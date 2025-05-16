@@ -35,3 +35,4 @@ offer/__pycache__/views.cpython-312.pyc
 .idea/modules.xml
 /.idea/dataSources.local.xml
 /.idea/dataSources.xml
+__pycache__/
